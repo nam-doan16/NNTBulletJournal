@@ -64,7 +64,7 @@
                               <content>
                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                     <children>
-                                       <Label text="Nonday" />
+                                       <Label text="Monday" />
                                     </children>
                                  </HBox>
                               </content>
