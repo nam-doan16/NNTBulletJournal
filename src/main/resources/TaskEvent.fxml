@@ -5,7 +5,6 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,39 +13,65 @@
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
       <AnchorPane prefHeight="200" prefWidth="200">
       <children>
-         <VBox fx:id="vbox" prefHeight="245.0" prefWidth="242.0" spacing="5.0">
+         <VBox>
             <children>
-               <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0">
+               <VBox fx:id="vbox" prefHeight="245.0" prefWidth="242.0" spacing="5.0">
                   <children>
-                     <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="242.0">
+                     <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0">
                         <children>
-                           <Button fx:id="close" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Close" />
+                           <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="242.0">
+                              <children>
+                                 <Button fx:id="close" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Close" />
+                              </children>
+                           </HBox>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="28.0" prefWidth="200.0">
+                        <children>
+                           <ComboBox fx:id="menu" prefWidth="150.0" promptText="Select Task or Event">
+                            <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Event" />
+                                <String fx:value="Task" />
+                            </FXCollections>
+                            </items>
+                           </ComboBox>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="29.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="name" promptText="Name of Event/Task" />
+                        </children>
+                     </HBox>
+                     <HBox>
+                        <children>
+                           <TextField fx:id="description" alignment="TOP_LEFT" prefHeight="55.0" prefWidth="185.0" promptText="Description (Optional)" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="27.0" prefWidth="242.0">
+                        <children>
+                           <ComboBox fx:id="dayMenu" prefHeight="25.0" prefWidth="175.0" promptText="Select a day of the week">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Sunday" />
+                                    <String fx:value="Monday" />
+                                    <String fx:value="Tuesday" />
+                                    <String fx:value="Wednesday" />
+                                    <String fx:value="Thursday" />
+                                    <String fx:value="Friday" />
+                                    <String fx:value="Saturday" />
+                                 </FXCollections>
+                              </items>
+                           </ComboBox>
                         </children>
                      </HBox>
                   </children>
-               </HBox>
-               <HBox prefHeight="28.0" prefWidth="200.0">
+               </VBox>
+               <VBox alignment="CENTER" prefHeight="31.0" prefWidth="242.0">
                   <children>
-                     <ComboBox fx:id="menu" prefWidth="150.0" promptText="Select Task or Event">
-                      <items>
-                      <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Event" />
-                          <String fx:value="Task" />
-                      </FXCollections>
-                      </items>
-                     </ComboBox>
+                     <Button fx:id="add" mnemonicParsing="false" text="Add" />
                   </children>
-               </HBox>
-               <HBox prefHeight="29.0" prefWidth="200.0">
-                  <children>
-                     <TextField promptText="Name of Event/Task" />
-                  </children>
-               </HBox>
-               <HBox>
-                  <children>
-                     <TextArea prefHeight="51.0" prefWidth="228.0" promptText="Description (Optional)" />
-                  </children>
-               </HBox>
+               </VBox>
             </children>
          </VBox>
       </children>
