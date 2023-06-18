@@ -31,8 +31,9 @@ public class Driver extends Application {
    */
   @Override
   public void start(Stage stage) {
-    CalendarController c = new CalendarControllerImp();
+    CalendarController c = new CalendarControllerImp(stage);
     CalendarView view = new CalendarViewImp(c);
+
 
     try {
       // load and place the view's scene onto the stage
@@ -42,7 +43,8 @@ public class Driver extends Application {
       // render the stage
       stage.show();
     } catch (IllegalStateException exc) {
-      System.err.println("Unable to load GUI.");
+      exc.printStackTrace();
+      //System.err.println("Unable to load GUI.");
     }
   }
 }
