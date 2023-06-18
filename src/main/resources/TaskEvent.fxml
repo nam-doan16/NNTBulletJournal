@@ -14,35 +14,37 @@
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
       <AnchorPane prefHeight="200" prefWidth="200">
       <children>
-         <VBox prefHeight="200.0" prefWidth="200.0">
+         <VBox fx:id="vbox" prefHeight="245.0" prefWidth="242.0" spacing="5.0">
             <children>
                <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0">
+                  <children>
+                     <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="242.0">
+                        <children>
+                           <Button fx:id="close" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Close" />
+                        </children>
+                     </HBox>
+                  </children>
+               </HBox>
+               <HBox prefHeight="28.0" prefWidth="200.0">
                   <children>
                      <ComboBox fx:id="menu" prefWidth="150.0" promptText="Select Task or Event">
                       <items>
                       <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Java" />
-                          <String fx:value="JavaScript" />
-                          <String fx:value="C#" />
-                          <String fx:value="Python" />
+                          <String fx:value="Event" />
+                          <String fx:value="Task" />
                       </FXCollections>
                       </items>
                      </ComboBox>
                   </children>
                </HBox>
-               <HBox prefHeight="28.0" prefWidth="200.0">
+               <HBox prefHeight="29.0" prefWidth="200.0">
                   <children>
                      <TextField promptText="Name of Event/Task" />
                   </children>
                </HBox>
-               <HBox prefHeight="29.0" prefWidth="200.0">
+               <HBox>
                   <children>
-                     <TextArea prefHeight="51.0" prefWidth="200.0" promptText="Description (Optional)" />
-                  </children>
-               </HBox>
-               <HBox alignment="BOTTOM_CENTER" prefHeight="105.0" prefWidth="200.0">
-                  <children>
-                     <Button fx:id="close" mnemonicParsing="false" text="Close" />
+                     <TextArea prefHeight="51.0" prefWidth="228.0" promptText="Description (Optional)" />
                   </children>
                </HBox>
             </children>
