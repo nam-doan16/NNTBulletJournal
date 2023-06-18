@@ -1,6 +1,7 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.controller.TaskEventCreationController;
+import cs3500.pa05.model.enums.TaskEvent;
 import cs3500.pa05.view.TaskEventView;
 import cs3500.pa05.view.TaskEventViewImp;
 import javafx.fxml.FXML;
@@ -60,10 +61,11 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     menu.getSelectionModel().selectedItemProperty().addListener((observable, prevOption,
                                                                  chosenOption) -> {
       if (chosenOption != null) {
-        if ("Task".equals(menu.getValue())) {
+
+        if (menu.getValue().toString().equals(TaskEvent.TASK.displayName)) {
           startTime.setVisible(false);
           duration.setVisible(false);
-        } else if ("Event".equals(menu.getValue())) {
+        } else if (menu.getValue().toString().equals(TaskEvent.EVENT.displayName)) {
           startTime.setVisible(true);
           duration.setVisible(true);
         }
