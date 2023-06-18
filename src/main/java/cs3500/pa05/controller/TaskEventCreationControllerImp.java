@@ -16,6 +16,8 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
 
   private Popup popup;
   private Stage mainStage;
+  private TextField startTime;
+  private TextField duration;
 
   private TaskEventView loader;
 
@@ -34,21 +36,27 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.popup = new Popup();
     this.loader = new TaskEventViewImp(this);
     Scene s = loader.load();
-    popup.getContent().add(s.getRoot());
+    this.initToggleTextField();
     this.initButton();
+    popup.getContent().add(s.getRoot());
+
   }
 
-  private void initButton() {
-    TextField startTime = new TextField();
-    startTime.setPromptText("Enter Start Time (e.g.)");
-    TextField duration = new TextField();
+  private void initToggleTextField() {
+    startTime = new TextField();
+    startTime.setPromptText("Enter Start Time (e.g. 13:15)");
+    duration = new TextField();
     duration.setPromptText("Enter a duration in minutes");
     vbox.getChildren().add(startTime);
     vbox.getChildren().add(duration);
     startTime.setVisible(false);
     duration.setVisible(false);
+  }
 
+  private void initButton() {
     this.close.setOnAction(event -> this.popup.hide());
+
+    // switching on and off of the additional event information
     menu.getSelectionModel().selectedItemProperty().addListener((observable, prevOption,
                                                                  chosenOption) -> {
       if (chosenOption != null) {
