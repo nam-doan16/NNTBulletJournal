@@ -6,6 +6,9 @@ package cs3500.pa05.controller;
 import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
+import cs3500.pa05.model.AbstTaskEvent;
+import cs3500.pa05.model.Task;
+import cs3500.pa05.model.enums.Days;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -40,8 +43,14 @@ public class CalendarControllerImp implements CalendarController {
    */
   @Override
   public void run() throws IllegalStateException {
+
     TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage);
+    //AbstTaskEvent task = new Task("Sunday todo", "descirption", Days.MONDAY);
     addTaskButton.setOnAction(event -> d.showPopup());
+    //monday.getChildren().add(info);
+    //addTaskButton.setOnAction(event -> monday.getChildren().remove(info));
+
+
   }
 
   @FXML
