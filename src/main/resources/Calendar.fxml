@@ -24,7 +24,7 @@
              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                   <children>
                      <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="650.0" prefWidth="200.0" />
-                     <VBox prefHeight="641.0" prefWidth="197.0">
+                     <VBox fx:id="allTasks" prefHeight="641.0" prefWidth="197.0">
                         <children>
                            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="200.0">
                               <children>
@@ -53,11 +53,15 @@
                         <children>
                            <ScrollPane prefHeight="200.0" prefWidth="200.0">
                               <content>
-                                 <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                 <VBox fx:id="monday">
                                     <children>
-                                       <Label text="Sunday" />
+                                       <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                          <children>
+                                             <Label text="Sunday" />
+                                          </children>
+                                       </HBox>
                                     </children>
-                                 </HBox>
+                                 </VBox>
                               </content>
                            </ScrollPane>
                            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -157,7 +161,7 @@
             <children>
                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                   <children>
-                     <Button mnemonicParsing="false" text="Add+" />
+                     <Button fx:id="addTaskButton" mnemonicParsing="false" text="Add +" />
                   </children>
                </HBox>
                <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
