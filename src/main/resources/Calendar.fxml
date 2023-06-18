@@ -168,10 +168,10 @@
                         <children>
                             <MenuButton mnemonicParsing="false" text="Themes">
                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Minimal" />
                                     <MenuItem mnemonicParsing="false" text="Scrapbook" />
-                                    <MenuItem mnemonicParsing="false" text="Space" />
+                           <MenuItem mnemonicParsing="false" text="Space" />
                            <MenuItem mnemonicParsing="false" text="Vintage" />
-                           <MenuItem mnemonicParsing="false" text="Minimal" />
                                 </items>
                             </MenuButton>
                         </children>
