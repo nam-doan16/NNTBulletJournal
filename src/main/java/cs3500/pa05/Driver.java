@@ -1,11 +1,12 @@
 package cs3500.pa05;
 
-import cs3500.pa05.controller.CalendarController;
-import cs3500.pa05.controller.CalendarControllerImp;
-import cs3500.pa05.view.CalendarView;
+import cs3500.pa05.controller.WelcomeController;
+import cs3500.pa05.controller.WelcomeControllerImp;
+import cs3500.pa05.view.WelcomeView;
+import cs3500.pa05.view.WelcomeViewImp;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import cs3500.pa05.view.CalendarViewImp;
 
 /**
  * represents the driver of the program
@@ -31,8 +32,8 @@ public class Driver extends Application {
    */
   @Override
   public void start(Stage stage) {
-    CalendarController c = new CalendarControllerImp(stage);
-    CalendarView view = new CalendarViewImp(c);
+    WelcomeController c = new WelcomeControllerImp(stage);
+    WelcomeView view = new WelcomeViewImp(c);
 
 
     try {
