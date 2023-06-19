@@ -9,6 +9,8 @@ import cs3500.pa05.controller.TaskEventCreationControllerImp;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.enums.Days;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -26,7 +28,9 @@ public class CalendarControllerImp implements CalendarController {
   private VBox allTasks;
 
   @FXML
-  private VBox monday;
+  private VBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
+
+  private List<VBox> daysOfTheWeek;
 
   private Stage mainStage;
 
@@ -36,6 +40,11 @@ public class CalendarControllerImp implements CalendarController {
     this.mainStage = mainStage;
   }
 
+  private void initDaysOfTheWeek() {
+    this.daysOfTheWeek = new ArrayList<>(List.of(sunday, monday, tuesday,
+        wednesday, thursday, friday, saturday));
+  }
+
   /**
    * runs the program
    *
@@ -43,9 +52,8 @@ public class CalendarControllerImp implements CalendarController {
    */
   @Override
   public void run() throws IllegalStateException {
-
-    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage);
-    //AbstTaskEvent task = new Task("Sunday todo", "descirption", Days.MONDAY);
+    this.initDaysOfTheWeek();
+    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek, allTasks);
     addTaskButton.setOnAction(event -> d.showPopup());
     //monday.getChildren().add(info);
     //addTaskButton.setOnAction(event -> monday.getChildren().remove(info));
