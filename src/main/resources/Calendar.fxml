@@ -21,10 +21,10 @@
         <children>
             <SplitPane dividerPositions="0.18887775551102204" layoutY="74.0" prefHeight="642.0" prefWidth="1000.0">
                 <items>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="636.0" prefWidth="202.0">
                         <children>
-                            <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="650.0" prefWidth="200.0" />
-                            <VBox fx:id="allTasks" prefHeight="641.0" prefWidth="197.0">
+                            <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="650.0" prefWidth="182.0" />
+                            <VBox fx:id="allTasks" layoutY="-1.0" prefHeight="642.0" prefWidth="175.0">
                                 <children>
                                     <HBox alignment="CENTER" prefHeight="39.0" prefWidth="200.0">
                                         <children>
@@ -37,7 +37,7 @@
                     </AnchorPane>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                         <children>
-                            <GridPane layoutX="-1.0" layoutY="-1.0" prefHeight="491.0" prefWidth="808.0">
+                            <GridPane layoutX="1.0" prefHeight="491.0" prefWidth="802.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
