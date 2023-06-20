@@ -15,8 +15,6 @@ public class Space extends AbstTheme {
    * font = Arial
    */
   public Space() {
-    this.backgroundColor = Color.BLACK;
-    this.fontColor = Color.WHITE;
-    this.fontFamily = new Font("Arial", 12);
+    super("#000000", "#000000", "Source Code Pro");
   }
 }

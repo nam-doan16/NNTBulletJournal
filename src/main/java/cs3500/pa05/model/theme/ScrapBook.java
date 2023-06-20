@@ -15,8 +15,6 @@ public class ScrapBook extends AbstTheme {
    * font = Comic Sans MS
    */
   public ScrapBook() {
-    this.backgroundColor = Color.ANTIQUEWHITE;
-    this.fontColor = Color.BLACK;
-    this.fontFamily = new Font("Comic Sans MS", 12);
+    super("#e1dbc1", "#000000", "Pristina");
   }
 }

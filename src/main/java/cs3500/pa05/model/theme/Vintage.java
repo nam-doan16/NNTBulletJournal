@@ -15,8 +15,6 @@ public class Vintage extends AbstTheme {
    * font = Times New Roman
    */
   public Vintage() {
-    this.backgroundColor = Color.BEIGE;
-    this.fontColor = Color.BLACK;
-    this.fontFamily = new Font("Times New Roman", 12);
+    super("#c3ac78", "#000000", "Times New Roman");
   }
 }

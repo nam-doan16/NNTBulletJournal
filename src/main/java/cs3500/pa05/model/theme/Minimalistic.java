@@ -15,8 +15,6 @@ public class Minimalistic extends AbstTheme{
    * font = arial
    */
   public Minimalistic() {
-    this.backgroundColor = Color.WHITE;
-    this.fontColor = Color.BLACK;
-    this.fontFamily = new Font("Arial", 12);
+    super("#ffffff", "#000000", "arial");
   }
 }
