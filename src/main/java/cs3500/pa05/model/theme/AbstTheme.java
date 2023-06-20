@@ -7,16 +7,22 @@ import javafx.scene.text.Font;
  * abstract class for themes
  */
 public class AbstTheme {
-  protected Color backgroundColor;
-  protected Color fontColor;
-  protected Font fontFamily;
+  protected String backgroundColor;
+  protected String fontColor;
+  protected String fontFamily;
+
+  public AbstTheme(String backgroundColor, String fontColor, String fontFamily) {
+    this.backgroundColor = backgroundColor;
+    this.fontColor = fontColor;
+    this.fontFamily = fontFamily;
+  }
 
   /**
    * getter for the backgroundColor
    *
    * @return this.backgroundColor
    */
-  public Color getBackgroundColor() {
+  public String getBackgroundColor() {
     return this.backgroundColor;
   }
 
@@ -25,7 +31,7 @@ public class AbstTheme {
    *
    * @return this.fontColor
    */
-  public Color getFontColor() {
+  public String getFontColor() {
     return this.fontColor;
   }
 
@@ -34,7 +40,7 @@ public class AbstTheme {
    *
    * @return this.fontFamily
    */
-  public Font getFontFamily() {
+  public String getFontFamily() {
     return this.fontFamily;
   }
 }
