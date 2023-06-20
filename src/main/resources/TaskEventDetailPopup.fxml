@@ -13,7 +13,7 @@
       <children>
          <VBox prefHeight="368.0" prefWidth="373.0">
             <children>
-               <HBox fx:id="nameBox" prefHeight="57.0" prefWidth="373.0" />
+               <HBox fx:id="nameBox" alignment="CENTER" prefHeight="57.0" prefWidth="373.0" />
                <VBox fx:id="descriptionBox" prefHeight="141.0" prefWidth="223.0">
                   <children>
                      <Label text="Description" />
@@ -30,7 +30,11 @@
                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding>
                </HBox>
-               <VBox fx:id="extraBox" prefHeight="198.0" prefWidth="379.0" />
+               <VBox fx:id="extraBox" prefHeight="198.0" prefWidth="379.0">
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </VBox>
                <HBox alignment="CENTER" prefHeight="46.0" prefWidth="373.0">
                   <children>
                      <Button fx:id="done" mnemonicParsing="false" text="DONE" />

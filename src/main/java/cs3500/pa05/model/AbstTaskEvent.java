@@ -23,7 +23,9 @@ public abstract class AbstTaskEvent {
 
   public void fillDetails(HBox name, VBox description, HBox day, VBox extra) {
     name.getChildren().add(new Label(this.name));
-    description.getChildren().add(new TextArea(this.description));
+    TextArea descriptionBox = new TextArea(this.description);
+    descriptionBox.setEditable(false);
+    description.getChildren().add(descriptionBox);
     day.getChildren().add(new Label(dayOfWeek.name()));
     this.addExtraDetails(extra);
   }
