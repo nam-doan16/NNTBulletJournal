@@ -2,6 +2,8 @@ package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,4 +20,13 @@ public abstract class AbstTaskEvent {
   }
 
   public abstract Button getInfoButton();
+
+  public void fillDetails(HBox name, VBox description, HBox day, VBox extra) {
+    name.getChildren().add(new Label(this.name));
+    description.getChildren().add(new TextArea(this.description));
+    day.getChildren().add(new Label(dayOfWeek.name()));
+    this.addExtraDetails(extra);
+  }
+
+  public abstract void addExtraDetails(VBox extra);
 }

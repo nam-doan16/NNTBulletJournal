@@ -25,4 +25,10 @@ public class Event extends AbstTaskEvent {
     return null;
   }
 
+  @Override
+  public void addExtraDetails(VBox extra) {
+
+  }
+
+
 }

@@ -3,6 +3,7 @@ package cs3500.pa05.model;
 import cs3500.pa05.model.enums.Days;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Task extends AbstTaskEvent {
@@ -19,6 +20,7 @@ public class Task extends AbstTaskEvent {
     Button button = new Button(this.name);
     return button;
   }
+
 
   private void addTaskToQueue() {
     // initializing buttons
@@ -52,5 +54,18 @@ public class Task extends AbstTaskEvent {
     task.getChildren().add(toggleComplete);
     allTasks.getChildren().add(task);
   }
+
+  @Override
+  public void addExtraDetails(VBox extra) {
+    StringBuilder string = new StringBuilder("COMPLETE? ");
+    if (complete) {
+      string.append("YES");
+    } else {
+      string.append("NO");
+    }
+
+    extra.getChildren().add(new Label(string.toString()));
+  }
+
 
 }
