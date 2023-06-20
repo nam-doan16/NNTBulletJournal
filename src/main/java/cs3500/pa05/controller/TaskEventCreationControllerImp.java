@@ -9,14 +9,10 @@ import cs3500.pa05.model.enums.TaskEvent;
 import cs3500.pa05.view.TaskEventView;
 import cs3500.pa05.view.TaskEventViewImp;
 import java.util.List;
-import java.util.Locale;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
@@ -121,8 +117,11 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         String duration = this.duration.getText();
         taskEvent = new Event(name, description, day, time, duration);
       }
+      Button infoButton = taskEvent.getInfoButton();
+      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent);
+      infoButton.setOnAction(click -> infoPopup.showPopup());
 
-      daysOfWeek.get(chosenDayIndex).getChildren().add(taskEvent.getInfoButton());
+      daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
     });
   }
 
