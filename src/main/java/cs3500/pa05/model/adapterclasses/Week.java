@@ -13,6 +13,7 @@ public class Week {
   List<Task> alltasks = new ArrayList<>();
   List<Event> events = new ArrayList<>();
   String theme = "Default";
+  String start = "Sunday";
 
   public void setMaxt(int m) {
     this.maxt = m;
