@@ -12,7 +12,8 @@ public class Week {
   String qandn;
   List<Task> alltasks = new ArrayList<>();
   List<Event> events = new ArrayList<>();
-  String theme;
+  String theme = "Default";
+  String start = "Sunday";
 
   public void setMaxt(int m) {
     this.maxt = m;
@@ -44,6 +45,9 @@ public class Week {
 
   public void setThem (AbstTheme theme) {
     this.theme = theme.getName();
+  }
+  public void setqandn (String qandn) {
+    this.qandn = qandn;
   }
 
   public int getMaxt() {

@@ -52,6 +52,9 @@ dependencies {
     // JavaFX
     implementation('org.controlsfx:controlsfx:11.1.2')
 
+    //json
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
     // JUnit
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
@@ -65,6 +68,7 @@ dependencies {
     // https://github.com/webcompere/system-stubs
     testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.4'
     testImplementation group: 'uk.org.webcompere', name: 'system-stubs-jupiter', version: '2.0.2'
+
 }
 
 test {

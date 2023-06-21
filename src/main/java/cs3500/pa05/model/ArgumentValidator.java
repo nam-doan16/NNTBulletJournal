@@ -96,7 +96,6 @@ public class ArgumentValidator {
       String pattern = "(https?://\\S+)";
       Pattern urlPattern = Pattern.compile(pattern);
       Matcher matcher = urlPattern.matcher(description);
-
       // Replace URLs with clickable links
       while (matcher.find()) {
         String url = matcher.group();

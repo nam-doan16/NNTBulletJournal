@@ -24,5 +24,16 @@ public class Task extends AbstTaskEvent {
   public Task(String name, String description, Days dayOfWeek, String link) {
     super(name, description, dayOfWeek, link);
     this.complete = false;
+
+
+
+  @Override
+  public String[] getExtraDetails() {
+    if (complete) {
+      return new String[] {"COMPLETE? YES"};
+    } else {
+      return new String[] {"COMPLETE? NO"};
+    }
   }
+
 }

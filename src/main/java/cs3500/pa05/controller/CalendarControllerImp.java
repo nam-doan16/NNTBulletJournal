@@ -26,6 +26,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -48,7 +51,8 @@ public class CalendarControllerImp implements CalendarController {
   private MenuButton themeMenu;
   @FXML
   private VBox allTasks;
-
+  @FXML
+  private ScrollPane scroll0, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6;
   @FXML
   private VBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
   @FXML
@@ -57,22 +61,21 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private Label maxTasks, maxEvents;
   @FXML
+  private TextField maxe, maxt;
+  @FXML
   private Label allTasksLabel;
   @FXML
   private Label quotesLabel;
   private List<VBox> daysOfTheWeek;
   private List<Label> labelsOfTheWeek;
-
+  private List<ScrollPane> scrollPanesOfTheWeek;
   private Stage mainStage;
-
   @FXML
-  private MenuItem scrapbookTheme;
+  private MenuButton weekStart;
   @FXML
-  private MenuItem spaceTheme;
+  private MenuItem sunStart, monStart, tueStart, wedStart, thuStart, friStart, satStart;
   @FXML
-  private MenuItem minimalTheme;
-  @FXML
-  private MenuItem vintageTheme;
+  private MenuItem scrapbookTheme, spaceTheme, minimalTheme, vintageTheme;
   @FXML
   private GridPane weekDisplay;
   @FXML
@@ -81,7 +84,8 @@ public class CalendarControllerImp implements CalendarController {
   private HBox quotesAndNotes;
   @FXML
   private HBox restrictionBox;
-
+  @FXML
+  private TextArea qandn;
 
   /**
    * constructor for CalendarController
@@ -104,6 +108,12 @@ public class CalendarControllerImp implements CalendarController {
         wednesday, thursday, friday, saturday));
     this.labelsOfTheWeek = new ArrayList<>(List.of(sundayLabel, mondayLabel, tuesdayLabel,
         wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel));
+    this.scrollPanesOfTheWeek = new ArrayList<>(List.of(scroll0, scroll1, scroll2, scroll3,
+        scroll4, scroll5, scroll6));
+
+    for (int i = 0; i < daysOfTheWeek.size(); i++) {
+      this.daysOfTheWeek.get(i).getChildren().add(this.labelsOfTheWeek.get(i));
+    }
   }
 
   /**
@@ -120,15 +130,72 @@ public class CalendarControllerImp implements CalendarController {
     savebutton.setOnAction(
         event -> {
           File file = chooser.showOpenDialog(mainStage);
+          week.setqandn(qandn.getText());
+          week.setMaxt(Integer.parseInt(maxt.getText()));
+          week.setMaxe(Integer.parseInt(maxe.getText()));
           if (file != null) {
             try {
-              openFile(file.toPath());
+              SaveController s = new SaveController(mainStage, new Converter(), week);
+              s.savetofiles(file);
             } catch (IOException ex) {
               throw new RuntimeException(ex);
             }
           }
         });
     handleMenuItem();
+    handleWeekStart();
+  }
+
+  public void handleWeekStart() {
+    this.sunStart.setOnAction(event -> {
+      changeWeekStart(0);
+    });
+    this.monStart.setOnAction(event -> {
+      changeWeekStart(1);
+    });
+    this.tueStart.setOnAction(event -> {
+      changeWeekStart(2);
+    });
+    this.wedStart.setOnAction(event -> {
+      changeWeekStart(3);
+    });
+    this.thuStart.setOnAction(event -> {
+      changeWeekStart(4);
+    });
+    this.friStart.setOnAction(event -> {
+      changeWeekStart(5);
+    });
+    this.satStart.setOnAction(event -> {
+      changeWeekStart(6);
+    });
+
+  }
+
+  public void changeWeekStart(int day) {
+    int index = 0;
+    for (int i = day; i < daysOfTheWeek.size(); i++) {
+      this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
+
+      index++;
+
+      if (index == daysOfTheWeek.size()) {
+        break;
+      }
+//      this.scroll0.setContent(this.monday);
+//      this.monday.getChildren().add(this.mondayLabel);
+//      this.scroll1.setContent(this.tuesday);
+//      this.tuesday.getChildren().add(this.tuesdayLabel);
+    }
+
+    for (int i = 0; i < day; i++) {
+      this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
+
+      index++;
+
+      if (index == daysOfTheWeek.size()) {
+        break;
+      }
+    }
   }
 
   /**
@@ -139,15 +206,19 @@ public class CalendarControllerImp implements CalendarController {
   private void handleMenuItem() {
     this.minimalTheme.setOnAction(event -> {
       changeTheme(new Minimalistic());
+      week.setThem(new Minimalistic());
     });
     this.scrapbookTheme.setOnAction(event -> {
       changeTheme(new ScrapBook());
+      week.setThem(new ScrapBook());
     });
     this.spaceTheme.setOnAction(event -> {
       changeTheme(new Space());
+      week.setThem(new Space());
     });
     this.vintageTheme.setOnAction(event -> {
       changeTheme(new Vintage());
+      week.setThem(new Vintage());
     });
   }
 

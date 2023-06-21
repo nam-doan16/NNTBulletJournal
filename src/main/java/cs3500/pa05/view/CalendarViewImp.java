@@ -9,20 +9,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * the implementation for the calendarview
+ */
 public class CalendarViewImp implements CalendarView {
   private FXMLLoader loader;
 
+  /**
+   * constructor
+   *
+   * @param c the Calendar controller
+   */
   public CalendarViewImp(CalendarController c) {
     this.loader = new FXMLLoader();
     this.loader.setLocation(getClass().getClassLoader().getResource("Calendar.fxml"));
     this.loader.setController(c);
-//    Parent root = this.loader.getRoot();
-//    Scene scene = new Scene(root);
-//    String css = this.getClass().getResource("Minimal.css").toExternalForm();
-//    scene.getStylesheets().add(css);
-//    stage.setScene(scene);
   }
 
+  /**
+   * loads the calendar view
+   *
+   * @return a scene
+   *
+   * @throws IllegalStateException if layout unable to load
+   */
   @Override
   public Scene load() throws IllegalStateException {
     // TODO: implement
@@ -31,17 +41,5 @@ public class CalendarViewImp implements CalendarView {
     } catch (IOException exc) {
       throw new IllegalStateException("Unable to load layout.");
     }
-  }
-
-  public void setTheme(AbstTheme theme) {
-
-  }
-
-  public void changeScene(Stage stage) {
-    Parent root = this.loader.getRoot();
-    Scene scene = new Scene(root);
-    String css = this.getClass().getResource("Minimal.css").toExternalForm();
-    scene.getStylesheets().add(css);
-    stage.setScene(scene);
   }
 }

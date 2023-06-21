@@ -6,6 +6,7 @@ import cs3500.pa05.model.enums.Days;
 public record TaskJson(
     @JsonProperty("Name") String name,
     @JsonProperty("Description") String details,
-    @JsonProperty("Day") Days day
+    @JsonProperty("Day") Days day,
+    @JsonProperty("Link") String s
 ) {
 }

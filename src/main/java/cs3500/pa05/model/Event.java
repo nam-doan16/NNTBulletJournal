@@ -32,10 +32,16 @@ public class Event extends AbstTaskEvent {
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;
     this.duration = durationMin;
-    this.infoButton = new Button("Event: " + this.name);
 
   }
 
+  @Override
+  public String[] getExtraDetails() {
+    return new String[] {
+        "Start time: " + this.startTimeString + timeNotation,
+        "Duration: " + this.calculateDuration()};
+  }
+  
   /**
    * calculates how long the event will go on for and puts it into hours, minutes format
    *
@@ -63,5 +69,6 @@ public class Event extends AbstTaskEvent {
   public int getDuration() {
     return this.duration;
   }
+
 
 }

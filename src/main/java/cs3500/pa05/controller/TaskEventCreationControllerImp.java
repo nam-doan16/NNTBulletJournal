@@ -31,6 +31,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private int chosenDayIndex;
   private VBox allTasks;
 
+
   @FXML
   private ComboBox<String> menu;
 
@@ -134,6 +135,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       }
       errorBox.getChildren().clear();
       if (addButton) {
+        // change
         this.setupInfoButton(taskEvent, link);
         this.popup.hide();
       } else {
