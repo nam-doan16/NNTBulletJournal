@@ -21,6 +21,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -36,6 +37,8 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private Button addTaskButton;
   @FXML
+  private MenuButton themeMenu;
+  @FXML
   private VBox allTasks;
 
   @FXML
@@ -43,6 +46,8 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private Label sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel,
       fridayLabel, saturdayLabel;
+  @FXML
+  private Label maxTasks, maxEvents;
   @FXML
   private Label allTasksLabel;
   @FXML
@@ -66,6 +71,8 @@ public class CalendarControllerImp implements CalendarController {
   private Button savebutton;
   @FXML
   private HBox quotesAndNotes;
+  @FXML
+  private HBox restrictionBox;
 
 
   public CalendarControllerImp(Stage mainStage, Week week) {
@@ -128,6 +135,17 @@ public class CalendarControllerImp implements CalendarController {
     this.weekDisplay.setStyle("-fx-background-color: " + theme.getBackgroundColor());
     this.savebutton.setStyle("-fx-background-color: " + theme.getBackgroundColor()
         + "; -fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.addTaskButton.setStyle("-fx-background-color: " + theme.getBackgroundColor()
+        + "; -fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.themeMenu.setStyle("-fx-background-color: " + theme.getBackgroundColor()
+        + "; -fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.restrictionBox.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    this.maxEvents.setStyle("-fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.maxTasks.setStyle("-fx-font-family: " + theme.getFontFamily()
         + "; -fx-text-fill: " + theme.getFontColor());
   }
 

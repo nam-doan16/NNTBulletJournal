@@ -212,7 +212,7 @@
                <TextField fx:id="maxe" prefHeight="26.0" prefWidth="104.0" />
             </children>
          </HBox>
-         <HBox layoutX="722.0" layoutY="2.0" prefHeight="50.0" prefWidth="105.0">
+         <HBox fx:id="restrictionBox" layoutX="722.0" layoutY="2.0" prefHeight="50.0" prefWidth="105.0">
             <children>
                <GridPane>
                  <columnConstraints>
@@ -223,8 +223,8 @@
                    <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <Label text="Maximum tasks" />
-                     <Label text="Maximum events" GridPane.rowIndex="1" />
+                     <Label fx:id="maxTasks" text="Maximum tasks" />
+                     <Label fx:id="maxEvents" text="Maximum events" GridPane.rowIndex="1" />
                   </children>
                </GridPane>
             </children>
