@@ -18,7 +18,6 @@ public abstract class AbstTaskEvent {
   protected String description;
   protected Days dayOfWeek;
   protected String link;
-  protected Button infoButton;
 
   /**
    * constructor
