@@ -6,7 +6,7 @@ import javafx.scene.text.Font;
 /**
  * represents the minimalistic theme
  */
-public class Minimalistic extends AbstTheme{
+public class Minimalistic extends AbstTheme {
 
   /**
    * constructor sets:

@@ -1,7 +1,6 @@
 package cs3500.pa05.model;
 
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +42,7 @@ public class ArgumentValidator {
     } else if (time.contains(":") && time.length() == 5) {
       String[] hoursMinutes = time.split(":");
       for (String timeFormat : hoursMinutes) {
-        checkStringNumber(timeFormat, "Incorrect time format! (e.g. 08:15)");
+        checkStringPosNumber(timeFormat, "Incorrect time format! (e.g. 08:15)");
         if (timeFormat.length() != 2) {
           throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
         }
@@ -62,10 +61,13 @@ public class ArgumentValidator {
    *
    * @return a valid integer converted from the number that was a string
    */
-  public static int checkStringNumber(String strNum, String errorMessage) {
+  public static int checkStringPosNumber(String strNum, String errorMessage) {
     int tempNum;
     try {
       tempNum = Integer.parseInt(strNum);
+      if (tempNum < 0) {
+        throw new IllegalArgumentException("Negative numbers not allowed");
+      }
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException(errorMessage);
     }
