@@ -37,7 +37,7 @@
                     </AnchorPane>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                         <children>
-                            <GridPane layoutX="1.0" prefHeight="491.0" prefWidth="802.0">
+                            <GridPane fx:id="weekDisplay" layoutX="1.0" prefHeight="491.0" prefWidth="802.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -192,10 +192,10 @@
                         <children>
                             <MenuButton mnemonicParsing="false" text="Themes">
                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Minimal" />
-                                    <MenuItem mnemonicParsing="false" text="Scrapbook" />
-                           <MenuItem mnemonicParsing="false" text="Space" />
-                           <MenuItem mnemonicParsing="false" text="Vintage" />
+                                    <MenuItem fx:id="minimalTheme" mnemonicParsing="false" text="Minimal" />
+                                    <MenuItem fx:id="scrapbookTheme" mnemonicParsing="false" text="Scrapbook" />
+                           <MenuItem fx:id="spaceTheme" mnemonicParsing="false" text="Space" />
+                           <MenuItem fx:id="vintageTheme" mnemonicParsing="false" text="Vintage" />
                                 </items>
                             </MenuButton>
                         </children>
