@@ -1,16 +1,13 @@
 package cs3500.pa05.model.theme;
 
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-
 /**
  * abstract class for themes
  */
 public class AbstTheme {
-  protected String backgroundColor;
-  protected String fontColor;
-  protected String fontFamily;
-  protected String name;
+  private String backgroundColor;
+  private String fontColor;
+  private String fontFamily;
+  public String name;
 
   public AbstTheme(String backgroundColor, String fontColor, String fontFamily) {
     this.backgroundColor = backgroundColor;

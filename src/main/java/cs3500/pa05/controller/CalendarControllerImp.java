@@ -1,16 +1,9 @@
 package cs3500.pa05.controller;
 
-import static jdk.jfr.consumer.EventStream.openFile;
-
-import cs3500.pa05.controller.CalendarController;
-import cs3500.pa05.controller.TaskEventCreationController;
-import cs3500.pa05.controller.TaskEventCreationControllerImp;
 import cs3500.pa05.json.Converter;
-import cs3500.pa05.json.WeekJson;
-import cs3500.pa05.model.AbstTaskEvent;
+import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
-import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
@@ -20,8 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -97,10 +88,6 @@ public class CalendarControllerImp implements CalendarController {
   public CalendarControllerImp(Stage mainStage, Week week) {
     this.mainStage = mainStage;
     this.week = week;
-  }
-
-  public CalendarControllerImp(WeekJson json) {
-
   }
 
   /**
@@ -269,6 +256,72 @@ public class CalendarControllerImp implements CalendarController {
         + "; -fx-text-fill: " + theme.getFontColor());
     this.maxTasks.setStyle("-fx-font-family: " + theme.getFontFamily()
         + "; -fx-text-fill: " + theme.getFontColor());
+  }
+
+  public void updatecal(Week w) {
+    String theme = w.getTheme();
+    if(theme.equals("minimal")) {
+      this.changeTheme(new Minimalistic());
+    }
+    if(theme.equals("scrapbook")) {
+      this.changeTheme(new ScrapBook());
+    }
+    if(theme.equals("vintage")) {
+      this.changeTheme(new Vintage());
+    }
+    if(theme.equals("space")) {
+      this.changeTheme(new Space());
+    }
+    this.changeWeekStart(week.getint());
+    maxe.setText(String.valueOf(w.getMaxe()));
+    maxt.setText(String.valueOf(w.getEvents()));
+    qandn.setText(w.getQandn());
+
+    for(Task t : week.getTasks()) {
+      Button infoButton = new Button(t.getName());
+      VBox taskToQueue = null;
+      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, t,
+          daysOfTheWeek.get(t.getDayOfWeek().ordinal()), infoButton, allTasks,
+          taskToQueue, this.week, t.getLink());
+      infoButton.setOnAction(click -> infoPopup.showPopup());
+      daysOfTheWeek.get(t.getDayOfWeek().ordinal()).getChildren().add(infoButton);
+      VBox task = new VBox();
+      task.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+      task.setSpacing(10);
+      task.getChildren().add(new Label("- " + t.getName()));
+      Label completeness = new Label("  " + t.getExtraDetails()[0]);
+      String toggleButtonString;
+      if (completeness.getText().contains("YES")) {
+        toggleButtonString = "Mark as incomplete";
+      } else {
+        toggleButtonString = "Mark as complete";
+      }
+      task.getChildren().add(completeness);
+
+      // having a button to toggle completeness/incompleteness
+      Button toggleComplete = new Button(toggleButtonString);
+      toggleComplete.setOnAction(event -> {
+        if (completeness.getText().contains("NO")) {
+          completeness.setText("  Complete? YES");
+          toggleComplete.setText("Mark as incomplete");
+        } else {
+          completeness.setText("  Complete? NO");
+          toggleComplete.setText("Mark as complete");
+        }
+      });
+      task.getChildren().add(toggleComplete);
+      allTasks.getChildren().add(task);
+    }
+
+    for(Event e : w.getEvents()) {
+      Button infoButton = new Button(e.getName());
+      VBox taskToQueue = null;
+      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, e,
+          daysOfTheWeek.get(e.getDayOfWeek().ordinal()), infoButton, allTasks,
+          taskToQueue, this.week, e.getLink());
+      infoButton.setOnAction(click -> infoPopup.showPopup());
+      daysOfTheWeek.get(e.getDayOfWeek().ordinal()).getChildren().add(infoButton);
+    }
   }
 
 }

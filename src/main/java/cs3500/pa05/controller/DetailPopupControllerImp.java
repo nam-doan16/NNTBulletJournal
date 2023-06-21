@@ -1,16 +1,13 @@
 package cs3500.pa05.controller;
 
-import java.awt.Desktop;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.view.DetailPopupView;
 import cs3500.pa05.view.DetailPopupViewImp;
+import java.awt.Desktop;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,8 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.scene.control.Hyperlink;
+import javafx.stage.Stage;
 
 public class DetailPopupControllerImp implements DetailPopupController {
   private Week week;
@@ -62,6 +59,11 @@ public class DetailPopupControllerImp implements DetailPopupController {
     this.initDeleteButton(chosenDay, infoButton, allTasks, taskQueue);
     this.link = new Hyperlink(givenLink);
     this.addLink(givenLink);
+  }
+
+  public DetailPopupControllerImp(Stage mainStage, Week w) {
+    this.mainStage = mainStage;
+    this.week = w;
   }
 
   private void fillDetails(AbstTaskEvent taskEvent) {

@@ -2,10 +2,8 @@ package cs3500.pa05;
 
 import cs3500.pa05.controller.WelcomeController;
 import cs3500.pa05.controller.WelcomeControllerImp;
-import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.view.WelcomeView;
 import cs3500.pa05.view.WelcomeViewImp;
-import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -27,9 +25,9 @@ public class Driver extends Application {
    * starting the gui
    *
    * @param stage the primary stage for this application, onto which
-   * the application scene can be set.
-   * Applications may create other stages, if needed, but they will not be
-   * primary stages.
+   *        the application scene can be set.
+   *        Applications may create other stages, if needed, but they will not be
+   *        primary stages.
    */
   @Override
   public void start(Stage stage) {
