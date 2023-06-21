@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -34,7 +35,6 @@ public class CalendarControllerImp implements CalendarController {
   private Week week;
   @FXML
   private Button addTaskButton;
-
   @FXML
   private VBox allTasks;
 
@@ -45,7 +45,8 @@ public class CalendarControllerImp implements CalendarController {
       fridayLabel, saturdayLabel;
   @FXML
   private Label allTasksLabel;
-
+  @FXML
+  private Label quotesLabel;
   private List<VBox> daysOfTheWeek;
   private List<Label> labelsOfTheWeek;
 
@@ -63,7 +64,8 @@ public class CalendarControllerImp implements CalendarController {
   private GridPane weekDisplay;
   @FXML
   private Button savebutton;
-
+  @FXML
+  private HBox quotesAndNotes;
 
 
   public CalendarControllerImp(Stage mainStage, Week week) {
@@ -118,6 +120,15 @@ public class CalendarControllerImp implements CalendarController {
       label.setStyle("-fx-font-family: " + theme.getFontFamily()
           + "; -fx-text-fill: " + theme.getFontColor());
     }
+    this.allTasksLabel.setStyle("-fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.quotesLabel.setStyle("-fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
+    this.quotesAndNotes.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    this.weekDisplay.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    this.savebutton.setStyle("-fx-background-color: " + theme.getBackgroundColor()
+        + "; -fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor());
   }
 
 }
