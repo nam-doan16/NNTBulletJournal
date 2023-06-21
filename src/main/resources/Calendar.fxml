@@ -173,6 +173,17 @@
             <VBox layoutY="-1.0" prefHeight="32.0" prefWidth="230.0">
             <children>
                <Button fx:id="savebutton" mnemonicParsing="false" text="SAVE" />
+               <MenuButton fx:id="weekStart" mnemonicParsing="false" text="Week Start">
+                 <items>
+                   <MenuItem fx:id="sunStart" mnemonicParsing="false" text="Sunday" />
+                   <MenuItem fx:id="monStart" mnemonicParsing="false" text="Monday" />
+                     <MenuItem fx:id="tueStart" mnemonicParsing="false" text="Tuesday" />
+                     <MenuItem fx:id="wedStart" mnemonicParsing="false" text="Wednesday" />
+                     <MenuItem fx:id="thuStart" mnemonicParsing="false" text="Thursday" />
+                     <MenuItem fx:id="friStart" mnemonicParsing="false" text="Friday" />
+                     <MenuItem fx:id="satStart" mnemonicParsing="false" text="Saturday" />
+                 </items>
+               </MenuButton>
             </children>
             </VBox>
             <GridPane alignment="CENTER" layoutX="912.0" layoutY="1.0" prefHeight="72.0" prefWidth="88.0">
