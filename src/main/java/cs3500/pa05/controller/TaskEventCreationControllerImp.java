@@ -5,6 +5,7 @@ import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
+import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TaskEvent;
 import cs3500.pa05.model.enums.TimeNotation;
@@ -24,7 +25,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
-
+  private Week week;
   private Popup popup;
   private Stage mainStage;
   private List<VBox> daysOfWeek;
@@ -68,7 +69,8 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private VBox errorBox;
 
 
-  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks) {
+  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week) {
+    this.week = week;
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
@@ -140,7 +142,8 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       errorBox.getChildren().clear();
       if (addButton) {
         Button infoButton = taskEvent.getInfoButton();
-        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent, daysOfWeek.get(chosenDayIndex));
+        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
+            daysOfWeek.get(chosenDayIndex), this.week);
         infoButton.setOnAction(click -> infoPopup.showPopup());
         daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
         this.popup.hide();

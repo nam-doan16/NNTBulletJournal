@@ -32,8 +32,13 @@ public class Converter {
   }
 
   public EventJson eventtoJson(Event e) {
-    return null;
-
+    String name = e.getName();
+    String desc = e.getDescription();
+    Days day = e.getDayOfWeek();
+    int start = Integer.parseInt(e.getStartTimeString());
+    int duration = e.getDuration();
+    EventJson event = new EventJson(name, desc, start, duration, day);
+    return event;
   }
 
   public WeekJson weektoJson(Week w) {
