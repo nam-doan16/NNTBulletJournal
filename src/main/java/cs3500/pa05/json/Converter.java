@@ -1,6 +1,5 @@
 package cs3500.pa05.json;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
@@ -65,7 +64,7 @@ public class Converter {
     return week;
   }
 
-  public Week jsonToWeek(JsonNode json) {
+  public Week jsonToWeek(WeekJson json) {
     Week week = new Week();
     WeekJson wjson = new ObjectMapper().convertValue(json, WeekJson.class);
     week.setMaxe(wjson.maxe());

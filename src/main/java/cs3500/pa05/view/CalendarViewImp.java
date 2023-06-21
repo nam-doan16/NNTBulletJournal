@@ -1,13 +1,9 @@
 package cs3500.pa05.view;
 
 import cs3500.pa05.controller.CalendarController;
-import cs3500.pa05.model.theme.AbstTheme;
-import cs3500.pa05.model.theme.Minimalistic;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  * the implementation for the calendarview
