@@ -26,9 +26,9 @@
                             <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="650.0" prefWidth="182.0" />
                             <VBox fx:id="allTasks" layoutY="-1.0" prefHeight="642.0" prefWidth="186.0">
                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="39.0" prefWidth="187.0">
+                                    <HBox fx:id="hBoxAllTasksLabel" alignment="CENTER" prefHeight="39.0" prefWidth="187.0">
                                         <children>
-                                            <Label alignment="CENTER" text="All Tasks" />
+                                            <Label fx:id="allTasksLabel" alignment="CENTER" text="All Tasks" />
                                         </children>
                                     </HBox>
                                 </children>
@@ -57,7 +57,7 @@
                                                 <children>
                                                     <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                         <children>
-                                                            <Label text="Sunday" />
+                                                            <Label fx:id="sundayLabel" text="Sunday" />
                                                         </children>
                                                     </HBox>
                                                 </children>
@@ -70,7 +70,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Monday" />
+                                                          <Label fx:id="mondayLabel" text="Monday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -83,7 +83,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Tuesday" />
+                                                          <Label fx:id="tuesdayLabel" text="Tuesday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -96,7 +96,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Wednesday" />
+                                                          <Label fx:id="wednesdayLabel" text="Wednesday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -109,7 +109,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Thursday" />
+                                                          <Label fx:id="thursdayLabel" text="Thursday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -122,7 +122,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Friday" />
+                                                          <Label fx:id="fridayLabel" text="Friday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -135,7 +135,7 @@
                                     <children>
                                                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
                                                       <children>
-                                                          <Label text="Saturday" />
+                                                          <Label fx:id="saturdayLabel" text="Saturday" />
                                                       </children>
                                                   </HBox>
                                     </children>
@@ -155,9 +155,9 @@
                                             <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
                                         </rowConstraints>
                                         <children>
-                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                            <HBox fx:id="quotesAndNotes" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                 <children>
-                                                    <Label text="Quotes and notes" />
+                                                    <Label fx:id="quotesLabel" text="Quotes and notes" />
                                                 </children>
                                             </HBox>
                                             <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
@@ -190,7 +190,7 @@
                     </HBox>
                     <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                         <children>
-                            <MenuButton mnemonicParsing="false" text="Themes">
+                            <MenuButton fx:id="themeMenu" mnemonicParsing="false" text="Themes">
                                 <items>
                                     <MenuItem fx:id="minimalTheme" mnemonicParsing="false" text="Minimal" />
                                     <MenuItem fx:id="scrapbookTheme" mnemonicParsing="false" text="Scrapbook" />
