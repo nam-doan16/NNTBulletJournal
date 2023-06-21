@@ -49,7 +49,6 @@ public class Converter {
     TaskJson[] tasks = alltaskstoJson(w.getTasks());
     String start = w.getStart();
     WeekJson week = new WeekJson(maxt, maxe, theme, qandn, tasks, start);
-
     return week;
   }
 
