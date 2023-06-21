@@ -35,14 +35,13 @@ public class Event extends AbstTaskEvent {
 
   }
 
-
   @Override
   public String[] getExtraDetails() {
     return new String[] {
         "Start time: " + this.startTimeString + timeNotation,
         "Duration: " + this.calculateDuration()};
   }
-
+  
   /**
    * calculates how long the event will go on for and puts it into hours, minutes format
    *

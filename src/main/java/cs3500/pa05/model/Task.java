@@ -12,8 +12,6 @@ import javafx.scene.layout.VBox;
  */
 public class Task extends AbstTaskEvent {
   private boolean complete;
-  private VBox allTasks;
-  private VBox taskQueueInfo;
 
   /**
    * constructor
@@ -21,14 +19,12 @@ public class Task extends AbstTaskEvent {
    * @param name the name of the task
    * @param description the description of the task
    * @param dayOfWeek the day of the week that task is scheduled for
-   * @param allTasks the layout manager for the GUI
    * @param link the link given by the user in the description
    */
-  public Task(String name, String description, Days dayOfWeek, VBox allTasks, String link) {
+  public Task(String name, String description, Days dayOfWeek, String link) {
     super(name, description, dayOfWeek, link);
     this.complete = false;
-    this.allTasks = allTasks;
-  }
+
 
 
   @Override
@@ -38,17 +34,6 @@ public class Task extends AbstTaskEvent {
     } else {
       return new String[] {"COMPLETE? NO"};
     }
-  }
-
-  /**
-   * removes the task from the Calender GUI
-   *
-   * @param vBox a VBox
-   */
-  @Override
-  public void removeInstances(VBox vBox) {
-    super.removeInstances(vBox);
-    this.allTasks.getChildren().remove(taskQueueInfo);
   }
 
 }

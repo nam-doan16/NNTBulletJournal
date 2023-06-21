@@ -37,16 +37,6 @@ public abstract class AbstTaskEvent {
 
   public abstract String[] getExtraDetails();
 
-
-  /**
-   * removes the task/event from the GUI
-   *
-   * @param vBox a VBox
-   */
-  public void removeInstances(VBox vBox) {
-    vBox.getChildren().remove(this.infoButton);
-  }
-
   /**
    * getter for this.link which was given by the user in the description
    *

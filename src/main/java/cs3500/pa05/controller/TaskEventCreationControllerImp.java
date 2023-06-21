@@ -121,7 +121,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       try {
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
         if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
-          taskEvent = new Task(name, description, day, allTasks, link);
+          taskEvent = new Task(name, description, day, link);
         } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
           int duration = ArgumentValidator.checkStringPosNumber(this.duration.getText(),

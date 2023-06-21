@@ -47,7 +47,6 @@ public class ArgumentValidator {
           throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
         }
         int num = checkStringPosNumber(timeFormat, "");
-
       }
       int hour = Integer.parseInt(hoursMinutes[0]);
       int minutes = Integer.parseInt(hoursMinutes[1]);
@@ -97,7 +96,6 @@ public class ArgumentValidator {
       String pattern = "(https?://\\S+)";
       Pattern urlPattern = Pattern.compile(pattern);
       Matcher matcher = urlPattern.matcher(description);
-
       // Replace URLs with clickable links
       while (matcher.find()) {
         String url = matcher.group();
