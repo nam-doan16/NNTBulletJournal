@@ -23,6 +23,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+/**
+ * implementation of the TaskEventCreationController
+ */
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
 
   private Popup popup;
@@ -67,7 +70,13 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private VBox errorBox;
 
-
+  /**
+   * constructor
+   *
+   * @param mainStage the main stage of the GUI
+   * @param daysOfWeek a list of VBoxes representing each day of the week
+   * @param allTasks task queue for each day
+   */
   public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks) {
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
@@ -80,7 +89,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     popup.getContent().add(s.getRoot());
   }
 
-
+  /**
+   * initializes the MenuButton for the TaskEvent
+   */
   private void initMenuButton() {
     this.close.setOnAction(event -> this.popup.hide());
     menu.setValue("Event");
@@ -108,6 +119,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
+  /**
+   * initializes the add TaskEvent button
+   */
   private void initAddButton() {
     // TODO: Make it so every time add is clicked, it's empty
     add.setOnAction(event -> {
@@ -152,6 +166,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
+  /**
+   * displays the TaskEvent to the GUI
+   */
   public void showPopup() {
     popup.show(mainStage);
   }

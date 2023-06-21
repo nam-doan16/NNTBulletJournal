@@ -1,10 +1,13 @@
 package cs3500.pa05.controller;
 
+/**
+ * the controller for the calendar part of the GUI
+ */
 public interface CalendarController {
   /**
-   * Initializes a game of Whack-A-Mole.
+   * Controller for the calendar view of the GUI
    *
-   * @throws IllegalStateException if the game board is not defined
+   * @throws IllegalStateException if any component fails
    */
   void run() throws IllegalStateException;
 }

@@ -11,20 +11,38 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * the implementation of the WelcomeController
+ */
 public class WelcomeControllerImp implements WelcomeController {
 
   private Stage mainstage;
   @FXML
   private Button NewBujo;
 
+  /**
+   * constructor
+   *
+   * @param mainstage the main stage of the GUI
+   */
   public WelcomeControllerImp(Stage mainstage) {
     this.mainstage = mainstage;
   }
 
+  /**
+   * runs the welcome screen
+   *
+   * @throws IllegalStateException when something fails
+   */
   public void run() throws IllegalStateException{
     this.NewBujo.setOnAction(event -> switchtocal(event));
   }
 
+  /**
+   * switches to calender controller on given action event
+   *
+   * @param e the action event given
+   */
   public void switchtocal(ActionEvent e) {
     Week w = new Week();
     CalendarController c = new CalendarControllerImp(mainstage, w);
