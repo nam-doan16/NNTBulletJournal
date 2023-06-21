@@ -1,8 +1,5 @@
 package cs3500.pa05.controller;
 
-/**
- * controller implementation for the calendar
- */
 import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
@@ -28,6 +25,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * controller implementation for the calendar
+ */
 public class CalendarControllerImp implements CalendarController {
 
   /**
@@ -75,11 +75,22 @@ public class CalendarControllerImp implements CalendarController {
   private HBox restrictionBox;
 
 
+  /**
+   * constructor for CalendarController
+   *
+   * @param mainStage the stage for the calendar view (with the week displayed)
+   * @param week the current week being displayed on the calendar view
+   */
   public CalendarControllerImp(Stage mainStage, Week week) {
     this.mainStage = mainStage;
     this.week = week;
   }
 
+  /**
+   * initializes lists containing the JavaFX components of the week
+   * daysOfTheWeek initialized to new ArrayList of VBoxes (sunday, monday, etc)
+   * labelsOfTheWeek initialized to a new ArrayList of Labels (sundayLabel, mondayLabel etc)
+   */
   private void initDaysOfTheWeek() {
     this.daysOfTheWeek = new ArrayList<>(List.of(sunday, monday, tuesday,
         wednesday, thursday, friday, saturday));
@@ -100,8 +111,13 @@ public class CalendarControllerImp implements CalendarController {
     savebutton.setOnAction(event -> new SaveController(new Converter()).savetofiles(week));
 
     handleMenuItem();
-
   }
+
+  /**
+   * handles mouse clicks for each menuItem (minimalTheme, scrapbookTheme etc)
+   * basically allows the user to click on whichever theme they want and changes the calendar
+   * to fit the appropriate theme
+   */
   private void handleMenuItem() {
     this.minimalTheme.setOnAction(event -> {
       changeTheme(new Minimalistic());
@@ -117,6 +133,11 @@ public class CalendarControllerImp implements CalendarController {
     });
   }
 
+  /**
+   * changes the JavaFX elements on the GUI to fit the given theme
+   *
+   * @param theme the theme that the user wants the GUI application to be in
+   */
   private void changeTheme(AbstTheme theme) {
     this.allTasks.setStyle("-fx-background-color: " + theme.getBackgroundColor());
     this.monday.setStyle("-fx-background-color: " + theme.getBackgroundColor());
