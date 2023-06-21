@@ -1,13 +1,8 @@
 {
-  "Maxt" : 10,
+  "Maxt" : 0,
   "Maxe" : 0,
-  "Theme" : "space",
+  "Theme" : "Default",
   "QandN" : "- Add Quotes Below: ",
-  "AllTasks" : [ {
-    "Name" : "HELLOOO",
-    "Description" : "ahahahaha",
-    "Day" : "SUNDAY",
-    "Link" : ""
-  } ],
-  "Start" : "Tuesday"
+  "AllTasks" : [ ],
+  "Start" : "Sunday"
 }
