@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
@@ -170,9 +169,9 @@
                 </items>
             </SplitPane>
             <VBox layoutY="-1.0" prefHeight="32.0" prefWidth="230.0">
-                <children>
-                    <ProgressBar prefWidth="200.0" progress="0.0" />
-                </children>
+            <children>
+               <Button fx:id="savebutton" mnemonicParsing="false" text="SAVE" />
+            </children>
             </VBox>
             <GridPane alignment="CENTER" layoutX="912.0" layoutY="1.0" prefHeight="72.0" prefWidth="88.0">
                 <columnConstraints>
