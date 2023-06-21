@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Week {
-  int maxt;
-  int maxe;
-  String qandn;
+  int maxt = 0;
+  int maxe = 0;
+  String qandn = "";
   List<Task> alltasks = new ArrayList<>();
   List<Event> events = new ArrayList<>();
-  String theme;
+  String theme = "Theme";
 
   public void setMaxt(int m) {
     this.maxt = m;
@@ -44,6 +44,9 @@ public class Week {
 
   public void setThem (AbstTheme theme) {
     this.theme = theme.getName();
+  }
+  public void setqandn (String qandn) {
+    this.qandn = qandn;
   }
 
   public int getMaxt() {
