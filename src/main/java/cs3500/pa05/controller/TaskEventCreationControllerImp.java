@@ -1,6 +1,5 @@
 package cs3500.pa05.controller;
 
-import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.model.Event;
@@ -124,7 +123,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
           taskEvent = new Task(name, description, day, allTasks, link);
         } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
-          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(),
+          int duration = ArgumentValidator.checkStringPosNumber(this.duration.getText(),
               "Invalid duration");
           taskEvent = new Event(name, description, day, time,
               TimeNotation.valueOf(ampm.getValue()), duration, link);
