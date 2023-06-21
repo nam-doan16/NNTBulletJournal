@@ -1,8 +1,11 @@
 package cs3500.pa05.controller;
 
+/**
+ * the controller for the welcome screen GUI
+ */
 public interface WelcomeController {
   /**
-   * Initializes a game of Whack-A-Mole.
+   * runs the welcome screen
    *
    * @throws IllegalStateException if the game board is not defined
    */
