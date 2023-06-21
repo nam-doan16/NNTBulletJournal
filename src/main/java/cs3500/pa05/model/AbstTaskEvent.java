@@ -35,36 +35,8 @@ public abstract class AbstTaskEvent {
     this.link = link;
   }
 
-  /**
-   * getter for infoButton
-   *
-   * @return a Button
-   */
-  public abstract Button getInfoButton();
+  public abstract String[] getExtraDetails();
 
-  /**
-   * fills in the details of the task/event on the GUI
-   *
-   * @param name of the task/event
-   * @param description of the task/event
-   * @param day the task/event takes place
-   * @param extra for whether or not it is complete
-   */
-  public void fillDetails(HBox name, VBox description, HBox day, VBox extra) {
-    name.getChildren().add(new Label(this.name));
-    TextArea descriptionBox = new TextArea(this.description);
-    descriptionBox.setEditable(false);
-    description.getChildren().add(descriptionBox);
-    day.getChildren().add(new Label(dayOfWeek.name()));
-    this.addExtraDetails(extra);
-  }
-
-  /**
-   * for adding extra details about a task/event
-   *
-   * @param extra a VBox
-   */
-  public abstract void addExtraDetails(VBox extra);
 
   /**
    * removes the task/event from the GUI

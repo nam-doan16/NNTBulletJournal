@@ -31,6 +31,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private int chosenDayIndex;
   private VBox allTasks;
 
+
   @FXML
   private ComboBox<String> menu;
 
@@ -134,11 +135,8 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       }
       errorBox.getChildren().clear();
       if (addButton) {
-        Button infoButton = taskEvent.getInfoButton();
-        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
-            daysOfWeek.get(chosenDayIndex), this.week, link);
-        infoButton.setOnAction(click -> infoPopup.showPopup());
-        daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
+        // change
+        this.setupInfoButton(taskEvent, link);
         this.popup.hide();
       } else {
         Label errorMessageLabel = new Label(errorMessage.toString());
@@ -146,6 +144,51 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         errorBox.getChildren().add(errorMessageLabel);
       }
     });
+  }
+
+  private void setupInfoButton(AbstTaskEvent taskEvent, String link) {
+    Button infoButton = new Button(taskEvent.getName());
+    VBox taskToQueue = null;
+    for (String string : taskEvent.getExtraDetails()) {
+      if (string.contains("COMPLETE?")) {
+        taskToQueue = this.getTaskQueue(taskEvent);
+      }
+    }
+    DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
+        daysOfWeek.get(chosenDayIndex), infoButton, allTasks, taskToQueue, this.week, link);
+    infoButton.setOnAction(click -> infoPopup.showPopup());
+    daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
+  }
+
+  private VBox getTaskQueue(AbstTaskEvent taskEvent) {
+    // initializing buttons
+    VBox task = new VBox();
+    task.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+    task.setSpacing(10);
+    task.getChildren().add(new Label("- " + taskEvent.getName()));
+    Label completeness = new Label("  " + taskEvent.getExtraDetails()[0]);
+    String toggleButtonString;
+    if (completeness.getText().contains("YES")) {
+      toggleButtonString = "Mark as incomplete";
+    } else {
+      toggleButtonString = "Mark as complete";
+    }
+    task.getChildren().add(completeness);
+
+    // having a button to toggle completeness/incompleteness
+    Button toggleComplete = new Button(toggleButtonString);
+    toggleComplete.setOnAction(event -> {
+      if (completeness.getText().contains("NO")) {
+        completeness.setText("  Complete? YES");
+        toggleComplete.setText("Mark as incomplete");
+      } else {
+        completeness.setText("  Complete? NO");
+        toggleComplete.setText("Mark as complete");
+      }
+    });
+    task.getChildren().add(toggleComplete);
+    allTasks.getChildren().add(task);
+    return task;
   }
 
   public void showPopup() {

@@ -32,29 +32,15 @@ public class Event extends AbstTaskEvent {
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;
     this.duration = durationMin;
-    this.infoButton = new Button("Event: " + this.name);
 
   }
 
-  /**
-   * getter for this.infoButton
-   *
-   * @return a Button
-   */
-  @Override
-  public Button getInfoButton() {
-    return this.infoButton;
-  }
 
-  /**
-   * adds the start time and duration of the event
-   *
-   * @param extra a VBox
-   */
   @Override
-  public void addExtraDetails(VBox extra) {
-    extra.getChildren().add(new Label("Start time: " + this.startTimeString + timeNotation));
-    extra.getChildren().add(new Label("Duration: " + this.calculateDuration()));
+  public String[] getExtraDetails() {
+    return new String[] {
+        "Start time: " + this.startTimeString + timeNotation,
+        "Duration: " + this.calculateDuration()};
   }
 
   /**
@@ -84,5 +70,6 @@ public class Event extends AbstTaskEvent {
   public int getDuration() {
     return this.duration;
   }
+
 
 }

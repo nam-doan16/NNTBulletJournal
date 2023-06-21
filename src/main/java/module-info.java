@@ -15,5 +15,5 @@ module cs3500.pa05 {
     exports cs3500.pa05.model;
     exports cs3500.pa05.view;
     exports cs3500.pa05.model.enums;
-    opens cs3500.pa05.controller to javafx.fxml;
+    opens cs3500.pa05.controller to javafx.fxml, org.testfx.junit5;
 }

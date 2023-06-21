@@ -46,6 +46,13 @@ public class ArgumentValidator {
         if (timeFormat.length() != 2) {
           throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
         }
+        int num = checkStringPosNumber(timeFormat, "");
+
+      }
+      int hour = Integer.parseInt(hoursMinutes[0]);
+      int minutes = Integer.parseInt(hoursMinutes[1]);
+      if (hour > 12 || hour < 0 || minutes > 60 || minutes < 0) {
+        throw new IllegalArgumentException("Incorrect time numbers");
       }
     } else {
       throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
