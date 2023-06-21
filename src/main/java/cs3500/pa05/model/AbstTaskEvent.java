@@ -17,7 +17,7 @@ public abstract class AbstTaskEvent {
   protected String name;
   protected String description;
   protected Days dayOfWeek;
-  protected Hyperlink link;
+  protected String link;
   protected Button infoButton;
 
   /**
@@ -28,7 +28,7 @@ public abstract class AbstTaskEvent {
    * @param dayOfWeek the day of the week the task/event is scheduled for
    * @param link the link given by the user in the description
    */
-  public AbstTaskEvent(String name, String description, Days dayOfWeek, Hyperlink link) {
+  public AbstTaskEvent(String name, String description, Days dayOfWeek, String link) {
     this.name = name;
     this.description = description;
     this.dayOfWeek = dayOfWeek;
@@ -80,7 +80,7 @@ public abstract class AbstTaskEvent {
    *
    * @return a HyperLink
    */
-  public Hyperlink getLink() {
+  public String getLink() {
     return this.link;
   }
 

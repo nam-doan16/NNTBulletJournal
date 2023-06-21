@@ -79,20 +79,20 @@ public class ArgumentValidator {
    *
    * @return a valid Hyperlink
    */
-  public static Hyperlink linkParser(String description) {
+  public static String linkParser(String description) {
     // Regular expression pattern to match URLs
     String pattern = "(https?://\\S+)";
     Pattern urlPattern = Pattern.compile(pattern);
     Matcher matcher = urlPattern.matcher(description);
 
-    Hyperlink link = null;
+    String link = null;
 
     // Replace URLs with clickable links
     StringBuilder result = new StringBuilder();
     int lastEnd = 0;
     while (matcher.find()) {
       String url = matcher.group();
-      link = new Hyperlink(url);
+      link = url;
     }
 
     return link;
