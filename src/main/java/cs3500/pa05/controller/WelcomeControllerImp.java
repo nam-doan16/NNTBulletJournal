@@ -1,5 +1,6 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.view.CalendarView;
 import cs3500.pa05.view.CalendarViewImp;
 import java.io.IOException;
@@ -25,7 +26,8 @@ public class WelcomeControllerImp implements WelcomeController {
   }
 
   public void switchtocal(ActionEvent e) {
-    CalendarController c = new CalendarControllerImp(mainstage);
+    Week w = new Week();
+    CalendarController c = new CalendarControllerImp(mainstage, w);
     CalendarView view = new CalendarViewImp(c);
     try {
       // load and place the view's scene onto the stage

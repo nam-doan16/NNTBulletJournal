@@ -5,5 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public record WeekJson(
     @JsonProperty("Theme") String theme,
     @JsonProperty("QandN") String notes,
-    @JsonProperty("AllTasks") TaskJson[] tasks
+    @JsonProperty("AllTasks") TaskJson[] tasks,
+    @JsonProperty("Days") DayJson days
   ){}

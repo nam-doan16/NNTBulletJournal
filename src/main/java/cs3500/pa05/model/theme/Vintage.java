@@ -16,5 +16,6 @@ public class Vintage extends AbstTheme {
    */
   public Vintage() {
     super("#c3ac78", "#000000", "Times New Roman");
+    this.name = "vintage";
   }
 }
