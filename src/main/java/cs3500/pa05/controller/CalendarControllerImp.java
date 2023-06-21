@@ -1,5 +1,7 @@
 package cs3500.pa05.controller;
 
+import static jdk.jfr.consumer.EventStream.openFile;
+
 import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
@@ -13,8 +15,12 @@ import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
 import cs3500.pa05.model.theme.Space;
 import cs3500.pa05.model.theme.Vintage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +29,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -34,6 +41,7 @@ public class CalendarControllerImp implements CalendarController {
    * constructor
    */
   private Week week;
+  private FileChooser chooser = new FileChooser();
   @FXML
   private Button addTaskButton;
   @FXML
@@ -106,10 +114,20 @@ public class CalendarControllerImp implements CalendarController {
   @Override
   public void run() throws IllegalStateException {
     this.initDaysOfTheWeek();
-    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek, allTasks);
+    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek,
+        allTasks, this.week);
     addTaskButton.setOnAction(event -> d.showPopup());
-    savebutton.setOnAction(event -> new SaveController(new Converter()).savetofiles(week));
-
+    savebutton.setOnAction(
+        event -> {
+          File file = chooser.showOpenDialog(mainStage);
+          if (file != null) {
+            try {
+              openFile(file.toPath());
+            } catch (IOException ex) {
+              throw new RuntimeException(ex);
+            }
+          }
+        });
     handleMenuItem();
   }
 

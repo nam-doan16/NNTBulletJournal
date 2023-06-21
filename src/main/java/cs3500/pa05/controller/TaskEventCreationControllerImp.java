@@ -5,6 +5,7 @@ import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
+import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TaskEvent;
 import cs3500.pa05.model.enums.TimeNotation;
@@ -23,11 +24,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-/**
- * implementation of the TaskEventCreationController
- */
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
-
+  private Week week;
   private Popup popup;
   private Stage mainStage;
   private List<VBox> daysOfWeek;
@@ -70,14 +68,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private VBox errorBox;
 
-  /**
-   * constructor
-   *
-   * @param mainStage the main stage of the GUI
-   * @param daysOfWeek a list of VBoxes representing each day of the week
-   * @param allTasks task queue for each day
-   */
-  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks) {
+
+  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week) {
+    this.week = week;
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
@@ -89,9 +82,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     popup.getContent().add(s.getRoot());
   }
 
-  /**
-   * initializes the MenuButton for the TaskEvent
-   */
+
   private void initMenuButton() {
     this.close.setOnAction(event -> this.popup.hide());
     menu.setValue("Event");
@@ -108,7 +99,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     dayMenu.setValue("Sunday");
     // listener for day of week menu
     dayMenu.getSelectionModel().selectedItemProperty().addListener((observable, prevOption,
-                                                                 chosenOption) -> {
+                                                                    chosenOption) -> {
       if (chosenOption != null) {
         for (Days day : Days.values()) {
           if (dayMenu.getValue().equalsIgnoreCase(day.toString())) {
@@ -119,42 +110,34 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  /**
-   * initializes the add TaskEvent button
-   */
   private void initAddButton() {
-    // TODO: Make it so every time add is clicked, it's empty
     add.setOnAction(event -> {
       boolean addButton = true;
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
-      String name = this.name.getText();
       String description = this.description.getText();
       Hyperlink link = ArgumentValidator.linkParser(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
-        ArgumentValidator.nonEmptyName(name);
-      } catch (IllegalArgumentException e) {
-        errorMessage.append(e.getMessage() + " ");
-        addButton = false;
-      }
-      if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
-        taskEvent = new Task(name, description, day, allTasks, link);
-      } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
-        try {
+        String name = ArgumentValidator.nonEmptyName(this.name.getText());
+        if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
+          taskEvent = new Task(name, description, day, allTasks, link);
+        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
-          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(), "Invalid duration");
+          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(),
+              "Invalid duration");
           taskEvent = new Event(name, description, day, time,
               TimeNotation.valueOf(ampm.getValue()), duration, link);
-        } catch (IllegalArgumentException e) {
-          errorMessage.append(e.getMessage());
-          addButton = false;
         }
+      } catch (IllegalArgumentException e) {
+        errorMessage.append(e.getMessage());
+        addButton = false;
       }
       errorBox.getChildren().clear();
       if (addButton) {
         Button infoButton = taskEvent.getInfoButton();
-        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent, daysOfWeek.get(chosenDayIndex));
+        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
+            daysOfWeek.get(chosenDayIndex), this.week);
         infoButton.setOnAction(click -> infoPopup.showPopup());
         daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
         this.popup.hide();
@@ -166,9 +149,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  /**
-   * displays the TaskEvent to the GUI
-   */
   public void showPopup() {
     popup.show(mainStage);
   }
