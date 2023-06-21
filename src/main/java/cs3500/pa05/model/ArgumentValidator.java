@@ -5,9 +5,23 @@ import javafx.scene.control.Label;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Utility class to validate arguments
+ */
 public class ArgumentValidator {
+
+  /**
+   * empty constructor
+   */
   private ArgumentValidator() {}
 
+  /**
+   * ensures the name given is not empty
+   *
+   * @param name the name given
+   *
+   * @return a non empty String as a name
+   */
   public static String nonEmptyName(String name) {
     if (name.isEmpty()) {
       throw new IllegalArgumentException("Invalid name.");
@@ -16,6 +30,13 @@ public class ArgumentValidator {
     }
   }
 
+  /**
+   * ensure the format of the time given is valid
+   *
+   * @param time a string representing the time
+   *
+   * @return a valid format string representing the time
+   */
   public static String checkTimeFormat(String time) {
     if (time.isEmpty()) {
       throw new IllegalArgumentException("Cannot leave time empty!");
@@ -33,6 +54,14 @@ public class ArgumentValidator {
     return time;
   }
 
+  /**
+   * checks to see if the given string can be converted into an integer
+   *
+   * @param strNum the number as a string
+   * @param errorMessage the errorMessage to be thrown
+   *
+   * @return a valid integer converted from the number that was a string
+   */
   public static int checkStringNumber(String strNum, String errorMessage) {
     int tempNum;
     try {
@@ -43,6 +72,13 @@ public class ArgumentValidator {
     return tempNum;
   }
 
+  /**
+   * parses through a given string and returns only the link in the string
+   *
+   * @param description the string to be parsed through
+   *
+   * @return a valid Hyperlink
+   */
   public static Hyperlink linkParser(String description) {
     // Regular expression pattern to match URLs
     String pattern = "(https?://\\S+)";
