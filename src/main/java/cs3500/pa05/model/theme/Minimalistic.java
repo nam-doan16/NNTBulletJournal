@@ -16,5 +16,6 @@ public class Minimalistic extends AbstTheme{
    */
   public Minimalistic() {
     super("#ffffff", "#000000", "arial");
+    this.name = "minimal";
   }
 }

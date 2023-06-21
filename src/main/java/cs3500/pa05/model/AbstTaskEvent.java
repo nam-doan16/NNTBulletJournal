@@ -13,7 +13,6 @@ public abstract class AbstTaskEvent {
   protected String name;
   protected String description;
   protected Days dayOfWeek;
-
   protected Button infoButton;
 
   public AbstTaskEvent(String name, String description, Days dayOfWeek) {
@@ -37,5 +36,17 @@ public abstract class AbstTaskEvent {
 
   public void removeInstances(VBox vBox) {
     vBox.getChildren().remove(this.infoButton);
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public String getDescription() {
+    return this.description;
+  }
+
+  public Days getDayOfWeek() {
+    return this.dayOfWeek;
   }
 }

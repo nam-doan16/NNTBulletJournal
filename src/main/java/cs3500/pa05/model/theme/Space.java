@@ -16,5 +16,6 @@ public class Space extends AbstTheme {
    */
   public Space() {
     super("#000000", "#000000", "Source Code Pro");
+    this.name = "space";
   }
 }

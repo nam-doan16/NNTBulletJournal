@@ -6,8 +6,10 @@ package cs3500.pa05.controller;
 import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
+import cs3500.pa05.json.Converter;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.Task;
+import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
@@ -28,6 +30,7 @@ public class CalendarControllerImp implements CalendarController {
   /**
    * constructor
    */
+  private Week week;
   @FXML
   private Button addTaskButton;
 
@@ -51,11 +54,14 @@ public class CalendarControllerImp implements CalendarController {
   private MenuItem vintageTheme;
   @FXML
   private GridPane weekDisplay;
+  @FXML
+  private Button savebutton;
 
 
 
-  public CalendarControllerImp(Stage mainStage) {
+  public CalendarControllerImp(Stage mainStage, Week week) {
     this.mainStage = mainStage;
+    this.week = week;
   }
 
   private void initDaysOfTheWeek() {
@@ -73,6 +79,7 @@ public class CalendarControllerImp implements CalendarController {
     this.initDaysOfTheWeek();
     TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek, allTasks);
     addTaskButton.setOnAction(event -> d.showPopup());
+    savebutton.setOnAction(event -> new SaveController(new Converter()).savetofiles(week));
 
     changeSpaceTheme();
     changeScrapBookTheme();

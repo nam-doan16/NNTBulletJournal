@@ -10,6 +10,7 @@ public class AbstTheme {
   protected String backgroundColor;
   protected String fontColor;
   protected String fontFamily;
+  protected String name;
 
   public AbstTheme(String backgroundColor, String fontColor, String fontFamily) {
     this.backgroundColor = backgroundColor;
@@ -42,5 +43,9 @@ public class AbstTheme {
    */
   public String getFontFamily() {
     return this.fontFamily;
+  }
+
+  public String getName() {
+    return this.name;
   }
 }

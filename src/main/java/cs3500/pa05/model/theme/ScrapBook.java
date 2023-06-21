@@ -16,5 +16,6 @@ public class ScrapBook extends AbstTheme {
    */
   public ScrapBook() {
     super("#e1dbc1", "#000000", "Pristina");
+    this.name = "scrapbook";
   }
 }
