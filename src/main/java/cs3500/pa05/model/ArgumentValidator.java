@@ -1,6 +1,9 @@
 package cs3500.pa05.model;
 
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ArgumentValidator {
   private ArgumentValidator() {}
@@ -38,5 +41,24 @@ public class ArgumentValidator {
       throw new IllegalArgumentException(errorMessage);
     }
     return tempNum;
+  }
+
+  public static Hyperlink linkParser(String description) {
+    // Regular expression pattern to match URLs
+    String pattern = "(https?://\\S+)";
+    Pattern urlPattern = Pattern.compile(pattern);
+    Matcher matcher = urlPattern.matcher(description);
+
+    Hyperlink link = null;
+
+    // Replace URLs with clickable links
+    StringBuilder result = new StringBuilder();
+    int lastEnd = 0;
+    while (matcher.find()) {
+      String url = matcher.group();
+      link = new Hyperlink(url);
+    }
+
+    return link;
   }
 }
