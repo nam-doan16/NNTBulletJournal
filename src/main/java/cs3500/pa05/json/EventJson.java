@@ -6,7 +6,7 @@ import cs3500.pa05.model.enums.Days;
 public record EventJson(
     @JsonProperty("Title") String name,
     @JsonProperty("Description") String details,
-    @JsonProperty("Start") int start,
+    @JsonProperty("Start") String start,
     @JsonProperty("Duration") int time,
     @JsonProperty("Day") Days day,
     @JsonProperty("Link") String link
