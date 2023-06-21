@@ -14,17 +14,12 @@ import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
 import cs3500.pa05.model.theme.Space;
 import cs3500.pa05.model.theme.Vintage;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,7 +35,9 @@ public class CalendarControllerImp implements CalendarController {
   private VBox allTasks;
 
   @FXML
-  private VBox monday;
+  private VBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
+
+  private List<VBox> daysOfTheWeek;
 
   private Stage mainStage;
 
@@ -55,8 +52,15 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private GridPane weekDisplay;
 
+
+
   public CalendarControllerImp(Stage mainStage) {
     this.mainStage = mainStage;
+  }
+
+  private void initDaysOfTheWeek() {
+    this.daysOfTheWeek = new ArrayList<>(List.of(sunday, monday, tuesday,
+        wednesday, thursday, friday, saturday));
   }
 
   /**
@@ -66,18 +70,16 @@ public class CalendarControllerImp implements CalendarController {
    */
   @Override
   public void run() throws IllegalStateException {
+    this.initDaysOfTheWeek();
+    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek, allTasks);
+    addTaskButton.setOnAction(event -> d.showPopup());
 
-    //TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage);
-    //AbstTaskEvent task = new Task("Sunday todo", "descirption", Days.MONDAY);
-    //addTaskButton.setOnAction(event -> d.showPopup());
-    //monday.getChildren().add(info);
-    //addTaskButton.setOnAction(event -> monday.getChildren().remove(info));
     changeSpaceTheme();
     changeScrapBookTheme();
     changeMinimalisticTheme();
     changeVintageTheme();
-  }
 
+  }
   private void changeSpaceTheme() {
     AbstTheme space = new Space();
     this.spaceTheme.setOnAction(event -> {
@@ -108,15 +110,5 @@ public class CalendarControllerImp implements CalendarController {
       this.allTasks.setStyle("-fx-background-color: " + vintage.getBackgroundColor());
       this.monday.setStyle("-fx-background-color: " + vintage.getBackgroundColor());
     });
-  }
-
-  @Override
-  public String getUserInput() {
-    return null;
-  }
-
-  @FXML
-  private void handleAddTask() {
-
   }
 }
