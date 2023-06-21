@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -39,8 +40,14 @@ public class CalendarControllerImp implements CalendarController {
 
   @FXML
   private VBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
+  @FXML
+  private Label sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel,
+      fridayLabel, saturdayLabel;
+  @FXML
+  private Label allTasksLabel;
 
   private List<VBox> daysOfTheWeek;
+  private List<Label> labelsOfTheWeek;
 
   private Stage mainStage;
 
@@ -67,6 +74,8 @@ public class CalendarControllerImp implements CalendarController {
   private void initDaysOfTheWeek() {
     this.daysOfTheWeek = new ArrayList<>(List.of(sunday, monday, tuesday,
         wednesday, thursday, friday, saturday));
+    this.labelsOfTheWeek = new ArrayList<>(List.of(sundayLabel, mondayLabel, tuesdayLabel,
+        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel));
   }
 
   /**
