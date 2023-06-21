@@ -77,7 +77,6 @@ public class DetailPopupControllerImp implements DetailPopupController {
 
   public void addLink(String givenLink) {
     this.descriptionBox.getChildren().add(this.link);
-
     this.link.setOnAction(event -> {
       try {
         Desktop.getDesktop().browse(new URI(givenLink));

@@ -27,7 +27,7 @@ public class Converter {
     String name = t.getName();
     String desc = t.getDescription();
     Days day = t.getDayOfWeek();
-    TaskJson task = new TaskJson(name, desc, day);
+    TaskJson task = new TaskJson(name, desc, day, t.getLink());
     return task;
   }
 
@@ -37,7 +37,7 @@ public class Converter {
     Days day = e.getDayOfWeek();
     int start = Integer.parseInt(e.getStartTimeString());
     int duration = e.getDuration();
-    EventJson event = new EventJson(name, desc, start, duration, day);
+    EventJson event = new EventJson(name, desc, start, duration, day, e.getLink());
     return event;
   }
 
@@ -47,7 +47,8 @@ public class Converter {
     String qandn = w.getQandn();
     String theme = w.getTheme();
     TaskJson[] tasks = alltaskstoJson(w.getTasks());
-    WeekJson week = new WeekJson(maxt, maxe, theme, qandn, tasks);
+    String start = w.getStart();
+    WeekJson week = new WeekJson(maxt, maxe, theme, qandn, tasks, start);
 
     return week;
   }

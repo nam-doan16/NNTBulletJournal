@@ -73,4 +73,12 @@ public class Week {
   public String getTheme() {
     return this.theme;
   }
+
+  public String getStart() {
+    return this.start;
+  }
+
+  public void setStart(String day) {
+    this.start = day;
+  }
 }

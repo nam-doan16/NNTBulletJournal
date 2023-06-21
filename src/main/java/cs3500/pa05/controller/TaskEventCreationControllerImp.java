@@ -122,12 +122,14 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
         if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
           taskEvent = new Task(name, description, day, link);
+          week.addtask((Task) taskEvent);
         } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
           int duration = ArgumentValidator.checkStringPosNumber(this.duration.getText(),
               "Invalid duration");
           taskEvent = new Event(name, description, day, time,
               TimeNotation.valueOf(ampm.getValue()), duration, link);
+          week.addEvent((Event) taskEvent);
         }
       } catch (IllegalArgumentException e) {
         errorMessage.append(e.getMessage());

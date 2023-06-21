@@ -1,1 +1,13 @@
-{"Maxt":0,"Maxe":0,"Theme":"scrapbook","QandN":"- Add Quotes Below: ","AllTasks":[]}
+{
+  "Maxt" : 10,
+  "Maxe" : 0,
+  "Theme" : "space",
+  "QandN" : "- Add Quotes Below: ",
+  "AllTasks" : [ {
+    "Name" : "HELLOOO",
+    "Description" : "ahahahaha",
+    "Day" : "SUNDAY",
+    "Link" : ""
+  } ],
+  "Start" : "Tuesday"
+}
