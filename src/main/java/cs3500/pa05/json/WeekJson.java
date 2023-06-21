@@ -7,5 +7,6 @@ public record WeekJson(
     @JsonProperty("Maxe") int maxe,
     @JsonProperty("Theme") String theme,
     @JsonProperty("QandN") String notes,
-    @JsonProperty("AllTasks") TaskJson[] tasks
+    @JsonProperty("AllTasks") TaskJson[] tasks,
+    @JsonProperty("Start") String start
   ){}
