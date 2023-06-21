@@ -2,10 +2,12 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.model.AbstTaskEvent;
+import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TaskEvent;
+import cs3500.pa05.model.enums.TimeNotation;
 import cs3500.pa05.view.TaskEventView;
 import cs3500.pa05.view.TaskEventViewImp;
 import java.util.List;
@@ -13,8 +15,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -22,8 +26,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
 
   private Popup popup;
   private Stage mainStage;
-  private TextField startTime;
-  private TextField duration;
   private List<VBox> daysOfWeek;
   private int chosenDayIndex;
   private VBox allTasks;
@@ -49,6 +51,21 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private Button add;
 
+  @FXML
+  private VBox eventOptions;
+
+  @FXML
+  private TextField startTime;
+
+  @FXML
+  private TextField duration;
+
+  @FXML
+  private ComboBox<String> ampm;
+
+  @FXML
+  private VBox errorBox;
+
 
   public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks) {
     this.daysOfWeek = daysOfWeek;
@@ -57,36 +74,22 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.popup = new Popup();
     TaskEventView loader = new TaskEventViewImp(this);
     Scene s = loader.load();
-    this.initToggleTextField();
     this.initMenuButton();
     this.initAddButton();
     popup.getContent().add(s.getRoot());
   }
 
-  private void initToggleTextField() {
-    startTime = new TextField();
-    startTime.setPromptText("Enter Start Time (e.g. 13:15)");
-    duration = new TextField();
-    duration.setPromptText("Enter a duration in minutes");
-    vbox.getChildren().add(startTime);
-    vbox.getChildren().add(duration);
-  }
 
   private void initMenuButton() {
     this.close.setOnAction(event -> this.popup.hide());
     menu.setValue("Event");
+    ampm.setValue("PM");
 
     // switching on and off of the additional event information
     menu.getSelectionModel().selectedItemProperty().addListener((observable, prevOption,
                                                                  chosenOption) -> {
       if (chosenOption != null) {
-        if (menu.getValue().equals(TaskEvent.TASK.displayName)) {
-          startTime.setVisible(false);
-          duration.setVisible(false);
-        } else {
-          startTime.setVisible(true);
-          duration.setVisible(true);
-        }
+        eventOptions.setVisible(!menu.getValue().equals(TaskEvent.TASK.displayName));
       }
     });
 
@@ -106,22 +109,44 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
 
   private void initAddButton() {
     add.setOnAction(event -> {
+      boolean addButton = true;
       AbstTaskEvent taskEvent = null;
+      StringBuilder errorMessage = new StringBuilder("Error! ");
+      // TODO: Figure out a way to check these arguments and if theyre empty or not
       String name = this.name.getText();
       String description = this.description.getText();
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
+      try {
+        ArgumentValidator.nonEmptyName(name);
+      } catch (IllegalArgumentException e) {
+        errorMessage.append(e.getMessage() + " ");
+        addButton = false;
+      }
       if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
         taskEvent = new Task(name, description, day, allTasks);
       } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
-        String time = startTime.getText();
-        String duration = this.duration.getText();
-        taskEvent = new Event(name, description, day, time, duration);
+        // TODO: Figure out a way to check these arguments
+        try {
+          String time = ArgumentValidator.checkTimeFormat(startTime.getText());
+          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(), "Invalid duration");
+          taskEvent = new Event(name, description, day, time,
+              TimeNotation.valueOf(ampm.getValue()), duration);
+        } catch (IllegalArgumentException e) {
+          errorMessage.append(e.getMessage());
+          addButton = false;
+        }
       }
-      Button infoButton = taskEvent.getInfoButton();
-      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent);
-      infoButton.setOnAction(click -> infoPopup.showPopup());
-
-      daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
+      errorBox.getChildren().clear();
+      if (addButton) {
+        Button infoButton = taskEvent.getInfoButton();
+        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent);
+        infoButton.setOnAction(click -> infoPopup.showPopup());
+        daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
+      } else {
+        Label errorMessageLabel = new Label(errorMessage.toString());
+        errorMessageLabel.setTextFill(Color.RED);
+        errorBox.getChildren().add(errorMessageLabel);
+      }
     });
   }
 

@@ -17,8 +17,7 @@ public class Task extends AbstTaskEvent {
   @Override
   public Button getInfoButton() {
     this.addTaskToQueue();
-    Button button = new Button(this.name);
-    return button;
+    return new Button("Task: " + this.name);
   }
 
 
