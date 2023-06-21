@@ -5,6 +5,7 @@ module cs3500.pa05 {
     requires org.controlsfx.controls;
     requires com.fasterxml.jackson.annotation;
   requires jdk.jfr;
+  requires java.desktop;
 
   opens cs3500.pa05 to javafx.fxml;
     exports cs3500.pa05;

@@ -27,7 +27,7 @@ public class Event extends AbstTaskEvent {
    * @param link a link given by the user in the description
    */
   public Event(String name, String description, Days day,
-               String startTimeString, TimeNotation timeNotation, int durationMin, Hyperlink link) {
+               String startTimeString, TimeNotation timeNotation, int durationMin, String link) {
     super(name, description, day, link);
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;

@@ -24,7 +24,7 @@ public class Task extends AbstTaskEvent {
    * @param allTasks the layout manager for the GUI
    * @param link the link given by the user in the description
    */
-  public Task(String name, String description, Days dayOfWeek, VBox allTasks, Hyperlink link) {
+  public Task(String name, String description, Days dayOfWeek, VBox allTasks, String link) {
     super(name, description, dayOfWeek, link);
     this.complete = false;
     this.allTasks = allTasks;

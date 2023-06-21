@@ -116,7 +116,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
       String description = this.description.getText();
-      Hyperlink link = ArgumentValidator.linkParser(description);
+      String link = ArgumentValidator.linkParser(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
@@ -137,7 +137,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       if (addButton) {
         Button infoButton = taskEvent.getInfoButton();
         DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
-            daysOfWeek.get(chosenDayIndex), this.week);
+            daysOfWeek.get(chosenDayIndex), this.week, link);
         infoButton.setOnAction(click -> infoPopup.showPopup());
         daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
         this.popup.hide();
