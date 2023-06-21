@@ -69,4 +69,24 @@ class ArgumentValidatorTest {
     assertEquals(e.getMessage(), "Negative numbers not allowed");
   }
 
+  /**
+   * test for giveValidLink
+   */
+  @Test
+  public void testGiveValidLink() {
+    assertEquals(ArgumentValidator.giveValidLink(""), "");
+    assertEquals(ArgumentValidator.giveValidLink("mynamesjeff"), "");
+    assertEquals(
+        ArgumentValidator.giveValidLink("https://www.hitc.com/en-gb/2021/11/24/my-name-jeff-meme/"),
+        "https://www.hitc.com/en-gb/2021/11/24/my-name-jeff-meme/");
+    assertEquals(ArgumentValidator.giveValidLink("asdfasdf "
+        + "https://www.hitc.com/en-gb/2021/11/24/my-name-jeff-meme/"
+        + " asdfasdfasdf"),
+        "https://www.hitc.com/en-gb/2021/11/24/my-name-jeff-meme/");
+    assertEquals(
+        ArgumentValidator.giveValidLink("asdf http://www.columbia.edu/~fdc/sample.html"),
+        "http://www.columbia.edu/~fdc/sample.html");
+    String description = null;
+    assertEquals(ArgumentValidator.giveValidLink(description), "");
+  }
 }

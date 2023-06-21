@@ -115,7 +115,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
       String description = this.description.getText();
-      String link = ArgumentValidator.linkParser(description);
+      String link = ArgumentValidator.giveValidLink(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
         String name = ArgumentValidator.nonEmptyName(this.name.getText());

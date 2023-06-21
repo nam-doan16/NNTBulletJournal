@@ -81,20 +81,21 @@ public class ArgumentValidator {
    *
    * @return a valid Hyperlink
    */
-  public static String linkParser(String description) {
-    // Regular expression pattern to match URLs
-    String pattern = "(https?://\\S+)";
-    Pattern urlPattern = Pattern.compile(pattern);
-    Matcher matcher = urlPattern.matcher(description);
+  public static String giveValidLink(String description) {
+    String link = "";
 
-    String link = null;
+    if (!(description == null || description.isEmpty())) {
 
-    // Replace URLs with clickable links
-    StringBuilder result = new StringBuilder();
-    int lastEnd = 0;
-    while (matcher.find()) {
-      String url = matcher.group();
-      link = url;
+      // Regular expression pattern to match URLs
+      String pattern = "(https?://\\S+)";
+      Pattern urlPattern = Pattern.compile(pattern);
+      Matcher matcher = urlPattern.matcher(description);
+
+      // Replace URLs with clickable links
+      while (matcher.find()) {
+        String url = matcher.group();
+        link = url;
+      }
     }
 
     return link;
