@@ -127,7 +127,8 @@ public class CalendarControllerImp implements CalendarController {
           File file = chooser.showOpenDialog(mainStage);
           if (file != null) {
             try {
-              openFile(file.toPath());
+              SaveController s = new SaveController(mainStage, new Converter(), week);
+              s.savetofiles(file);
             } catch (IOException ex) {
               throw new RuntimeException(ex);
             }

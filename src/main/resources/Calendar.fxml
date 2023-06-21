@@ -161,7 +161,7 @@
                                                     <Label fx:id="quotesLabel" text="Quotes and notes" />
                                                 </children>
                                             </HBox>
-                                            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                            <TextArea fx:id="qandn" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                         </children>
                                     </GridPane>
                                 </children>
