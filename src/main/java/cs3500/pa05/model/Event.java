@@ -36,4 +36,12 @@ public class Event extends AbstTaskEvent {
         : duration % 60 + " minutes";
   }
 
+  public String getStartTimeString() {
+    return this.startTimeString;
+  }
+
+  public int getDuration() {
+    return this.duration;
+  }
+
 }
