@@ -46,6 +46,12 @@ public class ArgumentValidator {
         if (timeFormat.length() != 2) {
           throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
         }
+        int num = checkStringPosNumber(timeFormat, "");
+      }
+      int hour = Integer.parseInt(hoursMinutes[0]);
+      int minutes = Integer.parseInt(hoursMinutes[1]);
+      if (hour > 12 || hour < 0 || minutes > 60 || minutes < 0) {
+        throw new IllegalArgumentException("Incorrect time numbers");
       }
     } else {
       throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
@@ -81,20 +87,21 @@ public class ArgumentValidator {
    *
    * @return a valid Hyperlink
    */
-  public static Hyperlink linkParser(String description) {
-    // Regular expression pattern to match URLs
-    String pattern = "(https?://\\S+)";
-    Pattern urlPattern = Pattern.compile(pattern);
-    Matcher matcher = urlPattern.matcher(description);
+  public static String giveValidLink(String description) {
+    String link = "";
 
-    Hyperlink link = null;
+    if (!(description == null || description.isEmpty())) {
 
-    // Replace URLs with clickable links
-    StringBuilder result = new StringBuilder();
-    int lastEnd = 0;
-    while (matcher.find()) {
-      String url = matcher.group();
-      link = new Hyperlink(url);
+      // Regular expression pattern to match URLs
+      String pattern = "(https?://\\S+)";
+      Pattern urlPattern = Pattern.compile(pattern);
+      Matcher matcher = urlPattern.matcher(description);
+
+      // Replace URLs with clickable links
+      while (matcher.find()) {
+        String url = matcher.group();
+        link = url;
+      }
     }
 
     return link;

@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -17,7 +18,7 @@ public abstract class AbstTaskEvent {
   protected String name;
   protected String description;
   protected Days dayOfWeek;
-  protected Hyperlink link;
+  protected String link;
   protected Button infoButton;
 
   /**
@@ -28,61 +29,26 @@ public abstract class AbstTaskEvent {
    * @param dayOfWeek the day of the week the task/event is scheduled for
    * @param link the link given by the user in the description
    */
-  public AbstTaskEvent(String name, String description, Days dayOfWeek, Hyperlink link) {
+  public AbstTaskEvent(String name, String description, Days dayOfWeek, String link) {
     this.name = name;
     this.description = description;
     this.dayOfWeek = dayOfWeek;
     this.link = link;
   }
 
-  /**
-   * getter for infoButton
-   *
-   * @return a Button
-   */
-  public abstract Button getInfoButton();
-
-  /**
-   * fills in the details of the task/event on the GUI
-   *
-   * @param name of the task/event
-   * @param description of the task/event
-   * @param day the task/event takes place
-   * @param extra for whether or not it is complete
-   */
-  public void fillDetails(HBox name, VBox description, HBox day, VBox extra) {
-    name.getChildren().add(new Label(this.name));
-    TextArea descriptionBox = new TextArea(this.description);
-    descriptionBox.setEditable(false);
-    description.getChildren().add(descriptionBox);
-    description.getChildren().add(this.link);
-    day.getChildren().add(new Label(dayOfWeek.name()));
-    this.addExtraDetails(extra);
-  }
-
-  /**
-   * for adding extra details about a task/event
-   *
-   * @param extra a VBox
-   */
-  public abstract void addExtraDetails(VBox extra);
-
-  /**
-   * removes the task/event from the GUI
-   *
-   * @param vBox a VBox
-   */
-  public void removeInstances(VBox vBox) {
-    vBox.getChildren().remove(this.infoButton);
-  }
+  public abstract String[] getExtraDetails();
 
   /**
    * getter for this.link which was given by the user in the description
    *
    * @return a HyperLink
    */
-  public Hyperlink getLink() {
+  public String getLink() {
     return this.link;
+  }
+
+  public ObservableList<Node> getChildren(VBox description) {
+    return description.getChildren();
   }
 
   /**

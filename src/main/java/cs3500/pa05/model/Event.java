@@ -27,34 +27,13 @@ public class Event extends AbstTaskEvent {
    * @param link a link given by the user in the description
    */
   public Event(String name, String description, Days day,
-               String startTimeString, TimeNotation timeNotation, int durationMin, Hyperlink link) {
+               String startTimeString, TimeNotation timeNotation, int durationMin, String link) {
     super(name, description, day, link);
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;
     this.duration = durationMin;
     this.infoButton = new Button("Event: " + this.name);
 
-  }
-
-  /**
-   * getter for this.infoButton
-   *
-   * @return a Button
-   */
-  @Override
-  public Button getInfoButton() {
-    return this.infoButton;
-  }
-
-  /**
-   * adds the start time and duration of the event
-   *
-   * @param extra a VBox
-   */
-  @Override
-  public void addExtraDetails(VBox extra) {
-    extra.getChildren().add(new Label("Start time: " + this.startTimeString + timeNotation));
-    extra.getChildren().add(new Label("Duration: " + this.calculateDuration()));
   }
 
   /**
