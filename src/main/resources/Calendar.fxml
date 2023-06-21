@@ -52,7 +52,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                 <children>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                    <ScrollPane fx:id="scroll0" prefHeight="200.0" prefWidth="200.0">
                                         <content>
                                             <VBox fx:id="sunday">
                                                 <children>
@@ -65,7 +65,7 @@
                                             </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                    <ScrollPane fx:id="scroll1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <content>
                                  <VBox fx:id="monday">
                                     <children>
@@ -78,7 +78,7 @@
                                  </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                    <ScrollPane fx:id="scroll2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                         <content>
                                  <VBox fx:id="tuesday">
                                     <children>
@@ -91,7 +91,7 @@
                                  </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                                    <ScrollPane fx:id="scroll3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                                         <content>
                                  <VBox fx:id="wednesday">
                                     <children>
@@ -104,7 +104,7 @@
                                  </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+                                    <ScrollPane fx:id="scroll4" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                                         <content>
                                  <VBox fx:id="thursday">
                                     <children>
@@ -117,7 +117,7 @@
                                  </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
+                                    <ScrollPane fx:id="scroll5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
                                         <content>
                                  <VBox fx:id="friday">
                                     <children>
@@ -130,7 +130,7 @@
                                  </VBox>
                                         </content>
                                     </ScrollPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
+                                    <ScrollPane fx:id="scroll6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
                                         <content>
                                  <VBox fx:id="saturday">
                                     <children>
