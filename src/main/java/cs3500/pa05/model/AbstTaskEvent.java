@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -8,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  * represents an abstract TaskEvent
@@ -55,7 +55,6 @@ public abstract class AbstTaskEvent {
     TextArea descriptionBox = new TextArea(this.description);
     descriptionBox.setEditable(false);
     description.getChildren().add(descriptionBox);
-    description.getChildren().add(this.link);
     day.getChildren().add(new Label(dayOfWeek.name()));
     this.addExtraDetails(extra);
   }
@@ -83,6 +82,10 @@ public abstract class AbstTaskEvent {
    */
   public Hyperlink getLink() {
     return this.link;
+  }
+
+  public ObservableList<Node> getChildren(VBox description) {
+    return description.getChildren();
   }
 
   /**

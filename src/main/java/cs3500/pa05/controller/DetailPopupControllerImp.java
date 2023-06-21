@@ -43,9 +43,14 @@ public class DetailPopupControllerImp implements DetailPopupController {
     DetailPopupView loader = new DetailPopupViewImp(this);
     Scene s = loader.load();
     taskEvent.fillDetails(nameBox, descriptionBox, dayBox, extraBox);
+    this.addLink(taskEvent);
     popup.getContent().add(s.getRoot());
     this.done.setOnAction(event -> this.popup.hide());
     this.initDeleteButton(taskEvent, chosenDay);
+  }
+
+  public void addLink(AbstTaskEvent taskEvent) {
+    this.descriptionBox.getChildren().add(taskEvent.getLink());
   }
 
   private void initDeleteButton(AbstTaskEvent taskEvent, VBox chosenDay) {
