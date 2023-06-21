@@ -149,24 +149,31 @@ public class CalendarControllerImp implements CalendarController {
   public void handleWeekStart() {
     this.sunStart.setOnAction(event -> {
       changeWeekStart(0);
+      week.setStart("Sunday");
     });
     this.monStart.setOnAction(event -> {
       changeWeekStart(1);
+      week.setStart("Monday");
     });
     this.tueStart.setOnAction(event -> {
       changeWeekStart(2);
+      week.setStart("Tuesday");
     });
     this.wedStart.setOnAction(event -> {
       changeWeekStart(3);
+      week.setStart("Wednesday");
     });
     this.thuStart.setOnAction(event -> {
       changeWeekStart(4);
+      week.setStart("Thursday");
     });
     this.friStart.setOnAction(event -> {
       changeWeekStart(5);
+      week.setStart("Friday");
     });
     this.satStart.setOnAction(event -> {
       changeWeekStart(6);
+      week.setStart("Saturday");
     });
 
   }

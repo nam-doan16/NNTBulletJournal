@@ -1,6 +1,7 @@
 package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import cs3500.pa05.json.Converter;
 import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.adapterclasses.Week;
@@ -37,7 +38,8 @@ public class SaveController {
   public void savetofiles(File file) throws IOException {
     WeekJson w = converter.weektoJson(week);
     ObjectMapper mapper = new ObjectMapper();
-    mapper.writeValue(file, w);
+    ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
+    writer.writeValue(file, w);
   }
 
 
