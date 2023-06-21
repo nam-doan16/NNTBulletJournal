@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.scene.control.Hyperlink;
 
 public class DetailPopupControllerImp implements DetailPopupController {
   private Popup popup;
@@ -32,8 +33,6 @@ public class DetailPopupControllerImp implements DetailPopupController {
 
   @FXML
   private Button deleteButton;
-
-
 
   public DetailPopupControllerImp(Stage mainStage, AbstTaskEvent taskEvent, VBox chosenDay) {
     this.mainStage = mainStage;
