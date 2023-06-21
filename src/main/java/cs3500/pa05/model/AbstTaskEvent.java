@@ -31,6 +31,7 @@ public abstract class AbstTaskEvent {
     TextArea descriptionBox = new TextArea(this.description);
     descriptionBox.setEditable(false);
     description.getChildren().add(descriptionBox);
+    description.getChildren().add(this.link);
     day.getChildren().add(new Label(dayOfWeek.name()));
     this.addExtraDetails(extra);
   }
@@ -39,6 +40,10 @@ public abstract class AbstTaskEvent {
 
   public void removeInstances(VBox vBox) {
     vBox.getChildren().remove(this.infoButton);
+  }
+
+  public Hyperlink getLink() {
+    return this.link;
   }
 
   public String getName() {
