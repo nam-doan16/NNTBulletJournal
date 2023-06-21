@@ -37,8 +37,7 @@ public class SaveController {
   public void savetofiles(File file) throws IOException {
     WeekJson w = converter.weektoJson(week);
     ObjectMapper mapper = new ObjectMapper();
-    mapper.writeValueAsString(w);
-    mapper.writerWithDefaultPrettyPrinter();
+    mapper.writeValue(file, w);
   }
 
 

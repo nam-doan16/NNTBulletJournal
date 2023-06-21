@@ -27,6 +27,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -59,6 +61,8 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private Label maxTasks, maxEvents;
   @FXML
+  private TextField maxe, maxt;
+  @FXML
   private Label allTasksLabel;
   @FXML
   private Label quotesLabel;
@@ -80,7 +84,8 @@ public class CalendarControllerImp implements CalendarController {
   private HBox quotesAndNotes;
   @FXML
   private HBox restrictionBox;
-
+  @FXML
+  private TextArea qandn;
 
   /**
    * constructor for CalendarController
@@ -125,6 +130,9 @@ public class CalendarControllerImp implements CalendarController {
     savebutton.setOnAction(
         event -> {
           File file = chooser.showOpenDialog(mainStage);
+          week.setqandn(qandn.getText());
+          week.setMaxt(Integer.parseInt(maxt.getText()));
+          week.setMaxe(Integer.parseInt(maxe.getText()));
           if (file != null) {
             try {
               SaveController s = new SaveController(mainStage, new Converter(), week);
@@ -198,15 +206,19 @@ public class CalendarControllerImp implements CalendarController {
   private void handleMenuItem() {
     this.minimalTheme.setOnAction(event -> {
       changeTheme(new Minimalistic());
+      week.setThem(new Minimalistic());
     });
     this.scrapbookTheme.setOnAction(event -> {
       changeTheme(new ScrapBook());
+      week.setThem(new ScrapBook());
     });
     this.spaceTheme.setOnAction(event -> {
       changeTheme(new Space());
+      week.setThem(new Space());
     });
     this.vintageTheme.setOnAction(event -> {
       changeTheme(new Vintage());
+      week.setThem(new Vintage());
     });
   }
 
