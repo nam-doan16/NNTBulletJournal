@@ -5,6 +5,7 @@ import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
+import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TaskEvent;
 import cs3500.pa05.model.enums.TimeNotation;
@@ -23,11 +24,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-/**
- * implementation of the TaskEventCreationController
- */
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
-
+  private Week week;
   private Popup popup;
   private Stage mainStage;
   private List<VBox> daysOfWeek;
@@ -70,14 +68,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private VBox errorBox;
 
-  /**
-   * constructor
-   *
-   * @param mainStage the main stage of the GUI
-   * @param daysOfWeek a list of VBoxes representing each day of the week
-   * @param allTasks task queue for each day
-   */
-  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks) {
+
+  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week) {
+    this.week = week;
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
@@ -89,9 +82,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     popup.getContent().add(s.getRoot());
   }
 
-  /**
-   * initializes the MenuButton for the TaskEvent
-   */
+
   private void initMenuButton() {
     this.close.setOnAction(event -> this.popup.hide());
     menu.setValue("Event");
@@ -119,9 +110,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  /**
-   * initializes the add TaskEvent button
-   */
   private void initAddButton() {
     // TODO: Make it so every time add is clicked, it's empty
     add.setOnAction(event -> {
@@ -154,7 +142,8 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       errorBox.getChildren().clear();
       if (addButton) {
         Button infoButton = taskEvent.getInfoButton();
-        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent, daysOfWeek.get(chosenDayIndex));
+        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
+            daysOfWeek.get(chosenDayIndex), this.week);
         infoButton.setOnAction(click -> infoPopup.showPopup());
         daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
         this.popup.hide();
@@ -166,9 +155,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  /**
-   * displays the TaskEvent to the GUI
-   */
   public void showPopup() {
     popup.show(mainStage);
   }

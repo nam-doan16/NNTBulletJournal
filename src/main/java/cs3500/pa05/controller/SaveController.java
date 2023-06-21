@@ -4,29 +4,31 @@ import cs3500.pa05.json.Converter;
 import cs3500.pa05.model.adapterclasses.Week;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
-/**
- * the controller for saving
- */
 public class SaveController {
+  @FXML
+  private TextField maxt;
+  @FXML
+  private TextField maxe;
   private Converter converter;
 
-  /**
-   * constructor
-   *
-   * @param c the converter
-   */
-  public SaveController(Converter c) {
+  private Week week;
+  private FileChooser chooser;
+
+  public SaveController(Converter c, Week w) {
     this.converter = c;
+    this.week = w;
   }
 
-  /**
-   * saves the content to a file/files
-   *
-   * @param w the week who's content is being saved
-   */
-  public void savetofiles(Week w) {
+  public void run() {
+    week.setMaxe(Integer.parseInt(maxe.getText()));
+    week.setMaxt(Integer.parseInt(maxt.getText()));
+    savetofiles();
+  }
 
+  public void savetofiles() {
   }
 
 
