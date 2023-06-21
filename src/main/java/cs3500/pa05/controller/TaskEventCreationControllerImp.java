@@ -108,11 +108,11 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   }
 
   private void initAddButton() {
+    // TODO: Make it so every time add is clicked, it's empty
     add.setOnAction(event -> {
       boolean addButton = true;
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
-      // TODO: Figure out a way to check these arguments and if theyre empty or not
       String name = this.name.getText();
       String description = this.description.getText();
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
@@ -125,7 +125,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
         taskEvent = new Task(name, description, day, allTasks);
       } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
-        // TODO: Figure out a way to check these arguments
         try {
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
           int duration = ArgumentValidator.checkStringNumber(this.duration.getText(), "Invalid duration");
@@ -139,9 +138,10 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       errorBox.getChildren().clear();
       if (addButton) {
         Button infoButton = taskEvent.getInfoButton();
-        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent);
+        DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent, daysOfWeek.get(chosenDayIndex));
         infoButton.setOnAction(click -> infoPopup.showPopup());
         daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
+        this.popup.hide();
       } else {
         Label errorMessageLabel = new Label(errorMessage.toString());
         errorMessageLabel.setTextFill(Color.RED);
