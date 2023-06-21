@@ -8,6 +8,7 @@ public record EventJson(
     @JsonProperty("Description") String details,
     @JsonProperty("Start") int start,
     @JsonProperty("Duration") int time,
-    @JsonProperty("Day") Days day
+    @JsonProperty("Day") Days day,
+    @JsonProperty("Link") String link
 ) {
 }
