@@ -9,7 +9,7 @@
 - Task Queue
 
 ## Section 3: Power Ups
-- Progress Bar
+- Mini Viewer
 - Takesie-Backsie
 - Quotes & Notes
 
