@@ -1,8 +1,13 @@
 {
-  "Maxt" : 0,
-  "Maxe" : 0,
-  "Theme" : "Default",
+  "Maxt" : 10,
+  "Maxe" : 10,
+  "Theme" : "minimal",
   "QandN" : "- Add Quotes Below: ",
-  "AllTasks" : [ ],
-  "Start" : "Sunday"
+  "AllTasks" : [ {
+    "Name" : "KJANSKJFSA",
+    "Description" : "kjasnfksjadnf ",
+    "Day" : "SUNDAY",
+    "Link" : ""
+  } ],
+  "Start" : "Thursday"
 }
