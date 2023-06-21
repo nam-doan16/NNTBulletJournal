@@ -7,6 +7,7 @@ public record TaskJson(
     @JsonProperty("Name") String name,
     @JsonProperty("Description") String details,
     @JsonProperty("Day") Days day,
-    @JsonProperty("Link") String s
+    @JsonProperty("Link") String link,
+    @JsonProperty("Complete") boolean done
 ) {
 }

@@ -6,6 +6,7 @@ import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
 import cs3500.pa05.json.Converter;
+import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
@@ -96,6 +97,10 @@ public class CalendarControllerImp implements CalendarController {
   public CalendarControllerImp(Stage mainStage, Week week) {
     this.mainStage = mainStage;
     this.week = week;
+  }
+
+  public CalendarControllerImp(WeekJson json) {
+
   }
 
   /**

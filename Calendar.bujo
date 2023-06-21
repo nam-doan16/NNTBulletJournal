@@ -1,13 +1,15 @@
 {
-  "Maxt" : 10,
-  "Maxe" : 10,
-  "Theme" : "minimal",
+  "Maxt" : 0,
+  "Maxe" : 0,
+  "Theme" : "Default",
   "QandN" : "- Add Quotes Below: ",
   "AllTasks" : [ {
-    "Name" : "KJANSKJFSA",
-    "Description" : "kjasnfksjadnf ",
-    "Day" : "SUNDAY",
-    "Link" : ""
+    "Name" : "HAHAH",
+    "Description" : " checke https://www.google.com/search?q=json+format&rlz=1C5CHFA_enUS760US767&oq=json+format&aqs=chrome..0i67i131i433i650j69i57j0i131i433i512j0i433i512j0i512l2j5j69i60.3099j0j4&sourceid=chrome&ie=UTF-8",
+    "Day" : "TUESDAY",
+    "Link" : "https://www.google.com/search?q=json+format&rlz=1C5CHFA_enUS760US767&oq=json+format&aqs=chrome..0i67i131i433i650j69i57j0i131i433i512j0i433i512j0i512l2j5j69i60.3099j0j4&sourceid=chrome&ie=UTF-8",
+    "COMPLETE" : false
   } ],
-  "Start" : "Thursday"
+  "AllEvents" : [ ],
+  "Start" : "Sunday"
 }
