@@ -8,5 +8,6 @@ public record WeekJson(
     @JsonProperty("Theme") String theme,
     @JsonProperty("QandN") String notes,
     @JsonProperty("AllTasks") TaskJson[] tasks,
+    @JsonProperty("AllEvents") EventJson[] events,
     @JsonProperty("Start") String start
   ){}

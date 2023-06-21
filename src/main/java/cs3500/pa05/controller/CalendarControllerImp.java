@@ -6,6 +6,7 @@ import cs3500.pa05.controller.CalendarController;
 import cs3500.pa05.controller.TaskEventCreationController;
 import cs3500.pa05.controller.TaskEventCreationControllerImp;
 import cs3500.pa05.json.Converter;
+import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
@@ -98,6 +99,10 @@ public class CalendarControllerImp implements CalendarController {
     this.week = week;
   }
 
+  public CalendarControllerImp(WeekJson json) {
+
+  }
+
   /**
    * initializes lists containing the JavaFX components of the week
    * daysOfTheWeek initialized to new ArrayList of VBoxes (sunday, monday, etc)
@@ -125,7 +130,7 @@ public class CalendarControllerImp implements CalendarController {
   public void run() throws IllegalStateException {
     this.initDaysOfTheWeek();
     TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek,
-        allTasks, this.week);
+        allTasks, this.week, maxe, maxt);
     addTaskButton.setOnAction(event -> d.showPopup());
     savebutton.setOnAction(
         event -> {

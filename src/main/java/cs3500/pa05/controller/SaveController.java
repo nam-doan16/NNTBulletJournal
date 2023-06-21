@@ -40,10 +40,7 @@ public class SaveController {
     WeekJson w = converter.weektoJson(week);
     ObjectMapper mapper = new ObjectMapper();
     ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
-    String out = writer.writeValueAsString(w);
-    FileWriter writ = new FileWriter(file);
-    writ.write(out);
-    writ.close();
+    writer.writeValue(file, w);
   }
 
 

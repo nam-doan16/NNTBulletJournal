@@ -35,4 +35,8 @@ public class Task extends AbstTaskEvent {
       }
     }
 
+    public boolean getDone() {
+      return this.complete;
+    }
+
 }

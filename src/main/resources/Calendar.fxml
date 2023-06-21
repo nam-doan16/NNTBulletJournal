@@ -67,80 +67,80 @@
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <content>
-                                 <VBox fx:id="monday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="mondayLabel" text="Monday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="monday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="mondayLabel" text="Monday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                         <content>
-                                 <VBox fx:id="tuesday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="tuesdayLabel" text="Tuesday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="tuesday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="tuesdayLabel" text="Tuesday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                                         <content>
-                                 <VBox fx:id="wednesday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="wednesdayLabel" text="Wednesday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="wednesday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="wednesdayLabel" text="Wednesday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll4" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                                         <content>
-                                 <VBox fx:id="thursday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="thursdayLabel" text="Thursday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="thursday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="thursdayLabel" text="Thursday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
                                         <content>
-                                 <VBox fx:id="friday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="fridayLabel" text="Friday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="friday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="fridayLabel" text="Friday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                     <ScrollPane fx:id="scroll6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
                                         <content>
-                                 <VBox fx:id="saturday">
-                                    <children>
-                                                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
-                                                      <children>
-                                                          <Label fx:id="saturdayLabel" text="Saturday" />
-                                                      </children>
-                                                  </HBox>
-                                    </children>
-                                 </VBox>
+                                            <VBox fx:id="saturday">
+                                                <children>
+                                                    <HBox alignment="CENTER" prefHeight="33.0" prefWidth="113.0">
+                                                        <children>
+                                                            <Label fx:id="saturdayLabel" text="Saturday" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
                                         </content>
                                     </ScrollPane>
                                 </children>
@@ -171,20 +171,20 @@
                 </items>
             </SplitPane>
             <VBox layoutY="-1.0" prefHeight="32.0" prefWidth="230.0">
-            <children>
-               <Button fx:id="savebutton" mnemonicParsing="false" text="SAVE" />
-               <MenuButton fx:id="weekStart" mnemonicParsing="false" text="Week Start">
-                 <items>
-                   <MenuItem fx:id="sunStart" mnemonicParsing="false" text="Sunday" />
-                   <MenuItem fx:id="monStart" mnemonicParsing="false" text="Monday" />
-                     <MenuItem fx:id="tueStart" mnemonicParsing="false" text="Tuesday" />
-                     <MenuItem fx:id="wedStart" mnemonicParsing="false" text="Wednesday" />
-                     <MenuItem fx:id="thuStart" mnemonicParsing="false" text="Thursday" />
-                     <MenuItem fx:id="friStart" mnemonicParsing="false" text="Friday" />
-                     <MenuItem fx:id="satStart" mnemonicParsing="false" text="Saturday" />
-                 </items>
-               </MenuButton>
-            </children>
+                <children>
+                    <Button fx:id="savebutton" mnemonicParsing="false" text="SAVE" />
+                    <MenuButton fx:id="weekStart" mnemonicParsing="false" text="Week Start">
+                        <items>
+                            <MenuItem fx:id="sunStart" mnemonicParsing="false" text="Sunday" />
+                            <MenuItem fx:id="monStart" mnemonicParsing="false" text="Monday" />
+                            <MenuItem fx:id="tueStart" mnemonicParsing="false" text="Tuesday" />
+                            <MenuItem fx:id="wedStart" mnemonicParsing="false" text="Wednesday" />
+                            <MenuItem fx:id="thuStart" mnemonicParsing="false" text="Thursday" />
+                            <MenuItem fx:id="friStart" mnemonicParsing="false" text="Friday" />
+                            <MenuItem fx:id="satStart" mnemonicParsing="false" text="Saturday" />
+                        </items>
+                    </MenuButton>
+                </children>
             </VBox>
             <GridPane alignment="CENTER" layoutX="912.0" layoutY="1.0" prefHeight="72.0" prefWidth="88.0">
                 <columnConstraints>
@@ -206,43 +206,43 @@
                                 <items>
                                     <MenuItem fx:id="minimalTheme" mnemonicParsing="false" text="Minimal" />
                                     <MenuItem fx:id="scrapbookTheme" mnemonicParsing="false" text="Scrapbook" />
-                           <MenuItem fx:id="spaceTheme" mnemonicParsing="false" text="Space" />
-                           <MenuItem fx:id="vintageTheme" mnemonicParsing="false" text="Vintage" />
+                                    <MenuItem fx:id="spaceTheme" mnemonicParsing="false" text="Space" />
+                                    <MenuItem fx:id="vintageTheme" mnemonicParsing="false" text="Vintage" />
                                 </items>
                             </MenuButton>
                         </children>
                     </HBox>
                 </children>
             </GridPane>
-         <HBox layoutX="827.0" layoutY="1.0" prefHeight="18.0" prefWidth="82.0">
-            <children>
-               <TextField fx:id="maxt" prefHeight="26.0" prefWidth="93.0" text="0" />
-            </children>
-         </HBox>
-         <HBox layoutX="827.0" layoutY="27.0" prefHeight="26.0" prefWidth="82.0">
-            <children>
-               <TextField fx:id="maxe" prefHeight="26.0" prefWidth="104.0" text="0" />
-            </children>
-         </HBox>
-         <HBox fx:id="restrictionBox" layoutX="722.0" layoutY="2.0" prefHeight="50.0" prefWidth="105.0">
-            <children>
-               <GridPane>
-                 <columnConstraints>
-                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                 </columnConstraints>
-                 <rowConstraints>
-                   <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                   <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
-                 </rowConstraints>
-                  <children>
-                     <Label fx:id="maxTasks" text="Maximum tasks" />
-                     <Label fx:id="maxEvents" text="Maximum events" GridPane.rowIndex="1" />
-                  </children>
-               </GridPane>
-            </children>
-         </HBox>
+            <HBox layoutX="827.0" layoutY="1.0" prefHeight="18.0" prefWidth="82.0">
+                <children>
+                    <TextField fx:id="maxt" prefHeight="26.0" prefWidth="93.0" text="0" />
+                </children>
+            </HBox>
+            <HBox layoutX="827.0" layoutY="27.0" prefHeight="26.0" prefWidth="82.0">
+                <children>
+                    <TextField fx:id="maxe" prefHeight="26.0" prefWidth="104.0" text="0" />
+                </children>
+            </HBox>
+            <HBox fx:id="restrictionBox" layoutX="722.0" layoutY="2.0" prefHeight="50.0" prefWidth="105.0">
+                <children>
+                    <GridPane>
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label fx:id="maxTasks" text="Maximum tasks" />
+                            <Label fx:id="maxEvents" text="Maximum events" GridPane.rowIndex="1" />
+                        </children>
+                    </GridPane>
+                </children>
+            </HBox>
         </children>
-      <padding>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </padding></AnchorPane>
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+        </padding></AnchorPane>
 </Scene>
