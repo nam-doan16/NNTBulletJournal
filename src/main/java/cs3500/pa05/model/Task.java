@@ -9,17 +9,19 @@ import javafx.scene.layout.VBox;
 public class Task extends AbstTaskEvent {
   private boolean complete;
   private VBox allTasks;
+  private VBox taskQueueInfo;
   public Task(String name, String description, Days dayOfWeek, VBox allTasks) {
     super(name, description, dayOfWeek);
     this.complete = false;
     this.allTasks = allTasks;
+    this.infoButton = new Button("Task: " + this.name);
   }
+
   @Override
   public Button getInfoButton() {
     this.addTaskToQueue();
-    return new Button("Task: " + this.name);
+    return infoButton;
   }
-
 
   private void addTaskToQueue() {
     // initializing buttons
@@ -52,6 +54,7 @@ public class Task extends AbstTaskEvent {
     });
     task.getChildren().add(toggleComplete);
     allTasks.getChildren().add(task);
+    this.taskQueueInfo = task;
   }
 
   @Override
@@ -66,5 +69,9 @@ public class Task extends AbstTaskEvent {
     extra.getChildren().add(new Label(string.toString()));
   }
 
-
+  @Override
+  public void removeInstances(VBox vBox) {
+    super.removeInstances(vBox);
+    this.allTasks.getChildren().remove(taskQueueInfo);
+  }
 }

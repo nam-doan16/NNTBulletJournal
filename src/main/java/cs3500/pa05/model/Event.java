@@ -2,13 +2,9 @@ package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TimeNotation;
-import java.time.Duration;
-import java.time.LocalTime;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Event extends AbstTaskEvent {
   private String startTimeString;
@@ -21,12 +17,13 @@ public class Event extends AbstTaskEvent {
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;
     duration = durationMin;
+    this.infoButton = new Button("Event: " + this.name);
 
   }
 
   @Override
   public Button getInfoButton() {
-    return new Button("Event: " + this.name);
+    return this.infoButton;
   }
   @Override
   public void addExtraDetails(VBox extra) {
@@ -38,4 +35,5 @@ public class Event extends AbstTaskEvent {
     return (duration >= 60) ? duration / 60 + " hours, " + duration % 60 + " minutes"
         : duration % 60 + " minutes";
   }
+
 }

@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -12,6 +13,8 @@ public abstract class AbstTaskEvent {
   protected String name;
   protected String description;
   protected Days dayOfWeek;
+
+  protected Button infoButton;
 
   public AbstTaskEvent(String name, String description, Days dayOfWeek) {
     this.name = name;
@@ -31,4 +34,8 @@ public abstract class AbstTaskEvent {
   }
 
   public abstract void addExtraDetails(VBox extra);
+
+  public void removeInstances(VBox vBox) {
+    vBox.getChildren().remove(this.infoButton);
+  }
 }

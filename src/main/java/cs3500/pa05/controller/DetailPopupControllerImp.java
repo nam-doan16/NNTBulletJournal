@@ -30,9 +30,12 @@ public class DetailPopupControllerImp implements DetailPopupController {
   @FXML
   private Button done;
 
+  @FXML
+  private Button deleteButton;
 
 
-  public DetailPopupControllerImp(Stage mainStage, AbstTaskEvent taskEvent) {
+
+  public DetailPopupControllerImp(Stage mainStage, AbstTaskEvent taskEvent, VBox chosenDay) {
     this.mainStage = mainStage;
     this.popup = new Popup();
     DetailPopupView loader = new DetailPopupViewImp(this);
@@ -40,6 +43,15 @@ public class DetailPopupControllerImp implements DetailPopupController {
     taskEvent.fillDetails(nameBox, descriptionBox, dayBox, extraBox);
     popup.getContent().add(s.getRoot());
     this.done.setOnAction(event -> this.popup.hide());
+    this.initDeleteButton(taskEvent, chosenDay);
+  }
+
+  private void initDeleteButton(AbstTaskEvent taskEvent, VBox chosenDay) {
+    deleteButton.setStyle("-fx-background-color: #ff0000; ");
+    deleteButton.setOnAction(event -> {
+      taskEvent.removeInstances(chosenDay);
+      this.popup.hide();
+    });
   }
 
   public void showPopup() {

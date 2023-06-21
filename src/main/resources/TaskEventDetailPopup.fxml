@@ -13,6 +13,11 @@
       <children>
          <VBox prefHeight="368.0" prefWidth="373.0">
             <children>
+               <HBox alignment="TOP_RIGHT" prefHeight="64.0" prefWidth="373.0">
+                  <children>
+                     <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete" textFill="WHITE" />
+                  </children>
+               </HBox>
                <HBox fx:id="nameBox" alignment="CENTER" prefHeight="57.0" prefWidth="373.0" />
                <VBox fx:id="descriptionBox" prefHeight="141.0" prefWidth="223.0">
                   <children>
@@ -44,6 +49,9 @@
                   </padding>
                </HBox>
             </children>
+            <padding>
+               <Insets bottom="5.0" right="5.0" top="5.0" />
+            </padding>
          </VBox>
       </children></AnchorPane>
 </Scene>
