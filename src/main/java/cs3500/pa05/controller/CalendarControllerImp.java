@@ -125,7 +125,7 @@ public class CalendarControllerImp implements CalendarController {
   public void run() throws IllegalStateException {
     this.initDaysOfTheWeek();
     TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek,
-        allTasks, this.week);
+        allTasks, this.week, maxe, maxt);
     addTaskButton.setOnAction(event -> d.showPopup());
     savebutton.setOnAction(
         event -> {

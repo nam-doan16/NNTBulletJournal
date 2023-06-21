@@ -2,6 +2,7 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.model.AbstTaskEvent;
 import cs3500.pa05.model.ArgumentValidator;
+import cs3500.pa05.model.CustomInteger;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
@@ -68,8 +69,17 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private VBox errorBox;
 
+  private TextField maxe;
+  private TextField maxt;
+  private int maxEvent;
+  private int maxTask;
 
-  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week) {
+  private CustomInteger eventCount;
+  private CustomInteger taskCount;
+
+
+  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week,
+                                        TextField maxe, TextField maxt) {
     this.week = week;
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
@@ -79,6 +89,10 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     Scene s = loader.load();
     this.initMenuButton();
     this.initAddButton();
+    this.maxe = maxe;
+    this.maxt = maxt;
+    this.eventCount = new CustomInteger(0);
+    this.taskCount = new CustomInteger(0);
     popup.getContent().add(s.getRoot());
   }
 
@@ -113,23 +127,35 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private void initAddButton() {
     add.setOnAction(event -> {
       boolean addButton = true;
+
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
       String description = this.description.getText();
       String link = ArgumentValidator.giveValidLink(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
+      this.processMax();
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
         if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
-          taskEvent = new Task(name, description, day, link);
-          week.addtask((Task) taskEvent);
+          if (this.taskCount.getInteger() >= this.maxTask) {
+            throw new IllegalArgumentException("Too many tasks");
+          } else {
+            taskEvent = new Task(name, description, day, link);
+            week.addtask((Task) taskEvent);
+            this.taskCount.increment();
+          }
         } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
-          String time = ArgumentValidator.checkTimeFormat(startTime.getText());
-          int duration = ArgumentValidator.checkStringPosNumber(this.duration.getText(),
-              "Invalid duration");
-          taskEvent = new Event(name, description, day, time,
-              TimeNotation.valueOf(ampm.getValue()), duration, link);
-          week.addEvent((Event) taskEvent);
+          if (this.eventCount.getInteger() >= this.maxEvent) {
+            throw new IllegalArgumentException("Too many events");
+          } else {
+            String time = ArgumentValidator.checkTimeFormat(startTime.getText());
+            int duration = ArgumentValidator.checkStringPosNumber(this.duration.getText(),
+                "Invalid duration");
+            taskEvent = new Event(name, description, day, time,
+                TimeNotation.valueOf(ampm.getValue()), duration, link);
+            this.eventCount.increment();
+            week.addEvent((Event) taskEvent);
+          }
         }
       } catch (IllegalArgumentException e) {
         errorMessage.append(e.getMessage());
@@ -146,6 +172,25 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         errorBox.getChildren().add(errorMessageLabel);
       }
     });
+  }
+
+  private void processMax() {
+    StringBuilder errorMessage = new StringBuilder();
+    try {
+      this.maxEvent = ArgumentValidator.checkStringPosNumber(this.maxe.getText(),
+          "Invalid max events.");
+    } catch (IllegalArgumentException e) {
+      errorMessage.append(e.getMessage());
+    }
+    try {
+      this.maxTask = ArgumentValidator.checkStringPosNumber(this.maxt.getText(),
+          "Invalid max tasks.");
+    } catch (IllegalArgumentException e) {
+      errorMessage.append(e.getMessage());
+    }
+    if (!errorMessage.isEmpty()) {
+      throw new IllegalArgumentException(errorMessage.toString());
+    }
   }
 
   private void setupInfoButton(AbstTaskEvent taskEvent, String link) {
