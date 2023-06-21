@@ -127,5 +127,8 @@ public class CalendarControllerImp implements CalendarController {
     }
     this.quotesLabel.setStyle("-fx-font-family: " + theme.getFontFamily()
         + "; -fx-text-fill: " + theme.getFontColor());
+    this.themeMenu.setStyle("-fx-font-family: " + theme.getFontFamily()
+        + "; -fx-text-fill: " + theme.getFontColor()
+        + "; -fx-background-color: " + theme.getBackgroundColor());
   }
 }
