@@ -81,41 +81,27 @@ public class CalendarControllerImp implements CalendarController {
     addTaskButton.setOnAction(event -> d.showPopup());
     savebutton.setOnAction(event -> new SaveController(new Converter()).savetofiles(week));
 
-    changeSpaceTheme();
-    changeScrapBookTheme();
-    changeMinimalisticTheme();
-    changeVintageTheme();
+    handleMenuItem();
 
   }
-  private void changeSpaceTheme() {
-    AbstTheme space = new Space();
-    this.spaceTheme.setOnAction(event -> {
-      this.allTasks.setStyle("-fx-background-color: " + space.getBackgroundColor());
-      this.monday.setStyle("-fx-background-color: " + space.getBackgroundColor());
-    });
-  }
-
-  private void changeScrapBookTheme() {
-    AbstTheme scrapbook = new ScrapBook();
-    this.scrapbookTheme.setOnAction(event -> {
-      this.allTasks.setStyle("-fx-background-color: " + scrapbook.getBackgroundColor());
-      this.monday.setStyle("-fx-background-color: " + scrapbook.getBackgroundColor());
-    });
-  }
-
-  private void changeMinimalisticTheme() {
-    AbstTheme minimalistic = new Minimalistic();
+  private void handleMenuItem() {
     this.minimalTheme.setOnAction(event -> {
-      this.allTasks.setStyle("-fx-background-color: " + minimalistic.getBackgroundColor());
-      this.monday.setStyle("-fx-background-color: " + minimalistic.getBackgroundColor());
+      changeTheme(new Minimalistic());
+    });
+    this.scrapbookTheme.setOnAction(event -> {
+      changeTheme(new ScrapBook());
+    });
+    this.spaceTheme.setOnAction(event -> {
+      changeTheme(new Space());
+    });
+    this.vintageTheme.setOnAction(event -> {
+      changeTheme(new Vintage());
     });
   }
 
-  private void changeVintageTheme() {
-    AbstTheme vintage = new Vintage();
-    this.vintageTheme.setOnAction(event -> {
-      this.allTasks.setStyle("-fx-background-color: " + vintage.getBackgroundColor());
-      this.monday.setStyle("-fx-background-color: " + vintage.getBackgroundColor());
-    });
+  private void changeTheme(AbstTheme theme) {
+    this.allTasks.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    this.monday.setStyle("-fx-background-color: " + theme.getBackgroundColor());
   }
+
 }
