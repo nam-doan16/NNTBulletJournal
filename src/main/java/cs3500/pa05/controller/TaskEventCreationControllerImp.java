@@ -99,7 +99,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     dayMenu.setValue("Sunday");
     // listener for day of week menu
     dayMenu.getSelectionModel().selectedItemProperty().addListener((observable, prevOption,
-                                                                 chosenOption) -> {
+                                                                    chosenOption) -> {
       if (chosenOption != null) {
         for (Days day : Days.values()) {
           if (dayMenu.getValue().equalsIgnoreCase(day.toString())) {
@@ -111,33 +111,27 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   }
 
   private void initAddButton() {
-    // TODO: Make it so every time add is clicked, it's empty
     add.setOnAction(event -> {
       boolean addButton = true;
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
-      String name = this.name.getText();
       String description = this.description.getText();
       Hyperlink link = ArgumentValidator.linkParser(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
-        ArgumentValidator.nonEmptyName(name);
-      } catch (IllegalArgumentException e) {
-        errorMessage.append(e.getMessage() + " ");
-        addButton = false;
-      }
-      if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
-        taskEvent = new Task(name, description, day, allTasks, link);
-      } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
-        try {
+        String name = ArgumentValidator.nonEmptyName(this.name.getText());
+        if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
+          taskEvent = new Task(name, description, day, allTasks, link);
+        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
-          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(), "Invalid duration");
+          int duration = ArgumentValidator.checkStringNumber(this.duration.getText(),
+              "Invalid duration");
           taskEvent = new Event(name, description, day, time,
               TimeNotation.valueOf(ampm.getValue()), duration, link);
-        } catch (IllegalArgumentException e) {
-          errorMessage.append(e.getMessage());
-          addButton = false;
         }
+      } catch (IllegalArgumentException e) {
+        errorMessage.append(e.getMessage());
+        addButton = false;
       }
       errorBox.getChildren().clear();
       if (addButton) {
