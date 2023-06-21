@@ -2,6 +2,7 @@ package cs3500.pa05;
 
 import cs3500.pa05.controller.WelcomeController;
 import cs3500.pa05.controller.WelcomeControllerImp;
+import cs3500.pa05.model.ArgumentValidator;
 import cs3500.pa05.view.WelcomeView;
 import cs3500.pa05.view.WelcomeViewImp;
 import java.io.IOException;

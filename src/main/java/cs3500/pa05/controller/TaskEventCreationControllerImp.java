@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -115,6 +116,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       StringBuilder errorMessage = new StringBuilder("Error! ");
       String name = this.name.getText();
       String description = this.description.getText();
+      Hyperlink link = ArgumentValidator.linkParser(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
         ArgumentValidator.nonEmptyName(name);
@@ -123,13 +125,13 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         addButton = false;
       }
       if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
-        taskEvent = new Task(name, description, day, allTasks);
+        taskEvent = new Task(name, description, day, allTasks, link);
       } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
         try {
           String time = ArgumentValidator.checkTimeFormat(startTime.getText());
           int duration = ArgumentValidator.checkStringNumber(this.duration.getText(), "Invalid duration");
           taskEvent = new Event(name, description, day, time,
-              TimeNotation.valueOf(ampm.getValue()), duration);
+              TimeNotation.valueOf(ampm.getValue()), duration, link);
         } catch (IllegalArgumentException e) {
           errorMessage.append(e.getMessage());
           addButton = false;

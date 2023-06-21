@@ -3,6 +3,7 @@ package cs3500.pa05.model;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TimeNotation;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -11,12 +12,12 @@ public class Event extends AbstTaskEvent {
   private int duration;
   private TimeNotation timeNotation;
 
-  public Event(String name, String description,
-               Days day, String startTimeString, TimeNotation timeNotation, int durationMin) {
-    super(name, description, day);
+  public Event(String name, String description, Days day,
+               String startTimeString, TimeNotation timeNotation, int durationMin, Hyperlink link) {
+    super(name, description, day, link);
     this.startTimeString = startTimeString;
     this.timeNotation = timeNotation;
-    duration = durationMin;
+    this.duration = durationMin;
     this.infoButton = new Button("Event: " + this.name);
 
   }
