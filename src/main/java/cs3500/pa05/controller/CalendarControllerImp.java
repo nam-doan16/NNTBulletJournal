@@ -128,7 +128,6 @@ public class CalendarControllerImp implements CalendarController {
             }
           }
         });
-
     handleMenuItem();
   }
 
