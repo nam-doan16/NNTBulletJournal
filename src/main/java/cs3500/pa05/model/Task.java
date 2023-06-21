@@ -2,6 +2,7 @@ package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -10,8 +11,8 @@ public class Task extends AbstTaskEvent {
   private boolean complete;
   private VBox allTasks;
   private VBox taskQueueInfo;
-  public Task(String name, String description, Days dayOfWeek, VBox allTasks) {
-    super(name, description, dayOfWeek);
+  public Task(String name, String description, Days dayOfWeek, VBox allTasks, Hyperlink link) {
+    super(name, description, dayOfWeek, link);
     this.complete = false;
     this.allTasks = allTasks;
     this.infoButton = new Button("Task: " + this.name);
