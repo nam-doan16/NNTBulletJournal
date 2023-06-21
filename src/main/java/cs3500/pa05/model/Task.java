@@ -7,10 +7,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * represents a Task which extends the AbstTaskEvent class
+ */
 public class Task extends AbstTaskEvent {
   private boolean complete;
   private VBox allTasks;
   private VBox taskQueueInfo;
+
+  /**
+   * constructor
+   *
+   * @param name the name of the task
+   * @param description the description of the task
+   * @param dayOfWeek the day of the week that task is scheduled for
+   * @param allTasks the layout manager for the GUI
+   * @param link the link given by the user in the description
+   */
   public Task(String name, String description, Days dayOfWeek, VBox allTasks, Hyperlink link) {
     super(name, description, dayOfWeek, link);
     this.complete = false;
@@ -18,12 +31,20 @@ public class Task extends AbstTaskEvent {
     this.infoButton = new Button("Task: " + this.name);
   }
 
+  /**
+   * getter for infoButton
+   *
+   * @return a Button
+   */
   @Override
   public Button getInfoButton() {
     this.addTaskToQueue();
-    return infoButton;
+    return this.infoButton;
   }
 
+  /**
+   * adds a task to the Task Queue
+   */
   private void addTaskToQueue() {
     // initializing buttons
     VBox task = new VBox();
@@ -58,6 +79,11 @@ public class Task extends AbstTaskEvent {
     this.taskQueueInfo = task;
   }
 
+  /**
+   * adds whether or not the task is complete
+   *
+   * @param extra a VBox
+   */
   @Override
   public void addExtraDetails(VBox extra) {
     StringBuilder string = new StringBuilder("COMPLETE? ");
@@ -70,6 +96,11 @@ public class Task extends AbstTaskEvent {
     extra.getChildren().add(new Label(string.toString()));
   }
 
+  /**
+   * removes the task from the Calender GUI
+   *
+   * @param vBox a VBox
+   */
   @Override
   public void removeInstances(VBox vBox) {
     super.removeInstances(vBox);
