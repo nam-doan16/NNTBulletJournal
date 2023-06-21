@@ -111,6 +111,13 @@ public class CalendarControllerImp implements CalendarController {
   private void changeTheme(AbstTheme theme) {
     this.allTasks.setStyle("-fx-background-color: " + theme.getBackgroundColor());
     this.monday.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    for (VBox box : this.daysOfTheWeek) {
+      box.setStyle("-fx-background-color: " + theme.getBackgroundColor());
+    }
+    for (Label label : this.labelsOfTheWeek) {
+      label.setStyle("-fx-font-family: " + theme.getFontFamily()
+          + "; -fx-text-fill: " + theme.getFontColor());
+    }
   }
 
 }
