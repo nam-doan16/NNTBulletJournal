@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Week {
-  int maxt;
-  int maxe;
-  String qandn;
+  int maxt = 0;
+  int maxe = 0;
+  String qandn = "";
   List<Task> alltasks = new ArrayList<>();
   List<Event> events = new ArrayList<>();
   String theme = "Default";
