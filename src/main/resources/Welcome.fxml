@@ -24,8 +24,8 @@
                </HBox>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                   <children>
-                     <Button fx:id="NewBujo" mnemonicParsing="false" text="NEW" />
-                     <Button fx:id="PreviousBujo" mnemonicParsing="false" text="OPEN PROJECT" />
+                     <Button fx:id="newBujo" mnemonicParsing="false" text="NEW" />
+                     <Button fx:id="previousBujo" mnemonicParsing="false" text="OPEN PROJECT" />
                   </children>
                </HBox>
             </children>

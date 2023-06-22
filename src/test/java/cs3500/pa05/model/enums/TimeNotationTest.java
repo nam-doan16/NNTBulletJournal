@@ -1,6 +1,7 @@
 package cs3500.pa05.model.enums;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 
