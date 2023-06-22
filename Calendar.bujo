@@ -1,28 +1,15 @@
 {
-  "Maxt" : 1,
-  "Maxe" : 10,
-  "Theme" : "scrapbook",
-  "QandN" : "hehehheh",
+  "Maxt" : 2,
+  "Maxe" : 2,
+  "Theme" : "vintage",
+  "QandN" : "- Add Quotes Below: ",
   "AllTasks" : [ {
-    "Name" : "HELLOOO ",
-    "Description" : "hihi ",
-    "Day" : "WEDNESDAY",
-    "Link" : "",
-    "Complete" : false
-  }, {
-    "Name" : "alsdjfnasdf",
-    "Description" : "",
+    "Name" : "HELLOOOO",
+    "Description" : "haha",
     "Day" : "SUNDAY",
     "Link" : "",
     "Complete" : false
   } ],
-  "AllEvents" : [ {
-    "Title" : "HELLOOOOOO2",
-    "Description" : "AKSJFNSJADF ",
-    "Start" : "11:11",
-    "Duration" : 60,
-    "Day" : "FRIDAY",
-    "Link" : ""
-  } ],
-  "Start" : "Tuesday"
+  "AllEvents" : [ ],
+  "Start" : "Saturday"
 }

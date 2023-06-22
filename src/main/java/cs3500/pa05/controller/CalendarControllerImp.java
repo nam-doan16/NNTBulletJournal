@@ -371,7 +371,7 @@ public class CalendarControllerImp implements CalendarController {
     }
     this.changeWeekStart(week.getint());
     maxe.setText(String.valueOf(w.getMaxe()));
-    maxt.setText(String.valueOf(w.getEvents()));
+    maxt.setText(String.valueOf(w.getMaxt()));
     qandn.setText(w.getQandn());
     w.setTasks(new ArrayList<>());
     w.setEvents(new ArrayList<>());
