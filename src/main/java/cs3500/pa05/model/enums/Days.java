@@ -8,35 +8,56 @@ public enum Days {
   /**
    * represents sunday
    */
-  SUNDAY,
+  SUNDAY(0),
 
   /**
    * represents monday
    */
-  MONDAY,
+  MONDAY(1),
 
   /**
    * represents tuesday
    */
-  TUESDAY,
+  TUESDAY(2),
 
   /**
    * represents wednesday
    */
-  WEDNESDAY,
+  WEDNESDAY(3),
 
   /**
    * represents thursday
    */
-  THURSDAY,
+  THURSDAY(4),
 
   /**
    * represents friday
    */
-  FRIDAY,
+  FRIDAY(5),
 
   /**
    * represents saturday
    */
-  SATURDAY
+  SATURDAY(6);
+
+  /**
+   * the numerical representation of each day of the week
+   */
+  public final int numRepresentation;
+
+  /**
+   * sets the numerical representation of each day of the week
+   * Sunday is 0
+   * Monday is 1
+   * Tuesday is 2
+   * Wednesday is 3
+   * Thursday is 4
+   * Friday is 5
+   * Saturday is 6
+   *
+   * @param numRepresentation an int representing each day of the week
+   */
+  Days(int numRepresentation) {
+    this.numRepresentation = numRepresentation;
+  }
 }

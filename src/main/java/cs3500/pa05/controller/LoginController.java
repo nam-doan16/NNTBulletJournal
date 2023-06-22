@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
+/**
+ * Represents the controller for the Login part of the GUI
+ */
 public class LoginController {
   @FXML
   private Button enter;
@@ -15,14 +18,27 @@ public class LoginController {
   @FXML
   private PasswordField passcode;
 
+  /**
+   * constructor
+   *
+   * @param s the main stage of this application
+   */
   public LoginController(Stage s) {
     this.mainStage = s;
   }
 
+  /**
+   * runs the login controller
+   */
   public void run() {
     this.enter.setOnAction(event -> switchtowelcome(event));
   }
 
+  /**
+   * switches from login to welcome screen
+   *
+   * @param e the action event that allows for the switch
+   */
   public void switchtowelcome(ActionEvent e) {
     if (passcode.getText().equals("nclliu")) {
       WelcomeController c = new WelcomeControllerImp(this.mainStage);
