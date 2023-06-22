@@ -89,15 +89,15 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
+    this.popup = new Popup();
+    TaskEventView loader = new TaskEventViewImp(this);
+    Scene s = loader.load();
     this.initMenuButton();
     this.initAddButton();
     this.maxe = maxe;
     this.maxt = maxt;
     this.eventCount = new CustomInteger(0);
     this.taskCount = new CustomInteger(0);
-    this.popup = new Popup();
-    TaskEventView loader = new TaskEventViewImp(this);
-    Scene s = loader.load();
     popup.getContent().add(s.getRoot());
   }
 
@@ -129,7 +129,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  public void initAddButton() {
+  private void initAddButton() {
     add.setOnAction(event -> {
       boolean addButton = true;
 
@@ -198,7 +198,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     }
   }
 
-  void setupInfoButton(AbstTaskEvent taskEvent, String link) {
+  private void setupInfoButton(AbstTaskEvent taskEvent, String link) {
     Button infoButton = new Button(taskEvent.getName());
     VBox taskToQueue = null;
     for (String string : taskEvent.getExtraDetails()) {
