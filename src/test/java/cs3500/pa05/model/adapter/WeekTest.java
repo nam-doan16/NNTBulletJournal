@@ -10,7 +10,6 @@ import cs3500.pa05.model.enums.TimeNotation;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.Space;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class WeekTest {
