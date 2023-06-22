@@ -68,11 +68,13 @@ a constructor in each theme subclass to set the actual fields.
 
 ##### Interface Segregation
 We followed this by separating the responsibilities of interfaces and ensuring that there were no unnecessary methods
-that any classes that implement them will have to override.
+that any classes that implement them will have to override. For instance, our controller interfaces usually only hold 
+the run method to avoid unnecessary method implementation.
 
 ##### Dependency Injection
 A lot of our objects are dependent on other objects as we have a lot of objects in the parameters of other objects such
-as our controllers who are passed in things like tasks or events.
+as our controllers who are passed in things like tasks or events. This is the same for a lot of our views. For instance,
+our calendar view has a CalendarController passed in as a parameter.
 
 ### Screenshots of GUI features
 ![](splashscreen.png)
