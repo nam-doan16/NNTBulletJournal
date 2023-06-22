@@ -21,5 +21,4 @@
 - Visual Flourish
 - Privacy Lock
 - Splash Screen
-- Deployable Application
 - Weekly Start
