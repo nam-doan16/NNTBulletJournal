@@ -16,6 +16,13 @@
     "Link" : "",
     "Complete" : false
   } ],
-  "AllEvents" : [ ],
+  "AllEvents" : [ {
+    "Title" : "beach day",
+    "Description" : "fun",
+    "Start" : "10:00",
+    "Duration" : 50,
+    "Day" : "SUNDAY",
+    "Link" : ""
+  } ],
   "Start" : "Wednesday"
 }
