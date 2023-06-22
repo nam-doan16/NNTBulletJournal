@@ -2,14 +2,20 @@
   "Maxt" : 2,
   "Maxe" : 2,
   "Theme" : "vintage",
-  "QandN" : "- Add Quotes Below: ",
+  "QandN" : "- Add Quotes Below: \nlol",
   "AllTasks" : [ {
     "Name" : "HELLOOOO",
     "Description" : "haha",
     "Day" : "SUNDAY",
     "Link" : "",
     "Complete" : false
+  }, {
+    "Name" : "HEHEH",
+    "Description" : "HEHEHEHHE",
+    "Day" : "FRIDAY",
+    "Link" : "",
+    "Complete" : false
   } ],
   "AllEvents" : [ ],
-  "Start" : "Saturday"
+  "Start" : "Wednesday"
 }
