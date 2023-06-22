@@ -2,9 +2,8 @@ package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import cs3500.pa05.json.Converter;
-import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.adapterclasses.Week;
+import cs3500.pa05.model.json.WeekJson;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;

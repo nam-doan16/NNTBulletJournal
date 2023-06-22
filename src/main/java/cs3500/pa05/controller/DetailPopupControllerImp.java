@@ -61,11 +61,6 @@ public class DetailPopupControllerImp implements DetailPopupController {
     this.addLink(givenLink);
   }
 
-  public DetailPopupControllerImp(Stage mainStage, Week w) {
-    this.mainStage = mainStage;
-    this.week = w;
-  }
-
   private void fillDetails(AbstTaskEvent taskEvent) {
     nameBox.getChildren().add(new Label(taskEvent.getName()));
     TextArea descriptionBox = new TextArea(taskEvent.getDescription());
