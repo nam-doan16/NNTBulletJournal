@@ -1,6 +1,8 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TimeNotation;
@@ -70,5 +72,11 @@ class AbstTaskEventTest {
   void getDayOfWeek() {
     assertEquals(this.task.getDayOfWeek(), Days.MONDAY);
     assertEquals(this.event.getDayOfWeek(), Days.WEDNESDAY);
+  }
+
+  @Test
+  void getDone() {
+    Task task = (Task) this.task;
+    assertFalse(task.getDone());
   }
 }
