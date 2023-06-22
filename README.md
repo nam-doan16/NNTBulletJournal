@@ -3,3 +3,9 @@
 
 [PA Write Up](https://markefontenot.notion.site/PA-05-8263d28a81a7473d8372c6579abd6481)
 ![](sampleGUI.png)
+
+### Screenshots of GUI features
+![](splashscreen.png)
+![](passwordscreen.png)
+![](welcomescreen.png)
+![](calendarscreen.png)
