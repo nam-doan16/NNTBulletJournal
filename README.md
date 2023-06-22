@@ -44,6 +44,36 @@ the description box, then when edit mode is toggled via the Edit Button, we can 
 save those changes, checking if the name is valid (NON-EMPTY) as well. If not valid, keep prompting the user to input 
 a valid name for their event/task, or they cancel out of the edit mode via a Cancel Edit button.
 
+#### How we applied SOLID
+##### Single Responsibility
+By following MVC, we were able to break down a lot of the tasks required of the GUI to help us follow single 
+responsibilities. We also applied single responsibility by breaking down a lot of the functionality/components of the 
+GUI such has having separate controllers and views for each section of the GUI, i.e. a controller and viewer for the 
+splash screen, a controller and viewer for the passcode screen, a controller and viewer for the welcome screen etc. 
+Moreover, we also had task/event classes, theme classes, and enums to represent the various data needed by the GUI.
+Each class focused on storing data only relevant to them. For instance, theme classes only stored colors, and fonts and
+task/event classes stored the names of the task/event, description, etc.
+
+##### Open/Closed Principle
+For our program, to ensure we followed the open/closed principle, we made sure to create interfaces containing basic
+functionality to allow for further extension. We also made all of our fields private or protected to ensure our program 
+would be closed to unwanted modification and added getters where necessary in order to retrieve information.
+
+##### Liskov Substitution Principle
+For our abstract task/event class, we made sure that it was abstracted properly so that if substituted with either the
+task subclass or the event subclass, our program wouldn't break. We only kept the common fields between tasks and events
+and some basic getter methods. Furthermore for our theme classes, because all themes have the same fields and the same
+getters, we were able to abstract all of the fields and getters and put them in the abstract class. We then only had
+a constructor in each theme subclass to set the actual fields.
+
+##### Interface Segregation
+We followed this by separating the responsibilities of interfaces and ensuring that there were no unnecessary methods
+that any classes that implement them will have to override.
+
+##### Dependency Injection
+A lot of our objects are dependent on other objects as we have a lot of objects in the parameters of other objects such
+as our controllers who are passed in things like tasks or events.
+
 ### Screenshots of GUI features
 ![](splashscreen.png)
 ![](passwordscreen.png)

@@ -12,7 +12,7 @@ public class Space extends AbstTheme {
    * font = Arial
    */
   public Space() {
-    super("#000000", "#ffffff", "Source Code Pro");
+    super("#000000", "#ffffff", "impact");
     this.name = "space";
   }
 }
