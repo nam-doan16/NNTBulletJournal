@@ -1,7 +1,6 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.model.AbstTaskEvent;
-import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.view.DetailPopupView;
 import cs3500.pa05.view.DetailPopupViewImp;
 import java.awt.Desktop;
@@ -19,10 +18,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+/**
+ * Implementation class for DetailPopupController
+ */
 public class DetailPopupControllerImp implements DetailPopupController {
-  private Week week;
-  private Popup popup;
-  private Stage mainStage;
+  private final Popup popup;
+  private final Stage mainStage;
 
   @FXML
   private HBox nameBox;
@@ -43,14 +44,24 @@ public class DetailPopupControllerImp implements DetailPopupController {
   private Button deleteButton;
 
   @FXML
-  private Hyperlink link;
+  private final Hyperlink link;
 
+  /**
+   * Constructor for DetailPopupControllerImp
+   *
+   * @param mainStage main stage (calendar)
+   * @param taskEvent task/event
+   * @param chosenDay VBox of a specific day
+   * @param infoButton reference to a button in the vbox of the chosen day
+   * @param allTasks reference to the VBox with the task queues
+   * @param taskQueue reference to a task in the task queue
+   * @param givenLink String representation of a link
+   */
   public DetailPopupControllerImp(Stage mainStage, AbstTaskEvent taskEvent, VBox chosenDay,
                                   Button infoButton, VBox allTasks, VBox taskQueue,
-                                  Week week, String givenLink) {
+                                  String givenLink) {
     this.mainStage = mainStage;
     this.popup = new Popup();
-    this.week = week;
     DetailPopupView loader = new DetailPopupViewImp(this);
     Scene s = loader.load();
     popup.getContent().add(s.getRoot());
@@ -61,6 +72,11 @@ public class DetailPopupControllerImp implements DetailPopupController {
     this.addLink(givenLink);
   }
 
+  /**
+   * Fills the popup with taskEvent's information
+   *
+   * @param taskEvent task/event
+   */
   private void fillDetails(AbstTaskEvent taskEvent) {
     nameBox.getChildren().add(new Label(taskEvent.getName()));
     TextArea descriptionBox = new TextArea(taskEvent.getDescription());
@@ -72,6 +88,11 @@ public class DetailPopupControllerImp implements DetailPopupController {
     }
   }
 
+  /**
+   * Adds the given string representation of a link to the popup
+   *
+   * @param givenLink string representation of a valid link
+   */
   public void addLink(String givenLink) {
     this.descriptionBox.getChildren().add(this.link);
     this.link.setOnAction(event -> {
@@ -83,6 +104,14 @@ public class DetailPopupControllerImp implements DetailPopupController {
     });
   }
 
+  /**
+   * Initializes the delete buttons's functionality
+   *
+   * @param chosenDay reference to Vbox of a certain day
+   * @param infoButton reference to a Button in chosenDay
+   * @param allTasks reference to a VBox of all tasks
+   * @param taskQueue reference to a Task in the VBox
+   */
   private void initDeleteButton(VBox chosenDay, Button infoButton, VBox allTasks, VBox taskQueue) {
     deleteButton.setStyle("-fx-background-color: #ff0000; ");
     deleteButton.setOnAction(event -> {
@@ -92,6 +121,9 @@ public class DetailPopupControllerImp implements DetailPopupController {
     });
   }
 
+  /**
+   * Shows this popup
+   */
   public void showPopup() {
     popup.show(mainStage);
   }

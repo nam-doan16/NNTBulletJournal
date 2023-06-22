@@ -26,6 +26,8 @@ public class WelcomeControllerImp implements WelcomeController {
   private Button newBujo;
   @FXML
   private Button previousBujo;
+  @FXML
+  private Button newWeek;
 
   /**
    * constructor
@@ -43,6 +45,24 @@ public class WelcomeControllerImp implements WelcomeController {
    */
   public void run() throws IllegalStateException {
     this.newBujo.setOnAction(event -> switchtocal(event));
+    this.newWeek.setOnAction(event -> {
+      chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)",
+          "*.bujo"));
+      File selected = chooser.showOpenDialog(null);
+      if (selected != null) {
+        try {
+          ObjectMapper mapper = new ObjectMapper();
+          JsonParser parser = mapper.getFactory().createParser(selected);
+          WeekJson json = parser.readValueAs(WeekJson.class);
+          createlayout(new Converter().jsonToWeek(json));
+        } catch (FileNotFoundException e) {
+          throw new RuntimeException(e);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    });
+
     this.previousBujo.setOnAction(event -> {
       chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)",
           "*.bujo"));
@@ -77,7 +97,23 @@ public class WelcomeControllerImp implements WelcomeController {
       exc.printStackTrace();
       //System.err.println("Unable to load GUI.");
     }
+  }
 
+  public void createlayout(Week w) {
+    CalendarController c = new CalendarControllerImp(mainstage, w);
+    CalendarView view = new CalendarViewImp(c);
+    try {
+      // load and place the view's scene onto the stage
+      mainstage.setScene(view.load());
+      mainstage.setTitle("Bujo File");
+      c.run();
+      mainstage.show();
+      ((CalendarControllerImp) c).updatelayout(w);
+      // render the stage
+    } catch (IllegalStateException exc) {
+      exc.printStackTrace();
+      //System.err.println("Unable to load GUI.");
+    }
   }
 
   /**

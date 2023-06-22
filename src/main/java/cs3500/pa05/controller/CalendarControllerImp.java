@@ -34,8 +34,8 @@ public class CalendarControllerImp implements CalendarController {
   /**
    * constructor
    */
-  private Week week;
-  private FileChooser chooser = new FileChooser();
+  private final Week week;
+  private final FileChooser chooser = new FileChooser();
   @FXML
   private Button addTaskButton;
   @FXML
@@ -79,7 +79,7 @@ public class CalendarControllerImp implements CalendarController {
   private List<VBox> daysOfTheWeek;
   private List<Label> labelsOfTheWeek;
   private List<ScrollPane> scrollPanesOfTheWeek;
-  private Stage mainStage;
+  private final Stage mainStage;
   @FXML
   private MenuButton weekStart;
   @FXML
@@ -174,6 +174,9 @@ public class CalendarControllerImp implements CalendarController {
     handleWeekStart();
   }
 
+  /**
+   * Handles the changing of the state of the current day that starts the week
+   */
   public void handleWeekStart() {
     this.sunStart.setOnAction(event -> {
       changeWeekStart(0);
@@ -206,13 +209,16 @@ public class CalendarControllerImp implements CalendarController {
 
   }
 
+  /**
+   * Changes the week start day to the given day
+   *
+   * @param day integer representation of the day
+   */
   public void changeWeekStart(int day) {
     int index = 0;
     for (int i = day; i < daysOfTheWeek.size(); i++) {
       this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
-
       index++;
-
       if (index == daysOfTheWeek.size()) {
         break;
       }
@@ -220,9 +226,7 @@ public class CalendarControllerImp implements CalendarController {
 
     for (int i = 0; i < day; i++) {
       this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
-
       index++;
-
       if (index == daysOfTheWeek.size()) {
         break;
       }
@@ -292,18 +296,7 @@ public class CalendarControllerImp implements CalendarController {
 
   public void updatecal(Week w) {
     String theme = w.getTheme();
-    if (theme.equals("minimal")) {
-      this.changeTheme(new Minimalistic());
-    }
-    if (theme.equals("scrapbook")) {
-      this.changeTheme(new ScrapBook());
-    }
-    if (theme.equals("vintage")) {
-      this.changeTheme(new Vintage());
-    }
-    if (theme.equals("space")) {
-      this.changeTheme(new Space());
-    }
+    this.changeTheme(theme);
     this.changeWeekStart(week.getint());
     maxe.setText(String.valueOf(w.getMaxe()));
     maxt.setText(String.valueOf(w.getEvents()));
@@ -314,7 +307,7 @@ public class CalendarControllerImp implements CalendarController {
       VBox taskToQueue = null;
       DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, t,
           daysOfTheWeek.get(t.getDayOfWeek().ordinal()), infoButton, allTasks,
-          taskToQueue, this.week, t.getLink());
+          taskToQueue, t.getLink());
       infoButton.setOnAction(click -> infoPopup.showPopup());
       daysOfTheWeek.get(t.getDayOfWeek().ordinal()).getChildren().add(infoButton);
       VBox task = new VBox();
@@ -350,10 +343,31 @@ public class CalendarControllerImp implements CalendarController {
       VBox taskToQueue = null;
       DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, e,
           daysOfTheWeek.get(e.getDayOfWeek().ordinal()), infoButton, allTasks,
-          taskToQueue, this.week, e.getLink());
+          taskToQueue, e.getLink());
       infoButton.setOnAction(click -> infoPopup.showPopup());
       daysOfTheWeek.get(e.getDayOfWeek().ordinal()).getChildren().add(infoButton);
     }
   }
 
+  public void updatelayout(Week w) {
+    String theme = w.getTheme();
+    if (theme.equals("minimal")) {
+      this.changeTheme(new Minimalistic());
+    }
+    if (theme.equals("scrapbook")) {
+      this.changeTheme(new ScrapBook());
+    }
+    if (theme.equals("vintage")) {
+      this.changeTheme(new Vintage());
+    }
+    if (theme.equals("space")) {
+      this.changeTheme(new Space());
+    }
+    this.changeWeekStart(week.getint());
+    maxe.setText(String.valueOf(w.getMaxe()));
+    maxt.setText(String.valueOf(w.getEvents()));
+    qandn.setText(w.getQandn());
+    w.setTasks(new ArrayList<>());
+    w.setEvents(new ArrayList<>());
+  }
 }
