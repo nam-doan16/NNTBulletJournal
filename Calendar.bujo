@@ -1,15 +1,22 @@
 {
-  "Maxt" : 0,
-  "Maxe" : 0,
-  "Theme" : "Default",
-  "QandN" : "- Add Quotes Below: ",
+  "Maxt" : 10,
+  "Maxe" : 10,
+  "Theme" : "scrapbook",
+  "QandN" : "hehehheh",
   "AllTasks" : [ {
-    "Name" : "HAHAH",
-    "Description" : " checke https://www.google.com/search?q=json+format&rlz=1C5CHFA_enUS760US767&oq=json+format&aqs=chrome..0i67i131i433i650j69i57j0i131i433i512j0i433i512j0i512l2j5j69i60.3099j0j4&sourceid=chrome&ie=UTF-8",
-    "Day" : "TUESDAY",
-    "Link" : "https://www.google.com/search?q=json+format&rlz=1C5CHFA_enUS760US767&oq=json+format&aqs=chrome..0i67i131i433i650j69i57j0i131i433i512j0i433i512j0i512l2j5j69i60.3099j0j4&sourceid=chrome&ie=UTF-8",
-    "COMPLETE" : false
+    "Name" : "HELLOOO ",
+    "Description" : "hihi ",
+    "Day" : "WEDNESDAY",
+    "Link" : "",
+    "Complete" : false
   } ],
-  "AllEvents" : [ ],
-  "Start" : "Sunday"
+  "AllEvents" : [ {
+    "Title" : "HELLOOOOOO2",
+    "Description" : "AKSJFNSJADF ",
+    "Start" : "11:11",
+    "Duration" : 60,
+    "Day" : "FRIDAY",
+    "Link" : ""
+  } ],
+  "Start" : "Tuesday"
 }

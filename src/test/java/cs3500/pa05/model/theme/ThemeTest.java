@@ -13,6 +13,7 @@ class ThemeTest {
   AbstTheme vintage;
   AbstTheme space;
   AbstTheme scrapBook;
+
   @BeforeEach
   public void setUp() {
     minimal = new Minimalistic();

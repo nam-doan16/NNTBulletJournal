@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -24,6 +23,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+/**
+ * controller class for task and event creation
+ */
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
   private Week week;
   private Popup popup;
@@ -69,7 +71,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   @FXML
   private VBox errorBox;
 
+  @FXML
   private TextField maxe;
+  @FXML
   private TextField maxt;
   private int maxEvent;
   private int maxTask;
@@ -78,8 +82,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private CustomInteger taskCount;
 
 
-  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek, VBox allTasks, Week week,
-                                        TextField maxe, TextField maxt) {
+  public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek,
+                                        VBox allTasks, Week week, TextField maxe,
+                                        TextField maxt) {
     this.week = week;
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
@@ -134,7 +139,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       String link = ArgumentValidator.giveValidLink(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
-      this.processMax();
+        this.processMax();
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
         if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
           if (this.taskCount.getInteger() >= this.maxTask) {
@@ -144,7 +149,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
             week.addtask((Task) taskEvent);
             this.taskCount.increment();
           }
-        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
+        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)) {
           if (this.eventCount.getInteger() >= this.maxEvent) {
             throw new IllegalArgumentException("Too many events");
           } else {

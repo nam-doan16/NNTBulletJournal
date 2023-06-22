@@ -1,7 +1,6 @@
 package cs3500.pa05.view;
 
 import cs3500.pa05.controller.WelcomeController;
-import cs3500.pa05.controller.WelcomeControllerImp;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +8,7 @@ import javafx.scene.Scene;
 /**
  * implementation for the WelcomeView
  */
-public class WelcomeViewImp implements WelcomeView{
+public class WelcomeViewImp implements WelcomeView {
 
   private FXMLLoader loader;
 

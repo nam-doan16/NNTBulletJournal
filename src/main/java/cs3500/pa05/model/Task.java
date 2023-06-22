@@ -1,11 +1,6 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * represents a Task which extends the AbstTaskEvent class
@@ -27,16 +22,16 @@ public class Task extends AbstTaskEvent {
   }
 
   @Override
-    public String[] getExtraDetails() {
-      if (complete) {
-        return new String[] {"COMPLETE? YES"};
-      } else {
-        return new String[] {"COMPLETE? NO"};
-      }
+  public String[] getExtraDetails() {
+    if (complete) {
+      return new String[] {"COMPLETE? YES"};
+    } else {
+      return new String[] {"COMPLETE? NO"};
     }
+  }
 
-    public boolean getDone() {
-      return this.complete;
-    }
+  public boolean getDone() {
+    return this.complete;
+  }
 
 }

@@ -1,8 +1,5 @@
 package cs3500.pa05.model.theme;
 
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-
 /**
  * abstract class for themes
  */

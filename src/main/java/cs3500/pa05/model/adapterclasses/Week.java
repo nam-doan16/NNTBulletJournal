@@ -43,10 +43,11 @@ public class Week {
     this.alltasks.remove(t);
   }
 
-  public void setThem (AbstTheme theme) {
+  public void setThem(AbstTheme theme) {
     this.theme = theme.getName();
   }
-  public void setqandn (String qandn) {
+
+  public void setqandn(String qandn) {
     this.qandn = qandn;
   }
 
@@ -80,5 +81,28 @@ public class Week {
 
   public void setStart(String day) {
     this.start = day;
+  }
+
+  public int getint() {
+    if (start.equals("Sunday")) {
+      return 0;
+    }
+    if (start.equals("Monday")) {
+      return 1;
+    }
+    if (start.equals("Tuesday")) {
+      return 2;
+    }
+    if (start.equals("Wednesday")) {
+      return 3;
+    }
+    if (start.equals("Thursday")) {
+      return 4;
+    }
+    if (start.equals("Friday")) {
+      return 5;
+    } else {
+      return 6;
+    }
   }
 }

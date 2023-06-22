@@ -21,22 +21,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.swing.text.html.parser.Parser;
 
 /**
  * the implementation of the WelcomeController
  */
 
 public class WelcomeControllerImp implements WelcomeController {
-
-  private Converter c = new Converter();
   private Stage mainstage;
-  private BufferedReader reader;
   private FileChooser chooser = new FileChooser();
   @FXML
-  private Button NewBujo;
+  private Button newBujo;
   @FXML
-  private Button PreviousBujo;
+  private Button previousBujo;
 
   /**
    * constructor
@@ -52,23 +48,18 @@ public class WelcomeControllerImp implements WelcomeController {
    *
    * @throws IllegalStateException when something fails
    */
-  public void run() throws IllegalStateException{
-    this.NewBujo.setOnAction(event -> switchtocal(event));
-    this.PreviousBujo.setOnAction(event -> {
-      chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)"
-          , "*.bujo"));
+  public void run() throws IllegalStateException {
+    this.newBujo.setOnAction(event -> switchtocal(event));
+    this.previousBujo.setOnAction(event -> {
+      chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)",
+          "*.bujo"));
       File selected = chooser.showOpenDialog(null);
-      if(selected != null) {
+      if (selected != null) {
         try {
-          reader = new BufferedReader(new FileReader(selected));
-          String json = "";
-          while(reader.readLine() != null) {
-            json += reader.readLine() + "\n";
-          }
           ObjectMapper mapper = new ObjectMapper();
-          Week w = new Converter().jsonToWeek(mapper.convertValue(json, JsonNode.class));
-          createcal(w);
-
+          JsonParser parser = mapper.getFactory().createParser(selected);
+          WeekJson json = parser.readValueAs(WeekJson.class);
+          createcal(new Converter().jsonToWeek(json));
         } catch (FileNotFoundException e) {
           throw new RuntimeException(e);
         } catch (IOException e) {
@@ -86,8 +77,9 @@ public class WelcomeControllerImp implements WelcomeController {
       mainstage.setScene(view.load());
       mainstage.setTitle("Bujo File");
       c.run();
-      // render the stage
       mainstage.show();
+      ((CalendarControllerImp) c).updatecal(w);
+      // render the stage
     } catch (IllegalStateException exc) {
       exc.printStackTrace();
       //System.err.println("Unable to load GUI.");

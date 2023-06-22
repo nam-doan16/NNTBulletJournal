@@ -1,16 +1,9 @@
 package cs3500.pa05.controller;
 
-import static jdk.jfr.consumer.EventStream.openFile;
-
-import cs3500.pa05.controller.CalendarController;
-import cs3500.pa05.controller.TaskEventCreationController;
-import cs3500.pa05.controller.TaskEventCreationControllerImp;
 import cs3500.pa05.json.Converter;
-import cs3500.pa05.json.WeekJson;
-import cs3500.pa05.model.AbstTaskEvent;
+import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
-import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
@@ -20,8 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -52,17 +43,36 @@ public class CalendarControllerImp implements CalendarController {
   private MenuButton themeMenu;
   @FXML
   private VBox allTasks;
-  @FXML
-  private ScrollPane scroll0, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6;
-  @FXML
-  private VBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
-  @FXML
-  private Label sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel,
-      fridayLabel, saturdayLabel;
-  @FXML
-  private Label maxTasks, maxEvents;
-  @FXML
-  private TextField maxe, maxt;
+  @FXML private ScrollPane scroll0;
+  @FXML private ScrollPane scroll1;
+  @FXML private ScrollPane scroll2;
+  @FXML private ScrollPane scroll3;
+  @FXML private ScrollPane scroll4;
+  @FXML private ScrollPane scroll5;
+  @FXML private ScrollPane scroll6;
+
+  @FXML private VBox sunday;
+  @FXML private VBox monday;
+  @FXML private VBox tuesday;
+  @FXML private VBox wednesday;
+  @FXML private VBox thursday;
+  @FXML private VBox friday;
+  @FXML private VBox saturday;
+
+  @FXML private Label sundayLabel;
+  @FXML private Label mondayLabel;
+  @FXML private Label tuesdayLabel;
+  @FXML private Label wednesdayLabel;
+  @FXML private Label thursdayLabel;
+  @FXML private Label fridayLabel;
+  @FXML private Label saturdayLabel;
+
+  @FXML private Label maxTasks;
+  @FXML private Label maxEvents;
+
+  @FXML private TextField maxe;
+  @FXML private TextField maxt;
+
   @FXML
   private Label allTasksLabel;
   @FXML
@@ -74,9 +84,27 @@ public class CalendarControllerImp implements CalendarController {
   @FXML
   private MenuButton weekStart;
   @FXML
-  private MenuItem sunStart, monStart, tueStart, wedStart, thuStart, friStart, satStart;
+  private MenuItem sunStart;
   @FXML
-  private MenuItem scrapbookTheme, spaceTheme, minimalTheme, vintageTheme;
+  private MenuItem monStart;
+  @FXML
+  private MenuItem tueStart;
+  @FXML
+  private MenuItem wedStart;
+  @FXML
+  private MenuItem thuStart;
+  @FXML
+  private MenuItem friStart;
+  @FXML
+  private MenuItem satStart;
+  @FXML
+  private MenuItem scrapbookTheme;
+  @FXML
+  private MenuItem spaceTheme;
+  @FXML
+  private MenuItem minimalTheme;
+  @FXML
+  private MenuItem vintageTheme;
   @FXML
   private GridPane weekDisplay;
   @FXML
@@ -99,10 +127,6 @@ public class CalendarControllerImp implements CalendarController {
     this.week = week;
   }
 
-  public CalendarControllerImp(WeekJson json) {
-
-  }
-
   /**
    * initializes lists containing the JavaFX components of the week
    * daysOfTheWeek initialized to new ArrayList of VBoxes (sunday, monday, etc)
@@ -111,8 +135,8 @@ public class CalendarControllerImp implements CalendarController {
   private void initDaysOfTheWeek() {
     this.daysOfTheWeek = new ArrayList<>(List.of(sunday, monday, tuesday,
         wednesday, thursday, friday, saturday));
-    this.labelsOfTheWeek = new ArrayList<>(List.of(sundayLabel, mondayLabel, tuesdayLabel,
-        wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel));
+    this.labelsOfTheWeek = new ArrayList<>(List.of(sundayLabel, mondayLabel,
+        tuesdayLabel, wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel));
     this.scrollPanesOfTheWeek = new ArrayList<>(List.of(scroll0, scroll1, scroll2, scroll3,
         scroll4, scroll5, scroll6));
 
@@ -129,15 +153,15 @@ public class CalendarControllerImp implements CalendarController {
   @Override
   public void run() throws IllegalStateException {
     this.initDaysOfTheWeek();
-    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage, this.daysOfTheWeek,
-        allTasks, this.week, maxe, maxt);
+    TaskEventCreationController d = new TaskEventCreationControllerImp(mainStage,
+        this.daysOfTheWeek, allTasks, this.week, maxe, maxt);
     addTaskButton.setOnAction(event -> d.showPopup());
     savebutton.setOnAction(
         event -> {
-          File file = chooser.showOpenDialog(mainStage);
           week.setqandn(qandn.getText());
           week.setMaxt(Integer.parseInt(maxt.getText()));
           week.setMaxe(Integer.parseInt(maxe.getText()));
+          File file = chooser.showOpenDialog(mainStage);
           if (file != null) {
             try {
               SaveController s = new SaveController(mainStage, new Converter(), week);
@@ -193,10 +217,6 @@ public class CalendarControllerImp implements CalendarController {
       if (index == daysOfTheWeek.size()) {
         break;
       }
-//      this.scroll0.setContent(this.monday);
-//      this.monday.getChildren().add(this.mondayLabel);
-//      this.scroll1.setContent(this.tuesday);
-//      this.tuesday.getChildren().add(this.tuesdayLabel);
     }
 
     for (int i = 0; i < day; i++) {
@@ -269,6 +289,72 @@ public class CalendarControllerImp implements CalendarController {
         + "; -fx-text-fill: " + theme.getFontColor());
     this.maxTasks.setStyle("-fx-font-family: " + theme.getFontFamily()
         + "; -fx-text-fill: " + theme.getFontColor());
+  }
+
+  public void updatecal(Week w) {
+    String theme = w.getTheme();
+    if (theme.equals("minimal")) {
+      this.changeTheme(new Minimalistic());
+    }
+    if (theme.equals("scrapbook")) {
+      this.changeTheme(new ScrapBook());
+    }
+    if (theme.equals("vintage")) {
+      this.changeTheme(new Vintage());
+    }
+    if (theme.equals("space")) {
+      this.changeTheme(new Space());
+    }
+    this.changeWeekStart(week.getint());
+    maxe.setText(String.valueOf(w.getMaxe()));
+    maxt.setText(String.valueOf(w.getEvents()));
+    qandn.setText(w.getQandn());
+
+    for (Task t : week.getTasks()) {
+      Button infoButton = new Button(t.getName());
+      VBox taskToQueue = null;
+      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, t,
+          daysOfTheWeek.get(t.getDayOfWeek().ordinal()), infoButton, allTasks,
+          taskToQueue, this.week, t.getLink());
+      infoButton.setOnAction(click -> infoPopup.showPopup());
+      daysOfTheWeek.get(t.getDayOfWeek().ordinal()).getChildren().add(infoButton);
+      VBox task = new VBox();
+      task.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+      task.setSpacing(10);
+      task.getChildren().add(new Label("- " + t.getName()));
+      Label completeness = new Label("  " + t.getExtraDetails()[0]);
+      String toggleButtonString;
+      if (completeness.getText().contains("YES")) {
+        toggleButtonString = "Mark as incomplete";
+      } else {
+        toggleButtonString = "Mark as complete";
+      }
+      task.getChildren().add(completeness);
+
+      // having a button to toggle completeness/incompleteness
+      Button toggleComplete = new Button(toggleButtonString);
+      toggleComplete.setOnAction(event -> {
+        if (completeness.getText().contains("NO")) {
+          completeness.setText("  Complete? YES");
+          toggleComplete.setText("Mark as incomplete");
+        } else {
+          completeness.setText("  Complete? NO");
+          toggleComplete.setText("Mark as complete");
+        }
+      });
+      task.getChildren().add(toggleComplete);
+      allTasks.getChildren().add(task);
+    }
+
+    for (Event e : w.getEvents()) {
+      Button infoButton = new Button(e.getName());
+      VBox taskToQueue = null;
+      DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, e,
+          daysOfTheWeek.get(e.getDayOfWeek().ordinal()), infoButton, allTasks,
+          taskToQueue, this.week, e.getLink());
+      infoButton.setOnAction(click -> infoPopup.showPopup());
+      daysOfTheWeek.get(e.getDayOfWeek().ordinal()).getChildren().add(infoButton);
+    }
   }
 
 }
