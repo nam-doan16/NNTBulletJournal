@@ -53,6 +53,29 @@ class ArgumentValidatorTest {
   }
 
   /**
+   * Testing checkTimeFormat invalid time number branches
+   */
+  @Test
+  public void testCheckTimeFormatNumberBranch() {
+    Exception e = assertThrows(IllegalArgumentException.class,
+        () -> ArgumentValidator.checkTimeFormat("60:00"),
+        "Incorrect time numbers");
+    assertEquals(e.getMessage(), "Incorrect time numbers");
+
+    e = assertThrows(IllegalArgumentException.class,
+        () -> ArgumentValidator.checkTimeFormat("00:70"),
+        "Incorrect time numbers");
+    assertEquals(e.getMessage(), "Incorrect time numbers");
+    e = assertThrows(IllegalArgumentException.class,
+        () -> ArgumentValidator.checkTimeFormat("90:40"),
+        "Incorrect time numbers");
+    assertEquals(e.getMessage(), "Incorrect time numbers");
+
+
+
+  }
+
+  /**
    * test for checkStringNumber
    */
   @Test

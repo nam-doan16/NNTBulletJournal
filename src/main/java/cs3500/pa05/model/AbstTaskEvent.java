@@ -1,9 +1,6 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enums.Days;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 
 /**
  * represents an abstract TaskEvent
@@ -38,10 +35,6 @@ public abstract class AbstTaskEvent {
    */
   public String getLink() {
     return this.link;
-  }
-
-  public ObservableList<Node> getChildren(VBox description) {
-    return description.getChildren();
   }
 
   /**
