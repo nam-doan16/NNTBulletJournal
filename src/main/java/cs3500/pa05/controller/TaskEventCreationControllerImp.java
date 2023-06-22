@@ -89,7 +89,6 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
-    TaskEventView loader = new TaskEventViewImp(this);
     this.initMenuButton();
     this.initAddButton();
     this.maxe = maxe;
@@ -97,6 +96,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.eventCount = new CustomInteger(0);
     this.taskCount = new CustomInteger(0);
     this.popup = new Popup();
+    TaskEventView loader = new TaskEventViewImp(this);
     Scene s = loader.load();
     popup.getContent().add(s.getRoot());
   }
@@ -139,7 +139,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       String link = ArgumentValidator.giveValidLink(description);
       Days day = Days.valueOf(dayMenu.getValue().toUpperCase());
       try {
-       this.processMax();
+        this.processMax();
         String name = ArgumentValidator.nonEmptyName(this.name.getText());
         if (menu.getValue().equalsIgnoreCase(TaskEvent.TASK.displayName)) {
           if (this.taskCount.getInteger() >= this.maxTask) {
@@ -149,7 +149,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
             week.addtask((Task) taskEvent);
             this.taskCount.increment();
           }
-        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)){
+        } else if (menu.getValue().equalsIgnoreCase(TaskEvent.EVENT.displayName)) {
           if (this.eventCount.getInteger() >= this.maxEvent) {
             throw new IllegalArgumentException("Too many events");
           } else {

@@ -22,16 +22,16 @@ public class Task extends AbstTaskEvent {
   }
 
   @Override
-    public String[] getExtraDetails() {
-      if (complete) {
-        return new String[] {"COMPLETE? YES"};
-      } else {
-        return new String[] {"COMPLETE? NO"};
-      }
+  public String[] getExtraDetails() {
+    if (complete) {
+      return new String[] {"COMPLETE? YES"};
+    } else {
+      return new String[] {"COMPLETE? NO"};
     }
+  }
 
-    public boolean getDone() {
-      return this.complete;
-    }
+  public boolean getDone() {
+    return this.complete;
+  }
 
 }

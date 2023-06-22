@@ -10,4 +10,4 @@ public record WeekJson(
     @JsonProperty("AllTasks") TaskJson[] tasks,
     @JsonProperty("AllEvents") EventJson[] events,
     @JsonProperty("Start") String start
-  ){}
+){}

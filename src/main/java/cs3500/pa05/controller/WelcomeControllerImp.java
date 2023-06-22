@@ -27,14 +27,12 @@ import javafx.stage.Stage;
  */
 
 public class WelcomeControllerImp implements WelcomeController {
-
-  private Converter c = new Converter();
   private Stage mainstage;
   private FileChooser chooser = new FileChooser();
   @FXML
-  private Button NewBujo;
+  private Button newBujo;
   @FXML
-  private Button PreviousBujo;
+  private Button previousBujo;
 
   /**
    * constructor
@@ -50,13 +48,13 @@ public class WelcomeControllerImp implements WelcomeController {
    *
    * @throws IllegalStateException when something fails
    */
-  public void run() throws IllegalStateException{
-    this.NewBujo.setOnAction(event -> switchtocal(event));
-    this.PreviousBujo.setOnAction(event -> {
-      chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)"
-          , "*.bujo"));
+  public void run() throws IllegalStateException {
+    this.newBujo.setOnAction(event -> switchtocal(event));
+    this.previousBujo.setOnAction(event -> {
+      chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("BUJO files (*.bujo)",
+          "*.bujo"));
       File selected = chooser.showOpenDialog(null);
-      if(selected != null) {
+      if (selected != null) {
         try {
           ObjectMapper mapper = new ObjectMapper();
           JsonParser parser = mapper.getFactory().createParser(selected);

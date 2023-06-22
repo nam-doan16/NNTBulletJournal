@@ -10,6 +10,7 @@ public class CustomInteger {
   public void increment() {
     this.integer++;
   }
+
   public int getInteger() {
     return this.integer;
   }

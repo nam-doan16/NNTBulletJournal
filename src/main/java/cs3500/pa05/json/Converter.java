@@ -17,7 +17,7 @@ public class Converter {
 
   public TaskJson[] alltaskstoJson(List<Task> tasks) {
     TaskJson[] output = new TaskJson[tasks.size()];
-    for(int i = 0; i < tasks.size(); i++) {
+    for (int i = 0; i < tasks.size(); i++) {
       TaskJson task = tasktoJson(tasks.get(i));
       output[i] = task;
     }
@@ -45,7 +45,7 @@ public class Converter {
 
   public EventJson[] alleventstoJson(List<Event> events) {
     EventJson[] output = new EventJson[events.size()];
-    for(int i = 0; i < events.size(); i++) {
+    for (int i = 0; i < events.size(); i++) {
       EventJson event = eventtoJson(events.get(i));
       output[i] = event;
     }
@@ -71,24 +71,24 @@ public class Converter {
     week.setMaxt(wjson.maxt());
     week.setqandn(wjson.notes());
     String theme = wjson.theme();
-    if(theme.equals("minimal")) {
+    if (theme.equals("minimal")) {
       week.setThem(new Minimalistic());
     }
-    if(theme.equals("scrapbook")) {
+    if (theme.equals("scrapbook")) {
       week.setThem(new ScrapBook());
     }
-    if(theme.equals("vintage")) {
+    if (theme.equals("vintage")) {
       week.setThem(new Vintage());
     }
-    if(theme.equals("space")) {
+    if (theme.equals("space")) {
       week.setThem(new Space());
     }
     List<Task> tasks = alljsontotasks(wjson.tasks());
-    for(Task t : tasks) {
+    for (Task t : tasks) {
       week.addtask(t);
     }
     List<Event> events = alljsontoevents(wjson.events());
-    for(Event e : events) {
+    for (Event e : events) {
       week.addEvent(e);
     }
     week.setStart(wjson.start());
@@ -97,7 +97,7 @@ public class Converter {
 
   public List<Task> alljsontotasks(TaskJson[] tasks) {
     List<Task> out = new ArrayList<>();
-    for(TaskJson t : tasks) {
+    for (TaskJson t : tasks) {
       Task task = new Task(t.name(), t.details(), t.day(), t.link());
       out.add(task);
     }
@@ -106,7 +106,7 @@ public class Converter {
 
   public List<Event> alljsontoevents(EventJson[] events) {
     List<Event> out = new ArrayList<>();
-    for(EventJson t : events) {
+    for (EventJson t : events) {
       Event event = new Event(t.name(), t.details(), t.day(), t.start(), TimeNotation.PM,
           t.time(), t.link());
       out.add(event);

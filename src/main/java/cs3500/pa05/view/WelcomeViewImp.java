@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 /**
  * implementation for the WelcomeView
  */
-public class WelcomeViewImp implements WelcomeView{
+public class WelcomeViewImp implements WelcomeView {
 
   private FXMLLoader loader;
 
