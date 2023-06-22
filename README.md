@@ -29,6 +29,20 @@ unorganized chaos and low productivity levels!
 - Privacy Lock: Keep your bullet journal safe with a password lack to prevent your entries to be safe to just you!
 - Weekly Starters: Got a nice looking bullet journal file? No problem! Import any .bujo file and use it as a template!
 
+### How we could extend your program to include an additional feature
+A feature we could extend our program to include would be the Mind Changes feature, where users can freely edit their
+Tasks and Events, which includes the name and description.
+
+#### What our Mini Viewer has in terms of JavaFX
+For the name, it is put inside of a label, put in the middle of an HBox
+For our description, it is put inside of a **NON-EDITABLE** TextArea.
+
+#### How we can change our Mini Viewer to implement Mind Changes
+We can implement an edit button next to the done button which toggles a mode where users can edit their name of their
+event/task and description. The easiest approach is to change the name to a NON-EDITABLE TextArea as well, just like
+the description box, then when edit mode is toggled via the Edit Button, we can set those TextAreas to be editable, then
+save those changes, checking if the name is valid (NON-EMPTY) as well. If not valid, keep prompting the user to input 
+a valid name for their event/task, or they cancel out of the edit mode via a Cancel Edit button.
 
 ### Screenshots of GUI features
 ![](splashscreen.png)
