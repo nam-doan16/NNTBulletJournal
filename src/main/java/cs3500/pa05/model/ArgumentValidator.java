@@ -45,11 +45,11 @@ public class ArgumentValidator {
         if (timeFormat.length() != 2) {
           throw new IllegalArgumentException("Incorrect time format! (e.g. 08:15)");
         }
-        int num = checkStringPosNumber(timeFormat, "");
       }
       int hour = Integer.parseInt(hoursMinutes[0]);
       int minutes = Integer.parseInt(hoursMinutes[1]);
-      if (hour > 12 || hour < 0 || minutes > 60 || minutes < 0) {
+      // negatives checked already
+      if (hour > 12 || hour == 0 || minutes > 60) {
         throw new IllegalArgumentException("Incorrect time numbers");
       }
     } else {
@@ -97,8 +97,7 @@ public class ArgumentValidator {
       Matcher matcher = urlPattern.matcher(description);
       // Replace URLs with clickable links
       while (matcher.find()) {
-        String url = matcher.group();
-        link = url;
+        link = matcher.group();
       }
     }
 
