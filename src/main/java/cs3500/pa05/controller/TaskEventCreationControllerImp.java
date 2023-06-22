@@ -129,7 +129,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
-  public void initAddButton() {
+  private void initAddButton() {
     add.setOnAction(event -> {
       boolean addButton = true;
 
@@ -198,7 +198,7 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     }
   }
 
-  void setupInfoButton(AbstTaskEvent taskEvent, String link) {
+  private void setupInfoButton(AbstTaskEvent taskEvent, String link) {
     Button infoButton = new Button(taskEvent.getName());
     VBox taskToQueue = null;
     for (String string : taskEvent.getExtraDetails()) {

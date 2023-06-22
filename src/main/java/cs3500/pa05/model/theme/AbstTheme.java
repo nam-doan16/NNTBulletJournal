@@ -4,10 +4,10 @@ package cs3500.pa05.model.theme;
  * abstract class for themes
  */
 public class AbstTheme {
-  private String backgroundColor;
-  private String fontColor;
-  private String fontFamily;
-  public String name;
+  protected String backgroundColor;
+  protected String fontColor;
+  protected String fontFamily;
+  protected String name;
 
   public AbstTheme(String backgroundColor, String fontColor, String fontFamily) {
     this.backgroundColor = backgroundColor;
