@@ -3,6 +3,7 @@ package cs3500.pa05.controller;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
+import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
@@ -34,8 +35,8 @@ public class CalendarControllerImp implements CalendarController {
   /**
    * constructor
    */
-  private Week week;
-  private FileChooser chooser = new FileChooser();
+  private final Week week;
+  private final FileChooser chooser = new FileChooser();
   @FXML
   private Button addTaskButton;
   @FXML
@@ -79,7 +80,7 @@ public class CalendarControllerImp implements CalendarController {
   private List<VBox> daysOfTheWeek;
   private List<Label> labelsOfTheWeek;
   private List<ScrollPane> scrollPanesOfTheWeek;
-  private Stage mainStage;
+  private final Stage mainStage;
   @FXML
   private MenuButton weekStart;
   @FXML
@@ -174,45 +175,51 @@ public class CalendarControllerImp implements CalendarController {
     handleWeekStart();
   }
 
+  /**
+   * Handles the changing of the state of the current day that starts the week
+   */
   public void handleWeekStart() {
     this.sunStart.setOnAction(event -> {
-      changeWeekStart(0);
+      changeWeekStart(Days.SUNDAY.numRepresentation);
       week.setStart("Sunday");
     });
     this.monStart.setOnAction(event -> {
-      changeWeekStart(1);
+      changeWeekStart(Days.MONDAY.numRepresentation);
       week.setStart("Monday");
     });
     this.tueStart.setOnAction(event -> {
-      changeWeekStart(2);
+      changeWeekStart(Days.TUESDAY.numRepresentation);
       week.setStart("Tuesday");
     });
     this.wedStart.setOnAction(event -> {
-      changeWeekStart(3);
+      changeWeekStart(Days.WEDNESDAY.numRepresentation);
       week.setStart("Wednesday");
     });
     this.thuStart.setOnAction(event -> {
-      changeWeekStart(4);
+      changeWeekStart(Days.THURSDAY.numRepresentation);
       week.setStart("Thursday");
     });
     this.friStart.setOnAction(event -> {
-      changeWeekStart(5);
+      changeWeekStart(Days.FRIDAY.numRepresentation);
       week.setStart("Friday");
     });
     this.satStart.setOnAction(event -> {
-      changeWeekStart(6);
+      changeWeekStart(Days.SATURDAY.numRepresentation);
       week.setStart("Saturday");
     });
 
   }
 
+  /**
+   * Changes the week start day to the given day
+   *
+   * @param day integer representation of the day
+   */
   public void changeWeekStart(int day) {
     int index = 0;
     for (int i = day; i < daysOfTheWeek.size(); i++) {
       this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
-
       index++;
-
       if (index == daysOfTheWeek.size()) {
         break;
       }
@@ -220,9 +227,7 @@ public class CalendarControllerImp implements CalendarController {
 
     for (int i = 0; i < day; i++) {
       this.scrollPanesOfTheWeek.get(index).setContent(this.daysOfTheWeek.get(i));
-
       index++;
-
       if (index == daysOfTheWeek.size()) {
         break;
       }
@@ -290,31 +295,20 @@ public class CalendarControllerImp implements CalendarController {
         + "; -fx-text-fill: " + theme.getFontColor());
   }
 
+  /**
+   * updates the info in the week for persistence
+   *
+   * @param w a week object
+   */
   public void updatecal(Week w) {
-    String theme = w.getTheme();
-    if (theme.equals("minimal")) {
-      this.changeTheme(new Minimalistic());
-    }
-    if (theme.equals("scrapbook")) {
-      this.changeTheme(new ScrapBook());
-    }
-    if (theme.equals("vintage")) {
-      this.changeTheme(new Vintage());
-    }
-    if (theme.equals("space")) {
-      this.changeTheme(new Space());
-    }
-    this.changeWeekStart(week.getint());
-    maxe.setText(String.valueOf(w.getMaxe()));
-    maxt.setText(String.valueOf(w.getEvents()));
-    qandn.setText(w.getQandn());
+    updatelayout(w);
 
     for (Task t : week.getTasks()) {
       Button infoButton = new Button(t.getName());
       VBox taskToQueue = null;
       DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, t,
           daysOfTheWeek.get(t.getDayOfWeek().ordinal()), infoButton, allTasks,
-          taskToQueue, this.week, t.getLink());
+          taskToQueue, t.getLink());
       infoButton.setOnAction(click -> infoPopup.showPopup());
       daysOfTheWeek.get(t.getDayOfWeek().ordinal()).getChildren().add(infoButton);
       VBox task = new VBox();
@@ -350,12 +344,17 @@ public class CalendarControllerImp implements CalendarController {
       VBox taskToQueue = null;
       DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, e,
           daysOfTheWeek.get(e.getDayOfWeek().ordinal()), infoButton, allTasks,
-          taskToQueue, this.week, e.getLink());
+          taskToQueue, e.getLink());
       infoButton.setOnAction(click -> infoPopup.showPopup());
       daysOfTheWeek.get(e.getDayOfWeek().ordinal()).getChildren().add(infoButton);
     }
   }
 
+  /**
+   * updates the info for each week for persistence
+   *
+   * @param w a week object to store info for persistence
+   */
   public void updatelayout(Week w) {
     String theme = w.getTheme();
     if (theme.equals("minimal")) {
@@ -377,6 +376,4 @@ public class CalendarControllerImp implements CalendarController {
     w.setTasks(new ArrayList<>());
     w.setEvents(new ArrayList<>());
   }
-
-
 }

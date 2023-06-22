@@ -27,12 +27,12 @@ import javafx.stage.Stage;
  * controller class for task and event creation
  */
 public class TaskEventCreationControllerImp implements TaskEventCreationController {
-  private Week week;
-  private Popup popup;
-  private Stage mainStage;
-  private List<VBox> daysOfWeek;
+  private final Week week;
+  private final Popup popup;
+  private final Stage mainStage;
+  private final List<VBox> daysOfWeek;
   private int chosenDayIndex;
-  private VBox allTasks;
+  private final VBox allTasks;
 
 
   @FXML
@@ -72,16 +72,26 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
   private VBox errorBox;
 
   @FXML
-  private TextField maxe;
+  private final TextField maxe;
   @FXML
-  private TextField maxt;
+  private final TextField maxt;
   private int maxEvent;
   private int maxTask;
 
-  private CustomInteger eventCount;
-  private CustomInteger taskCount;
+  private final CustomInteger eventCount;
+  private final CustomInteger taskCount;
 
 
+  /**
+   * Constructor for TaskEventCreationControllerImp
+   *
+   * @param mainStage main stage of the application
+   * @param daysOfWeek list of references to the Vboxes of each day on the calendar
+   * @param allTasks reference to the vbox with the list of all tasks
+   * @param week current week
+   * @param maxe max events box
+   * @param maxt max tasks box
+   */
   public TaskEventCreationControllerImp(Stage mainStage, List<VBox> daysOfWeek,
                                         VBox allTasks, Week week, TextField maxe,
                                         TextField maxt) {
@@ -90,18 +100,21 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.mainStage = mainStage;
     this.allTasks = allTasks;
     this.popup = new Popup();
-    TaskEventView loader = new TaskEventViewImp(this);
-    Scene s = loader.load();
-    this.initMenuButton();
-    this.initAddButton();
     this.maxe = maxe;
     this.maxt = maxt;
     this.eventCount = new CustomInteger(0);
     this.taskCount = new CustomInteger(0);
+    TaskEventView loader = new TaskEventViewImp(this);
+    Scene s = loader.load();
+    this.initMenuButton();
+    this.initAddButton();
     popup.getContent().add(s.getRoot());
   }
 
 
+  /**
+   * Initializes the menu buttons of the task creation popup
+   */
   private void initMenuButton() {
     this.close.setOnAction(event -> this.popup.hide());
     menu.setValue("Event");
@@ -129,10 +142,12 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     });
   }
 
+  /**
+   * Initializes the addition of the add button on the popup
+   */
   private void initAddButton() {
     add.setOnAction(event -> {
       boolean addButton = true;
-
       AbstTaskEvent taskEvent = null;
       StringBuilder errorMessage = new StringBuilder("Error! ");
       String description = this.description.getText();
@@ -167,18 +182,33 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
         addButton = false;
       }
       errorBox.getChildren().clear();
-      if (addButton) {
-        // change
-        this.setupInfoButton(taskEvent, link);
-        this.popup.hide();
-      } else {
-        Label errorMessageLabel = new Label(errorMessage.toString());
-        errorMessageLabel.setTextFill(Color.RED);
-        errorBox.getChildren().add(errorMessageLabel);
-      }
+      this.handleAddButtonCondition(addButton, taskEvent, link, errorMessage.toString());
     });
   }
 
+  /**
+   * Given the condition, if true, setup and add the information button, otherwise display an error
+   *
+   * @param addButton whether the button should be added or not
+   * @param taskEvent task/event
+   * @param link string representation of a link
+   * @param errorMessage error message to be displayed if needed
+   */
+  private void handleAddButtonCondition(boolean addButton, AbstTaskEvent taskEvent,
+                                        String link, String errorMessage) {
+    if (addButton) {
+      this.setupInfoButton(taskEvent, link);
+      this.popup.hide();
+    } else {
+      Label errorMessageLabel = new Label(errorMessage);
+      errorMessageLabel.setTextFill(Color.RED);
+      errorBox.getChildren().add(errorMessageLabel);
+    }
+  }
+
+  /**
+   * Processes the boxes containing the max amount of events/tasks
+   */
   private void processMax() {
     StringBuilder errorMessage = new StringBuilder();
     try {
@@ -198,6 +228,12 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     }
   }
 
+  /**
+   * Sets up the information buttons for the given task/event
+   *
+   * @param taskEvent task/event
+   * @param link string representation of a link
+   */
   private void setupInfoButton(AbstTaskEvent taskEvent, String link) {
     Button infoButton = new Button(taskEvent.getName());
     VBox taskToQueue = null;
@@ -207,11 +243,18 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
       }
     }
     DetailPopupController infoPopup = new DetailPopupControllerImp(mainStage, taskEvent,
-        daysOfWeek.get(chosenDayIndex), infoButton, allTasks, taskToQueue, this.week, link);
+        daysOfWeek.get(chosenDayIndex), infoButton, allTasks, taskToQueue, link);
     infoButton.setOnAction(click -> infoPopup.showPopup());
     daysOfWeek.get(chosenDayIndex).getChildren().add(infoButton);
   }
 
+  /**
+   * returns a representation of a task in a task queue in a form of a VBox
+   *
+   * @param taskEvent task/event
+   *
+   * @return VBox of the representation of a task in a taskqueue
+   */
   private VBox getTaskQueue(AbstTaskEvent taskEvent) {
     // initializing buttons
     VBox task = new VBox();
@@ -243,6 +286,9 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     return task;
   }
 
+  /**
+   * Shows the popup
+   */
   public void showPopup() {
     popup.show(mainStage);
   }
