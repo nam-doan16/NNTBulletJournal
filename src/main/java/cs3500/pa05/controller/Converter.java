@@ -1,4 +1,4 @@
-package cs3500.pa05.json;
+package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.Event;
@@ -6,12 +6,16 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
 import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.enums.TimeNotation;
+import cs3500.pa05.model.json.EventJson;
+import cs3500.pa05.model.json.TaskJson;
+import cs3500.pa05.model.json.WeekJson;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
 import cs3500.pa05.model.theme.Space;
 import cs3500.pa05.model.theme.Vintage;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Converter {
 

@@ -23,24 +23,12 @@ public class Week {
     this.maxe = m;
   }
 
-  public void setQandn(String content) {
-    this.qandn = content;
-  }
-
   public void addtask(Task task) {
     this.alltasks.add(task);
   }
 
   public void addEvent(Event e) {
     this.events.add(e);
-  }
-
-  public void removeEvent(Event e) {
-    this.events.remove(e);
-  }
-
-  public void removeTask(Task t) {
-    this.alltasks.remove(t);
   }
 
   public void setThem(AbstTheme theme) {
