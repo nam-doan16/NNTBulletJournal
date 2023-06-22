@@ -54,7 +54,7 @@ public class WelcomeControllerImp implements WelcomeController {
           ObjectMapper mapper = new ObjectMapper();
           JsonParser parser = mapper.getFactory().createParser(selected);
           WeekJson json = parser.readValueAs(WeekJson.class);
-          createlayout(new Converter().jsonToWeek(json));
+          createcal(new Converter().jsonToWeek(json), "template");
         } catch (FileNotFoundException e) {
           throw new RuntimeException(e);
         } catch (IOException e) {
@@ -72,7 +72,7 @@ public class WelcomeControllerImp implements WelcomeController {
           ObjectMapper mapper = new ObjectMapper();
           JsonParser parser = mapper.getFactory().createParser(selected);
           WeekJson json = parser.readValueAs(WeekJson.class);
-          createcal(new Converter().jsonToWeek(json));
+          createcal(new Converter().jsonToWeek(json), "previous");
         } catch (FileNotFoundException e) {
           throw new RuntimeException(e);
         } catch (IOException e) {
@@ -82,12 +82,7 @@ public class WelcomeControllerImp implements WelcomeController {
     });
   }
 
-  /**
-   * creates the Calendar view
-   *
-   * @param w a Week object used for persistence
-   */
-  public void createcal(Week w) {
+  public void createcal(Week w, String version) {
     CalendarController c = new CalendarControllerImp(mainstage, w);
     CalendarView view = new CalendarViewImp(c);
     try {
@@ -96,29 +91,11 @@ public class WelcomeControllerImp implements WelcomeController {
       mainstage.setTitle("Bujo File");
       c.run();
       mainstage.show();
-      ((CalendarControllerImp) c).updatecal(w);
-      // render the stage
-    } catch (IllegalStateException exc) {
-      exc.printStackTrace();
-      //System.err.println("Unable to load GUI.");
-    }
-  }
-
-  /**
-   * to help ensure that info is persisted when switching to calendar from welcome
-   *
-   * @param w a week object to store information for persistence
-   */
-  public void createlayout(Week w) {
-    CalendarController c = new CalendarControllerImp(mainstage, w);
-    CalendarView view = new CalendarViewImp(c);
-    try {
-      // load and place the view's scene onto the stage
-      mainstage.setScene(view.load());
-      mainstage.setTitle("Bujo File");
-      c.run();
-      mainstage.show();
-      ((CalendarControllerImp) c).updatelayout(w);
+      if(version.equals("previous")) {
+        ((CalendarControllerImp) c).updatecal(w);
+      } else {
+        ((CalendarControllerImp) c).updatelayout(w);
+      }
       // render the stage
     } catch (IllegalStateException exc) {
       exc.printStackTrace();

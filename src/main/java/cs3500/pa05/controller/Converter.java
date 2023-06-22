@@ -71,8 +71,9 @@ public class Converter {
   public Week jsonToWeek(WeekJson json) {
     Week week = new Week();
     WeekJson wjson = new ObjectMapper().convertValue(json, WeekJson.class);
+    int m = wjson.maxt();
     week.setMaxe(wjson.maxe());
-    week.setMaxt(wjson.maxt());
+    week.setMaxt(m);
     week.setqandn(wjson.notes());
     String theme = wjson.theme();
     if (theme.equals("minimal")) {

@@ -15,10 +15,6 @@ import javafx.stage.Stage;
 
 public class SaveController {
   @FXML
-  private TextField maxt;
-  @FXML
-  private TextField maxe;
-  @FXML
   private TextField quotesandnotes;
   private Converter converter;
 
