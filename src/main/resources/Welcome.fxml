@@ -6,26 +6,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="155.0" prefWidth="300.0">
+    <AnchorPane prefHeight="149.0" prefWidth="295.0" style="-fx-background-color: b1bca0;">
       <children>
-         <VBox prefHeight="191.0" prefWidth="300.0">
+         <VBox prefHeight="136.0" prefWidth="298.0">
             <children>
-               <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+               <HBox alignment="CENTER" prefHeight="75.0" prefWidth="300.0">
                   <children>
-                     <Label text="WELCOME!!" />
+                     <Label prefHeight="26.0" prefWidth="224.0" text="PLEASE SELECT AN OPTION BELOW">
+                        <font>
+                           <Font name="BM JUA OTF" size="14.0" />
+                        </font>
+                     </Label>
                   </children>
                </HBox>
-               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="200.0">
+               <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="300.0">
                   <children>
-                     <Label prefHeight="27.0" prefWidth="200.0" text="PLEASE SELECT AN OPTION BELOW" />
-                  </children>
-               </HBox>
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Button fx:id="newBujo" mnemonicParsing="false" text="NEW" />
-                     <Button fx:id="previousBujo" mnemonicParsing="false" text="OPEN PROJECT" />
+                     <Button fx:id="newBujo" mnemonicParsing="false" text="NEW">
+                        <font>
+                           <Font name="Baloo" size="13.0" />
+                        </font></Button>
+                     <Button fx:id="previousBujo" mnemonicParsing="false" text="OPEN PROJECT">
+                        <font>
+                           <Font name="Baloo" size="13.0" />
+                        </font></Button>
+                     <Button fx:id="newWeek" mnemonicParsing="false" text="WEEKSTART">
+                        <font>
+                           <Font name="Baloo" size="13.0" />
+                        </font></Button>
                   </children>
                </HBox>
             </children>
