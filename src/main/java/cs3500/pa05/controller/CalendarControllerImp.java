@@ -301,7 +301,23 @@ public class CalendarControllerImp implements CalendarController {
    * @param w a week object
    */
   public void updatecal(Week w) {
-    updatelayout(w);
+    String theme = w.getTheme();
+    if (theme.equals("minimal")) {
+      this.changeTheme(new Minimalistic());
+    }
+    if (theme.equals("scrapbook")) {
+      this.changeTheme(new ScrapBook());
+    }
+    if (theme.equals("vintage")) {
+      this.changeTheme(new Vintage());
+    }
+    if (theme.equals("space")) {
+      this.changeTheme(new Space());
+    }
+    this.changeWeekStart(week.getint());
+    maxe.setText(String.valueOf(w.getMaxe()));
+    maxt.setText(String.valueOf(w.getEvents()));
+    qandn.setText(w.getQandn());
 
     for (Task t : week.getTasks()) {
       Button infoButton = new Button(t.getName());
