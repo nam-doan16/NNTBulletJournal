@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="600.0" prefWidth="1000.0">
@@ -170,7 +171,7 @@
                     </AnchorPane>
                 </items>
             </SplitPane>
-            <VBox layoutY="-1.0" prefHeight="32.0" prefWidth="230.0">
+            <VBox layoutY="-1.0" prefHeight="62.0" prefWidth="217.0">
                 <children>
                     <Button fx:id="savebutton" mnemonicParsing="false" text="SAVE" />
                     <MenuButton fx:id="weekStart" mnemonicParsing="false" text="Week Start">
@@ -184,6 +185,7 @@
                             <MenuItem fx:id="satStart" mnemonicParsing="false" text="Saturday" />
                         </items>
                     </MenuButton>
+               <HBox prefHeight="27.0" prefWidth="80.0" />
                 </children>
             </VBox>
             <GridPane alignment="CENTER" layoutX="912.0" layoutY="1.0" prefHeight="72.0" prefWidth="88.0">
@@ -241,6 +243,15 @@
                     </GridPane>
                 </children>
             </HBox>
+         <HBox alignment="CENTER" layoutX="417.0" layoutY="10.0" prefHeight="61.0" prefWidth="176.0">
+            <children>
+               <Label text="My Week">
+                  <font>
+                     <Font name="Baloo" size="36.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
         </children>
         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
