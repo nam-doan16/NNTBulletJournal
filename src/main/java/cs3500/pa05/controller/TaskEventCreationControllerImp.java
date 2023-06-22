@@ -89,15 +89,15 @@ public class TaskEventCreationControllerImp implements TaskEventCreationControll
     this.daysOfWeek = daysOfWeek;
     this.mainStage = mainStage;
     this.allTasks = allTasks;
+    this.popup = new Popup();
+    TaskEventView loader = new TaskEventViewImp(this);
+    Scene s = loader.load();
     this.initMenuButton();
     this.initAddButton();
     this.maxe = maxe;
     this.maxt = maxt;
     this.eventCount = new CustomInteger(0);
     this.taskCount = new CustomInteger(0);
-    this.popup = new Popup();
-    TaskEventView loader = new TaskEventViewImp(this);
-    Scene s = loader.load();
     popup.getContent().add(s.getRoot());
   }
 

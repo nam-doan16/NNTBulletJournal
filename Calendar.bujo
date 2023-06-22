@@ -1,7 +1,7 @@
 {
-  "Maxt" : 2,
+  "Maxt" : 10,
   "Maxe" : 10,
-  "Theme" : "vintage",
+  "Theme" : "scrapbook",
   "QandN" : "hehehheh",
   "AllTasks" : [ {
     "Name" : "HELLOOO ",
