@@ -12,7 +12,7 @@ public class Vintage extends AbstTheme {
    * font = Times New Roman
    */
   public Vintage() {
-    super("#c3ac78", "#000000", "Times New Roman");
+    super("#c3ac78", "#000000", "georgia");
     this.name = "vintage";
   }
 }

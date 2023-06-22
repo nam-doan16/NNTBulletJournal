@@ -50,9 +50,9 @@ class ThemeTest {
   @Test
   public void testGetFontFamily() {
     assertEquals(minimal.getFontFamily(), "arial");
-    assertEquals(vintage.getFontFamily(), "Times New Roman");
-    assertEquals(space.getFontFamily(), "Source Code Pro");
-    assertEquals(scrapBook.getFontFamily(), "Pristina");
+    assertEquals(vintage.getFontFamily(), "georgia");
+    assertEquals(space.getFontFamily(), "impact");
+    assertEquals(scrapBook.getFontFamily(), "verdana");
   }
 
   /**

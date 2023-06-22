@@ -12,7 +12,7 @@ public class ScrapBook extends AbstTheme {
    * font = Comic Sans MS
    */
   public ScrapBook() {
-    super("#e1dbc1", "#000000", "Pristina");
+    super("#e1dbc1", "#000000", "verdana");
     this.name = "scrapbook";
   }
 }
