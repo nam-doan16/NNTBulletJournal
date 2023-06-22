@@ -82,6 +82,11 @@ public class WelcomeControllerImp implements WelcomeController {
     });
   }
 
+  /**
+   * creates the Calendar view
+   *
+   * @param w a Week object used for persistence
+   */
   public void createcal(Week w) {
     CalendarController c = new CalendarControllerImp(mainstage, w);
     CalendarView view = new CalendarViewImp(c);
@@ -99,6 +104,11 @@ public class WelcomeControllerImp implements WelcomeController {
     }
   }
 
+  /**
+   * to help ensure that info is persisted when switching to calendar from welcome
+   *
+   * @param w a week object to store information for persistence
+   */
   public void createlayout(Week w) {
     CalendarController c = new CalendarControllerImp(mainstage, w);
     CalendarView view = new CalendarViewImp(c);

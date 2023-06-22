@@ -3,6 +3,7 @@ package cs3500.pa05.controller;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.adapterclasses.Week;
+import cs3500.pa05.model.enums.Days;
 import cs3500.pa05.model.theme.AbstTheme;
 import cs3500.pa05.model.theme.Minimalistic;
 import cs3500.pa05.model.theme.ScrapBook;
@@ -179,31 +180,31 @@ public class CalendarControllerImp implements CalendarController {
    */
   public void handleWeekStart() {
     this.sunStart.setOnAction(event -> {
-      changeWeekStart(0);
+      changeWeekStart(Days.SUNDAY.numRepresentation);
       week.setStart("Sunday");
     });
     this.monStart.setOnAction(event -> {
-      changeWeekStart(1);
+      changeWeekStart(Days.MONDAY.numRepresentation);
       week.setStart("Monday");
     });
     this.tueStart.setOnAction(event -> {
-      changeWeekStart(2);
+      changeWeekStart(Days.TUESDAY.numRepresentation);
       week.setStart("Tuesday");
     });
     this.wedStart.setOnAction(event -> {
-      changeWeekStart(3);
+      changeWeekStart(Days.WEDNESDAY.numRepresentation);
       week.setStart("Wednesday");
     });
     this.thuStart.setOnAction(event -> {
-      changeWeekStart(4);
+      changeWeekStart(Days.THURSDAY.numRepresentation);
       week.setStart("Thursday");
     });
     this.friStart.setOnAction(event -> {
-      changeWeekStart(5);
+      changeWeekStart(Days.FRIDAY.numRepresentation);
       week.setStart("Friday");
     });
     this.satStart.setOnAction(event -> {
-      changeWeekStart(6);
+      changeWeekStart(Days.SATURDAY.numRepresentation);
       week.setStart("Saturday");
     });
 
@@ -294,13 +295,13 @@ public class CalendarControllerImp implements CalendarController {
         + "; -fx-text-fill: " + theme.getFontColor());
   }
 
+  /**
+   * updates the info in the week for persistence
+   *
+   * @param w a week object
+   */
   public void updatecal(Week w) {
-    String theme = w.getTheme();
-    this.changeTheme(theme);
-    this.changeWeekStart(week.getint());
-    maxe.setText(String.valueOf(w.getMaxe()));
-    maxt.setText(String.valueOf(w.getEvents()));
-    qandn.setText(w.getQandn());
+    updatelayout(w);
 
     for (Task t : week.getTasks()) {
       Button infoButton = new Button(t.getName());
@@ -349,6 +350,11 @@ public class CalendarControllerImp implements CalendarController {
     }
   }
 
+  /**
+   * updates the info for each week for persistence
+   *
+   * @param w a week object to store info for persistence
+   */
   public void updatelayout(Week w) {
     String theme = w.getTheme();
     if (theme.equals("minimal")) {
