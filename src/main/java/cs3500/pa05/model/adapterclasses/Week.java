@@ -93,4 +93,12 @@ public class Week {
       return 6;
     }
   }
+
+  public void setEvents(List<Event> events) {
+    this.events = events;
+  }
+
+  public void setTasks(List<Task> tasks) {
+    this.alltasks = tasks;
+  }
 }

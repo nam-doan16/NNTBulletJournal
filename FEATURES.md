@@ -18,7 +18,8 @@
 - Links
 
 ## Section 5: Extra Credit
-- Tested GUI
+- Visual Flourish
 - Privacy Lock
-- Splash Scree
+- Splash Screen
 - Deployable Application
+- Weekly Start

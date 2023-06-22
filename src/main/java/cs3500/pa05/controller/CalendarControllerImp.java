@@ -349,12 +349,8 @@ public class CalendarControllerImp implements CalendarController {
     }
   }
 
-  /**
-   * Changes the current calendar theme based on the given string
-   *
-   * @param theme string representation of the theme
-   */
-  private void changeTheme(String theme) {
+  public void updatelayout(Week w) {
+    String theme = w.getTheme();
     if (theme.equals("minimal")) {
       this.changeTheme(new Minimalistic());
     }
@@ -367,6 +363,11 @@ public class CalendarControllerImp implements CalendarController {
     if (theme.equals("space")) {
       this.changeTheme(new Space());
     }
+    this.changeWeekStart(week.getint());
+    maxe.setText(String.valueOf(w.getMaxe()));
+    maxt.setText(String.valueOf(w.getEvents()));
+    qandn.setText(w.getQandn());
+    w.setTasks(new ArrayList<>());
+    w.setEvents(new ArrayList<>());
   }
-
 }
