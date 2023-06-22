@@ -1,5 +1,5 @@
 {
-  "Maxt" : 10,
+  "Maxt" : 1,
   "Maxe" : 10,
   "Theme" : "scrapbook",
   "QandN" : "hehehheh",
@@ -7,6 +7,12 @@
     "Name" : "HELLOOO ",
     "Description" : "hihi ",
     "Day" : "WEDNESDAY",
+    "Link" : "",
+    "Complete" : false
+  }, {
+    "Name" : "alsdjfnasdf",
+    "Description" : "",
+    "Day" : "SUNDAY",
     "Link" : "",
     "Complete" : false
   } ],

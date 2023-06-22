@@ -1,9 +1,7 @@
 package cs3500.pa05;
 
-import cs3500.pa05.controller.WelcomeController;
-import cs3500.pa05.controller.WelcomeControllerImp;
-import cs3500.pa05.view.WelcomeView;
-import cs3500.pa05.view.WelcomeViewImp;
+import cs3500.pa05.controller.SplashController;
+import cs3500.pa05.view.SplashViewer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -31,9 +29,8 @@ public class Driver extends Application {
    */
   @Override
   public void start(Stage stage) {
-    WelcomeController c = new WelcomeControllerImp(stage);
-    WelcomeView view = new WelcomeViewImp(c);
-
+    SplashController c = new SplashController(stage);
+    SplashViewer view = new SplashViewer(c);
 
     try {
       // load and place the view's scene onto the stage

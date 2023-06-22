@@ -1,23 +1,16 @@
 package cs3500.pa05.controller;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.util.JsonParserSequence;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cs3500.pa05.json.Converter;
-import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.adapterclasses.Week;
+import cs3500.pa05.model.json.WeekJson;
 import cs3500.pa05.view.CalendarView;
 import cs3500.pa05.view.CalendarViewImp;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
